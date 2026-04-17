@@ -1,0 +1,44 @@
+#nullable enable
+
+namespace Mubert
+{
+    public partial interface IServiceClient
+    {
+        /// <summary>
+        /// Stripe Billing Portal (GET)<br/>
+        /// Create a Stripe billing portal session by company ID and license token.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Mubert.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Mubert.GetServiceStripeBillingPortalResponse> GetServiceStripeBillingPortalAsync(
+
+            global::Mubert.GetServiceStripeBillingPortalRequest request,
+            global::Mubert.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Stripe Billing Portal (GET)<br/>
+        /// Create a Stripe billing portal session by company ID and license token.
+        /// </summary>
+        /// <param name="companyId">
+        /// Example: 550e8400-e29b-41d4-a716-446655440000
+        /// </param>
+        /// <param name="licenseToken">
+        /// Example: abc123def456
+        /// </param>
+        /// <param name="redirectUrl">
+        /// URL to return to after leaving the billing portal<br/>
+        /// Example: https://mubert.com/success
+        /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::System.InvalidOperationException"></exception>
+        global::System.Threading.Tasks.Task<global::Mubert.GetServiceStripeBillingPortalResponse> GetServiceStripeBillingPortalAsync(
+            global::System.Guid companyId,
+            string licenseToken,
+            string? redirectUrl = default,
+            global::Mubert.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+    }
+}

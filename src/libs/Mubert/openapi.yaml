@@ -1,0 +1,4288 @@
+openapi: 3.0.0
+info:
+  title: Mubert AI Music API v3
+  description: 'Mubert AI Music API for B2B integrations. Generate music tracks, manage streaming, and control customer accounts.
+
+
+    ### AI-optimized documentation
+
+
+    - [llms.txt](https://music-api.mubert.com/swagger-doc/llms.txt) — short endpoint index for AI agents
+
+    - [llms-full.txt](https://music-api.mubert.com/swagger-doc/llms-full.txt) — full reference with parameters and models'
+  contact:
+    name: Mubert Team
+    url: https://mubert.com
+  version: '3.0'
+paths:
+  /api/v3/public/music-library/params:
+    get:
+      tags:
+      - Public
+      summary: Get music library filter parameters
+      description: Retrieve available filter parameters and track counts for the music library. Use filters to refine results — multiple filters are combined with logical AND.
+      operationId: getPublicMusicLibraryParams
+      parameters:
+      - $ref: '#/components/parameters/BpmQueryParameter'
+      - $ref: '#/components/parameters/KeyQueryParameter'
+      - $ref: '#/components/parameters/GenresQueryParameter'
+      - $ref: '#/components/parameters/MoodsQueryParameter'
+      - $ref: '#/components/parameters/ActivitiesQueryParameter'
+      - $ref: '#/components/parameters/PlaylistsQueryParameter'
+      - $ref: '#/components/parameters/InstrumentsQueryParameter'
+      - $ref: '#/components/parameters/ThemesQueryParameter'
+      - $ref: '#/components/parameters/DurationQueryParameter'
+      - $ref: '#/components/parameters/ModeQueryParameter'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    param:
+                      type: string
+                    values:
+                      type: array
+                      items:
+                        properties:
+                          value:
+                            type: string
+                          tracks_count:
+                            type: integer
+                        type: object
+                  type: object
+        '401':
+          description: Unauthenticated - the user is not authenticated to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedException'
+        '403':
+          description: Forbidden - Different reasons specified in the error content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403Response'
+        '422':
+          description: Unprocessable Content
+  /api/v3/public/music-library/tracks:
+    get:
+      tags:
+      - Public
+      summary: List music library tracks
+      description: Retrieve a paginated list of pre-generated music library tracks with optional filtering by genre, mood, BPM, key, and other parameters.
+      operationId: getPublicMusicLibraryTracks
+      parameters:
+      - $ref: '#/components/parameters/OffsetQueryParameter'
+      - $ref: '#/components/parameters/LimitQueryParameter'
+      - $ref: '#/components/parameters/OrderQueryParameter'
+      - $ref: '#/components/parameters/OrderByQueryParameter'
+      - $ref: '#/components/parameters/BpmQueryParameter'
+      - $ref: '#/components/parameters/KeyQueryParameter'
+      - $ref: '#/components/parameters/GenresQueryParameter'
+      - $ref: '#/components/parameters/MoodsQueryParameter'
+      - $ref: '#/components/parameters/ActivitiesQueryParameter'
+      - $ref: '#/components/parameters/PlaylistsQueryParameter'
+      - $ref: '#/components/parameters/InstrumentsQueryParameter'
+      - $ref: '#/components/parameters/ThemesQueryParameter'
+      - $ref: '#/components/parameters/DurationQueryParameter'
+      - $ref: '#/components/parameters/ModeQueryParameter'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/TrackIndexPublicResource'
+                  meta:
+                    $ref: '#/components/schemas/MetadataPagination'
+                type: object
+        '401':
+          description: Unauthenticated - the user is not authenticated to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedException'
+        '403':
+          description: Forbidden - Different reasons specified in the error content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403Response'
+        '422':
+          description: Unprocessable Content
+  /api/v3/public/playlists:
+    get:
+      tags:
+      - Public
+      summary: List playlists
+      description: Retrieve all available music channels, groups, and categories. Each entry includes a playlist_index identifier, category, group, channel name, and available parameters (BPM range, keys).
+      operationId: getPublicPlaylists
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PlaylistPublicResource'
+                type: object
+        '401':
+          description: Unauthenticated - the user is not authenticated to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedException'
+        '403':
+          description: Forbidden - Different reasons specified in the error content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403Response'
+  /api/v3/public/prices:
+    get:
+      tags:
+      - Public
+      - Price
+      description: Retrieve a list of available prices with their options, limits, and Stripe prices
+      operationId: getPublicPrices
+      parameters:
+      - $ref: '#/components/parameters/LangQueryParameter'
+      responses:
+        '200':
+          description: List of available prices retrieved successfully.
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PricePublicResource'
+                type: object
+  /api/v3/public/prices/{price}:
+    get:
+      tags:
+      - Public
+      - Price
+      description: Retrieve a single price by ID with its options, limits, and Stripe prices
+      operationId: getPublicPricesByPrice
+      parameters:
+      - $ref: '#/components/parameters/PricePathParameter'
+      - $ref: '#/components/parameters/LangQueryParameter'
+      responses:
+        '200':
+          description: Price retrieved successfully.
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/PricePublicResource'
+                type: object
+        '404':
+          description: Price not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PriceNotFoundException'
+  /api/v3/public/streaming/get-link:
+    get:
+      tags:
+      - Public
+      summary: Get streaming link
+      description: Generate a streaming URL for continuous music playback. The returned link can be used in any audio player that supports HTTP streaming or WebRTC.
+      operationId: getPublicStreamingGetLink
+      parameters:
+      - $ref: '#/components/parameters/PlaylistIndexQueryParameter'
+      - $ref: '#/components/parameters/BitrateQueryParameter'
+      - $ref: '#/components/parameters/IntensityQueryParameter'
+      - $ref: '#/components/parameters/StreamingTypeQueryParameter'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    description: The response data
+                    properties:
+                      link:
+                        description: The generated streaming link
+                        type: string
+                        format: url
+                    type: object
+                type: object
+        '401':
+          description: Unauthenticated - the user is not authenticated to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedException'
+        '403':
+          description: Forbidden - Different reasons specified in the error content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403Response'
+  /api/v3/public/streaming/restart:
+    post:
+      tags:
+      - Public
+      summary: Restart stream
+      description: Restart the stream so that a different track is played using the same streaming URL.
+      operationId: postPublicStreamingRestart
+      requestBody:
+        $ref: '#/components/requestBodies/StreamingRestartRequest'
+      responses:
+        '204':
+          description: Successful response
+        '401':
+          description: Unauthenticated - the user is not authenticated to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedException'
+        '403':
+          description: Forbidden - Different reasons specified in the error content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403Response'
+  /api/v3/public/streaming/set-intensity:
+    post:
+      tags:
+      - Public
+      summary: Set stream intensity
+      description: Dynamically adjust the arrangement complexity during streaming. Changes occur seamlessly without stream interruption.
+      operationId: postPublicStreamingSetIntensity
+      requestBody:
+        $ref: '#/components/requestBodies/StreamingSetIntensityRequest'
+      responses:
+        '204':
+          description: Successful response
+        '401':
+          description: Unauthenticated - the user is not authenticated to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedException'
+        '403':
+          description: Forbidden - Different reasons specified in the error content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403Response'
+  /api/v3/public/streaming/set-loop-state:
+    post:
+      tags:
+      - Public
+      summary: Set stream loop state
+      description: Enable or disable loop mode for the current stream segment. When enabled, the later part of the music composition will loop continuously.
+      operationId: postPublicStreamingSetLoopState
+      requestBody:
+        $ref: '#/components/requestBodies/StreamingSetLoopStateRequest'
+      responses:
+        '204':
+          description: Successful response
+        '401':
+          description: Unauthenticated - the user is not authenticated to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedException'
+        '403':
+          description: Forbidden - Different reasons specified in the error content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403Response'
+  /api/v3/public/stripe/webhook:
+    post:
+      tags:
+      - Public
+      - Stripe
+      description: Stripe webhook endpoint for processing payment events
+      operationId: postPublicStripeWebhook
+      responses:
+        '204':
+          description: Webhook processed successfully
+        '400':
+          description: Invalid payload or signature
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    type: string
+                    example: Invalid signature
+                type: object
+  /api/v3/public/subscriptions/buy:
+    get:
+      tags:
+      - Public
+      - Subscription
+      description: Buy a subscription via GET (redirect flow). Creates a Stripe Checkout session and redirects to checkout URL.
+      operationId: getPublicSubscriptionsBuy
+      requestBody:
+        $ref: '#/components/requestBodies/SubscriptionBuyPublicRequest'
+      responses:
+        '200':
+          description: Checkout session created successfully
+          content:
+            application/json:
+              schema:
+                properties:
+                  checkout_url:
+                    type: string
+                    example: https://checkout.stripe.com/...
+                  session_id:
+                    type: string
+                    example: cs_test_...
+                type: object
+        '302':
+          description: Redirect to Stripe Checkout (when redirect=true)
+        '404':
+          description: Stripe price not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PriceNotFoundException'
+        '422':
+          description: Validation error
+    post:
+      tags:
+      - Public
+      - Subscription
+      description: Buy a subscription. Creates a Stripe Checkout session and returns the checkout URL.
+      operationId: postPublicSubscriptionsBuy
+      requestBody:
+        $ref: '#/components/requestBodies/SubscriptionBuyPublicRequest'
+      responses:
+        '200':
+          description: Checkout session created successfully
+          content:
+            application/json:
+              schema:
+                properties:
+                  checkout_url:
+                    type: string
+                    example: https://checkout.stripe.com/...
+                  session_id:
+                    type: string
+                    example: cs_test_...
+                type: object
+        '302':
+          description: Redirect to Stripe Checkout (when redirect=true)
+        '404':
+          description: Stripe price not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PriceNotFoundException'
+        '422':
+          description: Validation error
+  /api/v3/public/subscriptions/cancel:
+    get:
+      tags:
+      - Public
+      - Subscription
+      summary: Cancel Subscription (GET)
+      description: Cancel a subscription via GET. Cancels at the end of the current billing period.
+      operationId: getPublicSubscriptionsCancel
+      requestBody:
+        $ref: '#/components/requestBodies/SubscriptionCancelPublicRequest'
+      responses:
+        '204':
+          description: Subscription cancelled successfully
+        '404':
+          description: Subscription not found
+        '422':
+          description: Validation error
+    post:
+      tags:
+      - Public
+      - Subscription
+      summary: Cancel Subscription
+      description: Cancel a subscription by company ID and license token. Cancels at the end of the current billing period.
+      operationId: postPublicSubscriptionsCancel
+      requestBody:
+        $ref: '#/components/requestBodies/SubscriptionCancelPublicRequest'
+      responses:
+        '204':
+          description: Subscription cancelled successfully
+        '404':
+          description: Subscription not found
+        '422':
+          description: Validation error
+  /api/v3/public/tracks:
+    get:
+      tags:
+      - Public
+      summary: List tracks
+      description: Retrieve a paginated list of tracks generated by the customer.
+      operationId: getPublicTracks
+      parameters:
+      - $ref: '#/components/parameters/OffsetQueryParameter'
+      - $ref: '#/components/parameters/LimitQueryParameter'
+      - $ref: '#/components/parameters/OrderQueryParameter'
+      - $ref: '#/components/parameters/OrderByQueryParameter'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/TrackIndexPublicResource'
+                  meta:
+                    $ref: '#/components/schemas/MetadataPagination'
+                type: object
+        '401':
+          description: Unauthenticated - the user is not authenticated to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedException'
+        '403':
+          description: Forbidden - Different reasons specified in the error content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403Response'
+        '422':
+          description: Unprocessable Content
+    post:
+      tags:
+      - Public
+      summary: Create track
+      description: 'Create a custom music track from channel/category parameters, text prompt, or image. Supports multiple generation modes: track, loop, jingle, and mix.'
+      operationId: postPublicTracks
+      requestBody:
+        $ref: '#/components/requestBodies/TrackCreatePublicRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/TrackPublicResource'
+                type: object
+        '401':
+          description: Unauthenticated - the user is not authenticated to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedException'
+        '403':
+          description: Forbidden - Different reasons specified in the error content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403Response'
+        '422':
+          description: Unprocessable Content
+  /api/v3/public/tracks/{track}/edit:
+    post:
+      tags:
+      - Public
+      summary: Edit track
+      description: Modify track parameters or manipulate instrument/stem composition. Allows changing duration, bitrate, format, intensity, as well as replacing or removing specific instruments and stems.
+      operationId: postPublicTracksByTrackEdit
+      parameters:
+      - $ref: '#/components/parameters/TrackPathParameter'
+      requestBody:
+        $ref: '#/components/requestBodies/TrackEditPublicRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/TrackPublicResource'
+                type: object
+        '401':
+          description: Unauthenticated - the user is not authenticated to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedException'
+        '403':
+          description: Forbidden - Different reasons specified in the error content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403Response'
+        '404':
+          description: Not Found - Different reasons specified in the error content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404Response'
+        '422':
+          description: Unprocessable Content
+  /api/v3/public/tracks/stored:
+    post:
+      tags:
+      - Public
+      summary: Get stored track
+      description: Retrieve a pre-generated track from the track-store. Returns a cached track matching the requested parameters if available.
+      operationId: postPublicTracksStored
+      requestBody:
+        $ref: '#/components/requestBodies/TrackStoredPublicRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/TrackPublicResource'
+                type: object
+        '401':
+          description: Unauthenticated - the user is not authenticated to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedException'
+        '403':
+          description: Forbidden - Different reasons specified in the error content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403Response'
+        '404':
+          description: Not Found - Different reasons specified in the error content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404Response'
+        '422':
+          description: Unprocessable Content
+  /api/v3/public/tracks/record:
+    post:
+      tags:
+      - Public
+      summary: Record track
+      description: Record a new track by sending a request directly to the track-recorder service, bypassing the track-store cache.
+      operationId: postPublicTracksRecord
+      requestBody:
+        $ref: '#/components/requestBodies/TrackCreatePublicRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/TrackPublicResource'
+                type: object
+        '401':
+          description: Unauthenticated - the user is not authenticated to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedException'
+        '403':
+          description: Forbidden - Different reasons specified in the error content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403Response'
+        '422':
+          description: Unprocessable Content
+  /api/v3/public/tracks/session/{session_id}:
+    get:
+      tags:
+      - Public
+      summary: Get track by session ID
+      description: Retrieve specific track details by session ID including generation status, download URLs, and expiration times.
+      operationId: getPublicTracksSessionBySessionId
+      parameters:
+      - $ref: '#/components/parameters/TrackSessionIdPathParameter'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/TrackShowPublicResource'
+                type: object
+        '401':
+          description: Unauthenticated - the user is not authenticated to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedException'
+        '403':
+          description: Forbidden - Different reasons specified in the error content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403Response'
+        '404':
+          description: Not Found - Different reasons specified in the error content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404Response'
+        '422':
+          description: Unprocessable Content
+  /api/v3/public/tracks/{track}:
+    get:
+      tags:
+      - Public
+      summary: Get track by ID
+      description: Retrieve specific track details including generation status, download URLs, and expiration times.
+      operationId: getPublicTracksByTrack
+      parameters:
+      - $ref: '#/components/parameters/TrackPathParameter'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/TrackShowPublicResource'
+                type: object
+        '401':
+          description: Unauthenticated - the user is not authenticated to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedException'
+        '403':
+          description: Forbidden - Different reasons specified in the error content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403Response'
+        '404':
+          description: Not Found - Different reasons specified in the error content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404Response'
+        '422':
+          description: Unprocessable Content
+  /api/v3/public/tracks/{track}/similar:
+    post:
+      tags:
+      - Public
+      summary: Generate similar track
+      description: Generate a new track similar to an existing one. Uses the original track parameters as a base and allows overriding duration, bitrate, format, intensity, and mode.
+      operationId: postPublicTracksByTrackSimilar
+      parameters:
+      - $ref: '#/components/parameters/TrackPathParameter'
+      requestBody:
+        $ref: '#/components/requestBodies/TrackSimilarPublicRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/TrackPublicResource'
+                type: object
+        '401':
+          description: Unauthenticated - the user is not authenticated to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedException'
+        '403':
+          description: Forbidden - Different reasons specified in the error content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403Response'
+        '404':
+          description: Not Found - Different reasons specified in the error content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404Response'
+        '422':
+          description: Unprocessable Content
+  /api/v3/service/customers/{customer}:
+    get:
+      tags:
+      - Public Service
+      summary: Retrieve customer details by ID
+      description: Fetches the details of a specific customer using their unique identifier
+      operationId: getServiceCustomersByCustomer
+      parameters:
+      - $ref: '#/components/parameters/CustomerPathParameter'
+      responses:
+        '200':
+          description: Successful response with customer details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerServiceResource'
+        '401':
+          description: Unauthenticated - the user is not authenticated to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedException'
+        '403':
+          description: Forbidden - Different reasons specified in the error content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403Response'
+        '404':
+          description: Not Found - Different reasons specified in the error content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404Response'
+        '422':
+          description: Unprocessable Content
+    put:
+      tags:
+      - Public Service
+      summary: Update an existing customer
+      description: Handles the update of an existing customer identified by their UUID
+      operationId: putServiceCustomersByCustomer
+      parameters:
+      - $ref: '#/components/parameters/CustomerPathParameter'
+      requestBody:
+        $ref: '#/components/requestBodies/CustomerUpdateServiceRequest'
+      responses:
+        '200':
+          description: Customer updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerServiceResource'
+        '401':
+          description: Unauthenticated - the user is not authenticated to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedException'
+        '403':
+          description: Forbidden - Different reasons specified in the error content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403Response'
+        '404':
+          description: Not Found - Different reasons specified in the error content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404Response'
+        '422':
+          description: Unprocessable Content
+    delete:
+      tags:
+      - Public Service
+      summary: Delete customer
+      description: Remove a customer account by their unique identifier. This action is irreversible.
+      operationId: deleteServiceCustomersByCustomer
+      parameters:
+      - $ref: '#/components/parameters/CustomerPathParameter'
+      requestBody:
+        $ref: '#/components/requestBodies/CustomerDeleteServiceRequest'
+      responses:
+        '204':
+          description: Customer successfully deleted
+        '401':
+          description: Unauthenticated - the user is not authenticated to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedException'
+        '403':
+          description: Forbidden - Different reasons specified in the error content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403Response'
+        '404':
+          description: Not Found - Different reasons specified in the error content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404Response'
+        '422':
+          description: Unprocessable Content
+  /api/v3/service/customers:
+    get:
+      tags:
+      - Public Service
+      summary: Retrieve a list of customers
+      description: Fetches a list of customers with optional pagination
+      operationId: getServiceCustomers
+      parameters:
+      - $ref: '#/components/parameters/OffsetQueryParameter'
+      - $ref: '#/components/parameters/LimitQueryParameter'
+      responses:
+        '200':
+          description: Successful response with a list of customers
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CustomerServiceResource'
+                  meta:
+                    $ref: '#/components/schemas/MetadataPagination'
+                type: object
+        '401':
+          description: Unauthenticated - the user is not authenticated to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedException'
+        '403':
+          description: Forbidden - Different reasons specified in the error content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403Response'
+        '422':
+          description: Unprocessable Content
+    post:
+      tags:
+      - Public Service
+      summary: Create a new customer
+      description: Create a new customer account. Requires a unique custom_id (alphanumeric, max 255 chars). Returns customer_id and access_token for public API authentication.
+      operationId: postServiceCustomers
+      requestBody:
+        $ref: '#/components/requestBodies/CustomerStoreServiceRequest'
+      responses:
+        '200':
+          description: Customer created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerServiceResource'
+        '401':
+          description: Unauthenticated - the user is not authenticated to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedException'
+        '403':
+          description: Forbidden - Different reasons specified in the error content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403Response'
+        '422':
+          description: Unprocessable Content
+  /api/v3/service/customers/custom-id/{customId}:
+    get:
+      tags:
+      - Public Service
+      summary: Retrieve customer by custom ID
+      description: Fetches the details of a customer based on their custom ID
+      operationId: getServiceCustomersCustomIdByCustomid
+      parameters:
+      - $ref: '#/components/parameters/CustomerCustomIdPathParameter'
+      responses:
+        '200':
+          description: Successful response with customer details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerServiceResource'
+        '401':
+          description: Unauthenticated - the user is not authenticated to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedException'
+        '403':
+          description: Forbidden - Different reasons specified in the error content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403Response'
+        '404':
+          description: Not Found - Different reasons specified in the error content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404Response'
+        '422':
+          description: Unprocessable Content
+  /api/v3/service/licenses:
+    get:
+      tags:
+      - Public Service
+      summary: Retrieve a list of licenses
+      description: Retrieve a paginated list of all licenses for the company, including features, bitrates, formats, modes, and limits.
+      operationId: getServiceLicenses
+      parameters:
+      - $ref: '#/components/parameters/OffsetQueryParameter'
+      - $ref: '#/components/parameters/LimitQueryParameter'
+      responses:
+        '200':
+          description: Successful response with a list of licenses
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LicenseServiceResource'
+                  meta:
+                    $ref: '#/components/schemas/MetadataPagination'
+                type: object
+        '401':
+          description: Unauthenticated - the user is not authenticated to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedException'
+        '403':
+          description: Forbidden - Different reasons specified in the error content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403Response'
+        '422':
+          description: Unprocessable Content
+  /api/v3/service/licenses/{license}:
+    get:
+      tags:
+      - Public Service
+      summary: Retrieve details of a specific license
+      description: Retrieve details for a specific license including type, status, webhook configuration, track expiration time, feature access, and comprehensive limits.
+      operationId: getServiceLicensesByLicense
+      parameters:
+      - $ref: '#/components/parameters/LicensePathParameter'
+      responses:
+        '200':
+          description: Successful response with license details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LicenseServiceResource'
+        '401':
+          description: Unauthenticated - the user is not authenticated to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedException'
+        '403':
+          description: Forbidden - Different reasons specified in the error content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403Response'
+        '404':
+          description: Not Found - Different reasons specified in the error content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404Response'
+        '422':
+          description: Unprocessable Content
+    put:
+      tags:
+      - Public Service
+      summary: Update license
+      description: Update license parameters such as webhook URL and webhook enabled state. Webhooks receive track models when generation completes.
+      operationId: putServiceLicensesByLicense
+      parameters:
+      - $ref: '#/components/parameters/LicensePathParameter'
+      requestBody:
+        $ref: '#/components/requestBodies/LicenseUpdateServiceRequest'
+      responses:
+        '200':
+          description: License updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LicenseServiceResource'
+        '422':
+          description: Unprocessable Content
+        '401':
+          description: Unauthenticated - the user is not authenticated to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedException'
+        '403':
+          description: Forbidden - Different reasons specified in the error content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403Response'
+  /api/v3/service/stripe/billing-portal:
+    get:
+      tags:
+      - Service
+      - Stripe
+      summary: Stripe Billing Portal (GET)
+      description: Create a Stripe billing portal session by company ID and license token.
+      operationId: getServiceStripeBillingPortal
+      requestBody:
+        $ref: '#/components/requestBodies/StripeBillingPortalServiceRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    properties:
+                      url:
+                        description: Url to go to the Billing portal
+                        type: string
+                    type: object
+                type: object
+        '404':
+          description: License or Stripe customer not found
+        '422':
+          description: Validation error
+    post:
+      tags:
+      - Service
+      - Stripe
+      summary: Stripe Billing Portal
+      description: Create a Stripe billing portal session by company ID and license token.
+      operationId: postServiceStripeBillingPortal
+      requestBody:
+        $ref: '#/components/requestBodies/StripeBillingPortalServiceRequest'
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: License or Stripe customer not found
+        '422':
+          description: Validation error
+  /api/v3/service/stripe/subscriptions/buy:
+    get:
+      tags:
+      - Service
+      - Subscription
+      description: Buy a subscription via GET (redirect flow). Creates a Stripe Checkout session and redirects to checkout URL.
+      operationId: getServiceStripeSubscriptionsBuy
+      requestBody:
+        $ref: '#/components/requestBodies/SubscriptionBuyServiceRequest'
+      responses:
+        '200':
+          description: Checkout session created successfully
+          content:
+            application/json:
+              schema:
+                properties:
+                  checkout_url:
+                    type: string
+                    example: https://checkout.stripe.com/...
+                  session_id:
+                    type: string
+                    example: cs_test_...
+                type: object
+        '302':
+          description: Redirect to Stripe Checkout (when redirect=true)
+        '404':
+          description: Stripe price not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PriceNotFoundException'
+        '422':
+          description: Validation error
+    post:
+      tags:
+      - Service
+      - Subscription
+      description: Buy a subscription. Creates a Stripe Checkout session and returns the checkout URL.
+      operationId: postServiceStripeSubscriptionsBuy
+      requestBody:
+        $ref: '#/components/requestBodies/SubscriptionBuyServiceRequest'
+      responses:
+        '200':
+          description: Checkout session created successfully
+          content:
+            application/json:
+              schema:
+                properties:
+                  checkout_url:
+                    type: string
+                    example: https://checkout.stripe.com/...
+                  session_id:
+                    type: string
+                    example: cs_test_...
+                type: object
+        '302':
+          description: Redirect to Stripe Checkout (when redirect=true)
+        '404':
+          description: Stripe price not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PriceNotFoundException'
+        '422':
+          description: Validation error
+  /api/v3/service/stripe/subscriptions/cancel:
+    get:
+      tags:
+      - Service
+      - Subscription
+      summary: Cancel Subscription (GET)
+      description: Cancel a subscription via GET. Cancels at the end of the current billing period.
+      operationId: getServiceStripeSubscriptionsCancel
+      requestBody:
+        $ref: '#/components/requestBodies/SubscriptionCancelServiceRequest'
+      responses:
+        '204':
+          description: Subscription cancelled successfully
+        '404':
+          description: Subscription not found
+        '422':
+          description: Validation error
+    post:
+      tags:
+      - Service
+      - Subscription
+      summary: Cancel Subscription
+      description: Cancel a subscription by company ID and license token. Cancels at the end of the current billing period.
+      operationId: postServiceStripeSubscriptionsCancel
+      requestBody:
+        $ref: '#/components/requestBodies/SubscriptionCancelServiceRequest'
+      responses:
+        '204':
+          description: Subscription cancelled successfully
+        '404':
+          description: Subscription not found
+        '422':
+          description: Validation error
+components:
+  schemas:
+    CommentModelTypeEnum:
+      description: Comment Model Types
+      type: string
+      enum:
+      - company
+      - customer
+      - license
+    CompanyStatusEnum:
+      description: Company Statuses
+      type: string
+      enum:
+      - active
+      - inactive
+      - banned
+    CustomerStatusEnum:
+      description: Customer Statuses
+      type: string
+      enum:
+      - init
+      - active
+      - banned
+    FeatureEnum:
+      description: Features
+      type: string
+      enum:
+      - track
+      - ttm
+      - itm
+      - streaming
+      - music-library
+    LicenseLimitResettableFieldEnum:
+      description: License Limit fields that can be reset to zero
+      type: string
+      enum:
+      - total_tracks_count
+      - monthly_tracks_count
+      - daily_tracks_count
+      - total_tracks_duration
+      - monthly_tracks_duration
+      - daily_tracks_duration
+      - total_streaming_duration
+      - monthly_streaming_duration
+      - daily_streaming_duration
+      - customers_count
+    LicenseLimitStreamingLimitTypeEnum:
+      description: License Limit Tracks Limit Types
+      type: string
+      enum:
+      - total
+      - monthly
+      - daily
+    LicenseLimitTracksLimitTypeEnum:
+      description: License Limit Tracks Limit Types
+      type: string
+      enum:
+      - total
+      - monthly
+      - daily
+    LicenseStatusEnum:
+      description: License Statuses
+      type: string
+      enum:
+      - active
+      - inactive
+    LicenseTypeEnum:
+      description: License Types
+      type: string
+      enum:
+      - trial
+      - paid
+    OrderDirectionEnum:
+      description: Order Directions
+      type: string
+      enum:
+      - asc
+      - desc
+    ReportStatusEnum:
+      description: Report Status
+      type: string
+      enum:
+      - in_queue
+      - processing
+      - done
+      - failed
+      - stopped
+    ReportTypeEnum:
+      description: Report Type
+      type: string
+      enum:
+      - analytics
+      - tools
+    CompanySortEnum:
+      description: Available sort fields for companies
+      type: string
+      enum:
+      - created_at
+      - updated_at
+      - name
+      - email
+      - status
+      - subscriptions_total_count
+      - subscriptions_active_count
+      - total_paid
+      - customers_count
+      - tracks_count
+      - licenses_total_count
+      - licenses_active_count
+    StripeInvoiceBillingReasonEnum:
+      description: Stripe Invoice Billing Reason Enum
+      type: string
+      enum:
+      - subscription_create
+      - subscription_cycle
+      - subscription_update
+      - manual
+    StripeInvoiceStatusEnum:
+      description: Stripe Invoice Status Enum
+      type: string
+      enum:
+      - draft
+      - open
+      - uncollectible
+      - void
+      - paid
+    StripePaymentIntentStatusEnum:
+      description: Stripe Payment Status Enum
+      type: string
+      enum:
+      - requires_payment_method
+      - requires_confirmation
+      - requires_action
+      - requires_capture
+      - processing
+      - canceled
+      - succeeded
+    StripePriceIntervalEnum:
+      description: Stripe Price Intervals
+      type: string
+      enum:
+      - day
+      - week
+      - month
+      - year
+    StripePriceTypeEnum:
+      description: Stripe Price Types
+      type: string
+      enum:
+      - one_time
+      - recurring
+    StripeSubscriptionStatusEnum:
+      description: Stripe Subscription Status Enum
+      type: string
+      enum:
+      - past_due
+      - unpaid
+      - canceled
+      - incomplete
+      - trialing
+      - paused
+      - active
+      - incomplete_expired
+    TrackGenerationStatusEnum:
+      description: Customer Track Generation Statuses
+      type: string
+      enum:
+      - processing
+      - done
+      - failed
+    UserRoleEnum:
+      description: User Role Types
+      type: string
+      enum:
+      - super-admin
+      - admin
+    WebhookStatusEnum:
+      description: Webhook Statuses
+      type: string
+      enum:
+      - awaiting
+      - sending
+      - done
+      - failed
+    AccessTokenExpiredException:
+      description: Response indicating that the access token is expired.
+      properties:
+        message:
+          type: string
+          example: Access token is expired
+        expired_at:
+          type: string
+          format: date-time
+          example: '2023-12-31T23:59:59Z'
+        code:
+          type: string
+          example: AccessTokenExpired
+      type: object
+    ForbiddenException:
+      description: Response indicating that the user does not have permission to access the resource.
+      properties:
+        message:
+          type: string
+          example: You don’t have permission to access this resource
+        description:
+          type: string
+          example: Detailed reason for the access denial
+          nullable: true
+        code:
+          type: string
+          example: Forbidden
+      type: object
+    UnauthenticatedException:
+      description: Response indicating that the user is not authenticated to access the resource.
+      properties:
+        message:
+          type: string
+          example: Unauthenticated
+        description:
+          type: string
+          example: Reason for authentication failure
+          nullable: true
+        code:
+          type: string
+          example: Unauthenticated
+      type: object
+    CompanyIsNotActiveException:
+      description: Response indicating that the company is inactive, and the requested action is forbidden.
+      properties:
+        message:
+          type: string
+          example: Company is not active
+        description:
+          type: string
+          example: Additional context about the company status
+          nullable: true
+        code:
+          type: string
+          example: CompanyIsNotActive
+      type: object
+    CompanyNotFoundException:
+      description: Response indicating that the specified company could not be found.
+      properties:
+        message:
+          description: Error message indicating that the company could not be located.
+          type: string
+          example: Company not found
+        description:
+          description: Optional field providing more context about the missing company.
+          type: string
+          example: Additional details regarding the missing company
+          nullable: true
+        code:
+          description: Unique code identifying the company-not-found error.
+          type: string
+          example: CompanyNotFound
+      type: object
+    CustomerIsNotActiveException:
+      description: Response indicating that the requested action is forbidden due to the company being inactive.
+      properties:
+        message:
+          type: string
+          example: Customer is not active
+        description:
+          type: string
+          example: Additional context about the company status
+          nullable: true
+        code:
+          type: string
+          example: CustomerIsNotActive
+      type: object
+    CustomerNotFoundException:
+      description: Response indicating that the specified customer ID does not match any active record in the database.
+      properties:
+        message:
+          type: string
+          example: Customer not found
+        description:
+          type: string
+          example: Additional details regarding the missing customer
+          nullable: true
+        code:
+          type: string
+          example: CustomerNotFound
+      type: object
+    LicenseAlreadyLinkedToSubscriptionException:
+      description: Response indicating that the license is already linked to a subscription.
+      properties:
+        message:
+          type: string
+          example: License is already linked to a subscription
+        description:
+          type: string
+          example: The company already has a StripeCustomer and the license has a stripe_subscription_id
+          nullable: true
+        code:
+          type: string
+          example: LicenseAlreadyLinkedToSubscription
+      type: object
+    LicenseExpiredException:
+      description: Response indicating that the specified license has expired and access is forbidden.
+      properties:
+        message:
+          type: string
+          example: License is expired
+        expired_at:
+          type: string
+          format: date-time
+          example: '2023-12-31T23:59:59Z'
+          nullable: true
+        code:
+          type: string
+          example: LicenseExpired
+      type: object
+    LicenseForbiddenBitrateException:
+      description: Response indicating that the specified bitrate is not permitted by the current license.
+      properties:
+        message:
+          type: string
+          example: The license does not provide for the use of the specified bitrate
+        description:
+          type: string
+          example: Attempted to use a bitrate outside of license permissions
+          nullable: true
+        code:
+          type: string
+          example: LicenseForbiddenBitrate
+      type: object
+    LicenseForbiddenDurationException:
+      description: Response indicating that the specified duration is not permitted by the current license.
+      properties:
+        message:
+          type: string
+          example: The license does not provide for the use of the specified duration
+        description:
+          type: string
+          example: Attempted to use a duration outside of license permissions
+          nullable: true
+        code:
+          type: string
+          example: LicenseForbiddenDuration
+      type: object
+    LicenseForbiddenFeatureException:
+      description: Response indicating that the specified feature is not permitted by the current license.
+      properties:
+        message:
+          type: string
+          example: The license does not provide for the use of the specified feature
+        description:
+          type: string
+          example: Attempted to access a feature not allowed by the license
+          nullable: true
+        code:
+          type: string
+          example: LicenseForbiddenFeature
+      type: object
+    LicenseForbiddenFormatException:
+      description: Response indicating that the specified format is not permitted by the current license.
+      properties:
+        message:
+          type: string
+          example: The license does not provide for the use of the specified format
+        description:
+          type: string
+          example: Attempted to access a format not allowed by the license
+          nullable: true
+        code:
+          type: string
+          example: LicenseForbiddenFormat
+      type: object
+    LicenseForbiddenIntensityException:
+      description: Response indicating that the specified intensity level is not permitted by the current license.
+      properties:
+        message:
+          type: string
+          example: The license does not provide for the use of the specified intensity
+        description:
+          type: string
+          example: Attempted to access an intensity level not allowed by the license
+          nullable: true
+        code:
+          type: string
+          example: LicenseForbiddenIntensity
+      type: object
+    LicenseForbiddenModeException:
+      description: Response indicating that the specified mode is not permitted by the current license.
+      properties:
+        message:
+          type: string
+          example: The license does not provide for the use of the specified mode
+        description:
+          type: string
+          example: Attempted to access a mode not allowed by the license
+          nullable: true
+        code:
+          type: string
+          example: LicenseForbiddenMode
+      type: object
+    LicenseIsNotActiveException:
+      description: Response indicating that the specified license is not active and cannot be used for the requested operation.
+      properties:
+        message:
+          type: string
+          example: License is not active
+        description:
+          type: string
+          example: Attempted operation with an inactive license
+          nullable: true
+        code:
+          type: string
+          example: LicenseIsNotActive
+      type: object
+    LicenseNotFoundException:
+      description: Response indicating that the specified license could not be found.
+      properties:
+        message:
+          type: string
+          example: License not found
+        description:
+          type: string
+          example: No license exists with the specified ID
+          nullable: true
+        code:
+          type: string
+          example: LicenseNotFound
+      type: object
+    LicenseLimitConcurrentTrackGenerationsCountException:
+      description: Response indicating that the license limit on concurrent track generations has been exceeded.
+      properties:
+        message:
+          type: string
+          example: The limit of concurrent track generations has been exceeded
+        concurrent_track_generations:
+          type: integer
+          example: 5
+        code:
+          type: string
+          example: LicenseLimitConcurrentTrackGenerationsCount
+      type: object
+    LicenseLimitStreamingDurationException:
+      description: Response indicating that the license limit on streaming duration has been exceeded.
+      properties:
+        message:
+          type: string
+          example: Track duration limit exceeded
+        type:
+          description: The time-based duration limit type that was exceeded (e.g., daily, monthly, total).
+          type: string
+          enum:
+          - daily
+          - monthly
+          - total
+          example: monthly
+        streaming_duration:
+          description: Current total duration of streaming in seconds.
+          type: integer
+          example: 3600
+        streaming_duration_limit:
+          description: Allowed duration limit for streaming in seconds based on license.
+          type: integer
+          example: 10000
+        code:
+          type: string
+          example: LicenseLimitStreamingDuration
+      type: object
+    LicenseLimitTracksCountException:
+      description: Response indicating that the license limit on the number of tracks has been exceeded.
+      properties:
+        message:
+          type: string
+          example: The limit of the number of tracks has been exceeded
+        type:
+          description: The time-based limit type that was exceeded (e.g., daily, monthly, total).
+          type: string
+          enum:
+          - daily
+          - monthly
+          - total
+          example: monthly
+        tracks_count:
+          description: The current count of tracks generated or requested.
+          type: integer
+          example: 500
+        tracks_count_limit:
+          description: The maximum allowed track count based on the license limitations.
+          type: integer
+          example: 1000
+        code:
+          type: string
+          example: LicenseLimitTracksCount
+      type: object
+    LicenseLimitTracksDurationException:
+      description: Response indicating that the license limit on track duration has been exceeded.
+      properties:
+        message:
+          type: string
+          example: Track duration limit exceeded
+        type:
+          description: The time-based duration limit type that was exceeded (e.g., daily, monthly, total).
+          type: string
+          enum:
+          - daily
+          - monthly
+          - total
+          example: monthly
+        tracks_duration:
+          description: Current total duration of tracks in seconds.
+          type: integer
+          example: 3600
+        tracks_duration_limit:
+          description: Allowed duration limit for tracks in seconds based on license.
+          type: integer
+          example: 10000
+        track_duration:
+          description: Duration of the track that caused the limit to be exceeded.
+          type: integer
+          example: 300
+        code:
+          type: string
+          example: LicenseLimitTracksDuration
+      type: object
+    LicenseLimitUsersCountException:
+      description: Response indicating that the license limit on the number of users has been exceeded.
+      properties:
+        message:
+          type: string
+          example: The limit of the number of users has been exceeded
+        customers_count_limit:
+          description: Maximum allowed number of users for this license.
+          type: integer
+          example: 100
+        code:
+          type: string
+          example: LicenseLimitUsersCount
+      type: object
+    PriceNotFoundException:
+      description: Response indicating that the specified price could not be found.
+      properties:
+        message:
+          type: string
+          example: Price not found
+        description:
+          type: string
+          example: No price exists with the specified ID
+          nullable: true
+        code:
+          type: string
+          example: PriceNotFound
+      type: object
+    RenderApiException:
+      description: Response indicating an error encountered in the Render API.
+      properties:
+        message:
+          description: Description of the error message.
+          type: string
+          example: Render Api Error
+        context:
+          description: Detailed context of the error, providing additional debug information.
+          type: object
+        code:
+          description: Unique code identifying the type of Render API error.
+          type: string
+          example: RenderApi
+      type: object
+    StripeCustomerNotFoundException:
+      description: Response indicating that the Stripe customer could not be found.
+      properties:
+        message:
+          type: string
+          example: Stripe customer not found
+        description:
+          type: string
+          example: No Stripe customer exists with the specified ID
+          nullable: true
+        code:
+          type: string
+          example: StripeCustomerNotFound
+      type: object
+    StripeException:
+      description: Response indicating a Stripe error.
+      properties:
+        message:
+          type: string
+          example: Stripe error
+        description:
+          type: string
+          example: An error occurred while processing the Stripe request
+          nullable: true
+        code:
+          type: string
+          example: StripeError
+      type: object
+    StripeNeedPlaceOrderException:
+      description: Response indicating that a Stripe order needs to be placed.
+      properties:
+        message:
+          type: string
+          example: Need to place an order
+        description:
+          type: string
+          example: Please complete the payment process
+          nullable: true
+        code:
+          type: string
+          example: StripeNeedPlaceOrder
+        checkout_url:
+          type: string
+          example: https://checkout.stripe.com/...
+          nullable: true
+      type: object
+    FreeSubscriptionCannotBeCancelledException:
+      description: Response indicating that a free subscription cannot be cancelled.
+      properties:
+        message:
+          type: string
+          example: Free subscription cannot be cancelled
+        description:
+          type: string
+          example: Free subscriptions do not have a cancellation option
+          nullable: true
+        code:
+          type: string
+          example: FreeSubscriptionCannotBeCancelled
+      type: object
+    SubscriptionIsAlreadyActiveException:
+      description: Response indicating that the subscription is already active.
+      properties:
+        message:
+          type: string
+          example: Subscription is already active
+        description:
+          type: string
+          example: The company already has an active subscription
+          nullable: true
+        code:
+          type: string
+          example: SubscriptionIsAlreadyActive
+      type: object
+    SubscriptionIsNotActiveException:
+      description: Response indicating that the subscription is not active.
+      properties:
+        message:
+          type: string
+          example: Subscription is not active
+        description:
+          type: string
+          example: The subscription is not currently active
+          nullable: true
+        code:
+          type: string
+          example: SubscriptionIsNotActive
+      type: object
+    SubscriptionNotFoundException:
+      description: Response indicating that the subscription could not be found.
+      properties:
+        message:
+          type: string
+          example: Subscription not found
+        description:
+          type: string
+          example: No subscription exists with the specified ID
+          nullable: true
+        code:
+          type: string
+          example: SubscriptionNotFound
+      type: object
+    TrackNotFoundException:
+      description: Response indicating that the requested track was not found.
+      properties:
+        message:
+          description: Description of the error message, including the missing track session ID.
+          type: string
+          example: Track {sessionId} not found
+        session_id:
+          description: The session ID of the requested track.
+          type: string
+          example: abc123-session-id
+        code:
+          description: Unique code identifying the track-not-found error.
+          type: string
+          example: TrackNotFound
+      type: object
+    UserNotFoundException:
+      description: Response indicating that the requested user was not found or is inaccessible.
+      properties:
+        message:
+          description: Error message indicating that the user could not be found.
+          type: string
+          example: User not found
+        description:
+          description: Optional field providing more context on why the user is inaccessible.
+          type: string
+          example: Additional details about why the user was not found
+          nullable: true
+        code:
+          description: Unique code identifying the user-not-found error.
+          type: string
+          example: UserNotFound
+      type: object
+    Error403Response:
+      description: Response for forbidden access errors
+      properties:
+        code:
+          description: Type of the error
+          type: string
+        message:
+          type: string
+          example: Forbidden action
+        description:
+          type: string
+          nullable: true
+      type: object
+      discriminator:
+        propertyName: code
+        mapping:
+          LicenseExpired: '#/components/schemas/LicenseExpiredException'
+          AccessTokenExpired: '#/components/schemas/AccessTokenExpiredException'
+          Forbidden: '#/components/schemas/ForbiddenException'
+          CompanyIsNotActive: '#/components/schemas/CompanyIsNotActiveException'
+          CustomerIsNotActive: '#/components/schemas/CompanyIsNotActiveException'
+          LicenseForbiddenBitrate: '#/components/schemas/LicenseForbiddenBitrate'
+          LicenseForbiddenDuration: '#/components/schemas/LicenseForbiddenDuration'
+          LicenseForbiddenFeature: '#/components/schemas/LicenseForbiddenFeature'
+          LicenseForbiddenFormat: '#/components/schemas/LicenseForbiddenFormat'
+          LicenseForbiddenIntensity: '#/components/schemas/LicenseForbiddenIntensity'
+          LicenseForbiddenMode: '#/components/schemas/LicenseForbiddenMode'
+          LicenseIsNotActive: '#/components/schemas/LicenseIsNotActive'
+          LicenseLimitConcurrentTrackGenerationsCount: '#/components/schemas/LicenseLimitConcurrentTrackGenerationsCount'
+          LicenseLimitTracksCount: '#/components/schemas/LicenseLimitTracksCount'
+          LicenseLimitTracksDuration: '#/components/schemas/LicenseLimitTracksDuration'
+          LicenseLimitUsersCount: '#/components/schemas/LicenseLimitUsersCount'
+          UserNotFound: '#/components/schemas/UserNotFound'
+    Error404Response:
+      description: Response for not found errors
+      properties:
+        code:
+          description: Type of the error
+          type: string
+          example: CompanyNotFound
+        message:
+          type: string
+          example: Resource not found
+        description:
+          type: string
+          nullable: true
+      type: object
+      discriminator:
+        propertyName: code
+        mapping:
+          CustomerNotFound: '#/components/schemas/CustomerNotFound'
+          CompanyNotFound: '#/components/schemas/CompanyNotFound'
+          LicenseNotFound: '#/components/schemas/LicenseNotFound'
+          TrackNotFound: '#/components/schemas/TrackNotFound'
+    MetadataPagination:
+      description: Pagination metadata
+      properties:
+        total:
+          type: integer
+          example: 1000
+        limit:
+          type: integer
+          example: 100
+        offset:
+          type: integer
+          example: 0
+      type: object
+    MetadataPaginationSortable:
+      description: Pagination metadata with sorting info
+      allOf:
+      - $ref: '#/components/schemas/MetadataPagination'
+      - properties:
+          order_by:
+            description: Current sort field
+            type: string
+          order:
+            $ref: '#/components/schemas/OrderDirectionEnum'
+        type: object
+    AccessTokenPublicResource:
+      properties:
+        id:
+          description: Access Token ID
+          type: string
+          format: uuid
+        customer_id:
+          description: Customer ID
+          type: string
+          format: uuid
+        license_id:
+          description: License ID
+          type: string
+          format: uuid
+        token:
+          description: Access token
+          type: string
+        expired_at:
+          description: Expiration timestamp
+          type: string
+          format: date-time
+        license:
+          oneOf:
+          - $ref: '#/components/schemas/LicensePublicResource'
+          nullable: true
+          description: License
+        customer_limits:
+          oneOf:
+          - $ref: '#/components/schemas/CustomerLicenseLimitPublicResource'
+          nullable: true
+          description: Current license limit of the customer
+      type: object
+    AccessTokenIndexPublicResource:
+      allOf:
+      - $ref: '#/components/schemas/AccessTokenPublicResource'
+    AccessTokenShowPublicResource:
+      allOf:
+      - $ref: '#/components/schemas/AccessTokenPublicResource'
+    CompanyPublicResource:
+      properties:
+        id:
+          description: Company ID
+          type: string
+          format: uuid
+        name:
+          description: Company name
+          type: string
+        status:
+          description: Company status
+          type: string
+      type: object
+    CompanyIndexPublicResource:
+      allOf:
+      - $ref: '#/components/schemas/CompanyPublicResource'
+    CompanyShowPublicResource:
+      allOf:
+      - $ref: '#/components/schemas/CompanyPublicResource'
+    CustomerLicenseLimitPublicResource:
+      properties:
+        id:
+          description: Customer license limit ID
+          type: string
+          format: uuid
+        customer_id:
+          description: Customer ID
+          type: string
+          format: uuid
+        license_id:
+          description: License ID
+          type: string
+          format: uuid
+        max_concurrent_track_generations:
+          description: Maximum number of concurrent track generations
+          type: integer
+        total_tracks_count:
+          description: Total number of tracks generated
+          type: integer
+        total_tracks_count_limit:
+          description: Total track count limit
+          type: integer
+        total_tracks_duration:
+          description: Total duration of tracks generated
+          type: integer
+          format: seconds
+        total_tracks_duration_limit:
+          description: Total track duration limit
+          type: integer
+          format: seconds
+        monthly_tracks_count:
+          description: Tracks generated this month
+          type: integer
+        monthly_tracks_count_limit:
+          description: Monthly track count limit
+          type: integer
+        monthly_tracks_duration:
+          description: Monthly track duration generated
+          type: integer
+          format: seconds
+        monthly_tracks_duration_limit:
+          description: Monthly track duration limit
+          type: integer
+          format: seconds
+        daily_tracks_count:
+          description: Tracks generated today
+          type: integer
+        daily_tracks_count_limit:
+          description: Daily track count limit
+          type: integer
+        daily_tracks_duration:
+          description: Daily track duration generated
+          type: integer
+          format: seconds
+        daily_tracks_duration_limit:
+          description: Daily track duration limit
+          type: integer
+          format: seconds
+        total_streaming_duration:
+          description: Total streaming duration (in seconds)
+          type: integer
+        total_streaming_duration_limit:
+          description: Limit on total streaming duration (in seconds)
+          type: integer
+        monthly_streaming_duration:
+          description: Streaming duration this month (in seconds)
+          type: integer
+        monthly_streaming_duration_limit:
+          description: Limit on monthly streaming duration (in seconds)
+          type: integer
+        daily_streaming_duration:
+          description: Streaming duration today (in seconds)
+          type: integer
+        daily_streaming_duration_limit:
+          description: Limit on daily streaming duration (in seconds)
+          type: integer
+        daily_reset_at:
+          description: Last reset of daily limit
+          type: string
+          format: date-time
+          nullable: true
+        monthly_reset_at:
+          description: Last reset of monthly limit
+          type: string
+          format: date-time
+          nullable: true
+      type: object
+    CustomerLicenseLimitIndexPublicResource:
+      allOf:
+      - $ref: '#/components/schemas/CustomerLicenseLimitPublicResource'
+    CustomerLicenseLimitShowPublicResource:
+      allOf:
+      - $ref: '#/components/schemas/CustomerLicenseLimitPublicResource'
+    CustomerPublicResource:
+      properties:
+        id:
+          description: Customer ID
+          type: string
+          format: uuid
+        company_id:
+          description: Associated company ID
+          type: string
+          format: uuid
+        custom_id:
+          description: Custom identifier for the customer
+          type: string
+        status:
+          description: Customer status
+          type: string
+      type: object
+    CustomerShowPublicResource:
+      allOf:
+      - $ref: '#/components/schemas/CustomerPublicResource'
+      - properties:
+          access:
+            oneOf:
+            - $ref: '#/components/schemas/AccessTokenPublicResource'
+            nullable: true
+            description: Access token associated with the customer
+          company:
+            oneOf:
+            - $ref: '#/components/schemas/CompanyPublicResource'
+            nullable: true
+            description: Company associated with the customer
+        type: object
+    LicenseLimitPublicResource:
+      properties:
+        id:
+          description: License Limit ID
+          type: string
+          format: uuid
+        license_id:
+          description: Associated License ID
+          type: string
+          format: uuid
+        max_track_duration:
+          description: Max track duration
+          type: integer
+        max_concurrent_track_generations:
+          description: Max concurrent track generations allowed
+          type: integer
+        total_tracks_count:
+          description: Total number of tracks generated
+          type: integer
+        total_tracks_count_limit:
+          description: Limit on total number of tracks that can be generated
+          type: integer
+        total_tracks_duration:
+          description: Total duration of generated tracks (in seconds)
+          type: integer
+        total_tracks_duration_limit:
+          description: Limit on the total duration of tracks (in seconds)
+          type: integer
+        monthly_tracks_count:
+          description: Tracks generated this month
+          type: integer
+        monthly_tracks_count_limit:
+          description: Limit on tracks that can be generated monthly
+          type: integer
+        monthly_tracks_duration:
+          description: Total duration of tracks generated this month (in seconds)
+          type: integer
+        monthly_tracks_duration_limit:
+          description: Limit on the total track duration per month (in seconds)
+          type: integer
+        daily_tracks_count:
+          description: Tracks generated today
+          type: integer
+        daily_tracks_count_limit:
+          description: Limit on tracks that can be generated daily
+          type: integer
+        daily_tracks_duration:
+          description: Total duration of tracks generated today (in seconds)
+          type: integer
+        daily_tracks_duration_limit:
+          description: Limit on the total track duration per day (in seconds)
+          type: integer
+        total_streaming_duration:
+          description: Total streaming duration (in seconds)
+          type: integer
+        total_streaming_duration_limit:
+          description: Limit on total streaming duration (in seconds)
+          type: integer
+        monthly_streaming_duration:
+          description: Streaming duration this month (in seconds)
+          type: integer
+        monthly_streaming_duration_limit:
+          description: Limit on monthly streaming duration (in seconds)
+          type: integer
+        daily_streaming_duration:
+          description: Streaming duration today (in seconds)
+          type: integer
+        daily_streaming_duration_limit:
+          description: Limit on daily streaming duration (in seconds)
+          type: integer
+        customers_count:
+          description: Number of customers utilizing this license limit
+          type: integer
+        customers_count_limit:
+          description: Maximum number of customers allowed
+          type: integer
+        customer_max_concurrent_track_generations:
+          description: Max concurrent track generations per customer
+          type: integer
+        customer_total_tracks_count_limit:
+          description: Limit on total number of tracks per customer
+          type: integer
+        customer_total_tracks_duration_limit:
+          description: Limit on total track duration per customer (in seconds)
+          type: integer
+        customer_monthly_tracks_count_limit:
+          description: Monthly track count limit per customer
+          type: integer
+        customer_monthly_tracks_duration_limit:
+          description: Monthly track duration limit per customer (in seconds)
+          type: integer
+        customer_daily_tracks_count_limit:
+          description: Daily track count limit per customer
+          type: integer
+        customer_daily_tracks_duration_limit:
+          description: Daily track duration limit per customer (in seconds)
+          type: integer
+        customer_total_streaming_duration_limit:
+          description: Limit on total streaming duration per customer (in seconds)
+          type: integer
+        customer_monthly_streaming_duration_limit:
+          description: Limit on monthly streaming duration per customer (in seconds)
+          type: integer
+        customer_daily_streaming_duration_limit:
+          description: Limit on daily streaming duration per customer (in seconds)
+          type: integer
+        daily_reset_at:
+          description: Last reset of daily limit
+          type: string
+          format: date-time
+          nullable: true
+        monthly_reset_at:
+          description: Last reset of monthly limit
+          type: string
+          format: date-time
+          nullable: true
+      type: object
+    LicensePublicResource:
+      properties:
+        id:
+          description: License ID
+          type: string
+          format: uuid
+        company_id:
+          description: Company ID associated with the license
+          type: string
+          format: uuid
+        type:
+          description: License type
+          type: string
+        status:
+          description: License status
+          type: string
+        webhook_url:
+          description: Webhook URL for the company
+          type: string
+          nullable: true
+        webhook_enabled:
+          description: Whether the webhook is enabled for the company
+          type: boolean
+        track_expiration_time:
+          description: Time after which generated tracks expire
+          type: integer
+        allow_all_features:
+          description: Allow all features flag
+          type: boolean
+        features:
+          description: Available features for the license
+          type: array
+          items:
+            $ref: '#/components/schemas/FeatureEnum'
+        allow_all_bitrates:
+          description: Allow all bitrates flag
+          type: boolean
+        default_bitrate:
+          description: Default bitrate
+          type: integer
+        bitrates:
+          description: Available bitrates
+          type: array
+          items:
+            $ref: '#/components/schemas/TrackBitrateEnum'
+        allow_all_intensities:
+          description: Allow all intensities flag
+          type: boolean
+        default_intensity:
+          description: Default intensity
+          type: string
+        intensities:
+          description: Available intensities
+          type: array
+          items:
+            $ref: '#/components/schemas/TrackIntensityEnum'
+        allow_all_formats:
+          description: Allow all formats flag
+          type: boolean
+        default_format:
+          description: Default track format
+          type: string
+        track_formats:
+          description: Available formats for tracks
+          type: array
+          items:
+            $ref: '#/components/schemas/TrackFormatEnum'
+        allow_all_modes:
+          description: Allow all modes flag
+          type: boolean
+        default_mode:
+          description: Default track mode
+          type: string
+        track_modes:
+          description: Available modes for tracks
+          type: array
+          items:
+            $ref: '#/components/schemas/TrackModeEnum'
+        expired_at:
+          description: License expiration date
+          type: string
+          format: date-time
+        created_at:
+          description: Timestamp when the license was created
+          type: string
+          format: date-time
+        license_limits:
+          oneOf:
+          - $ref: '#/components/schemas/LicenseLimitPublicResource'
+          nullable: true
+          description: Associated License Limit
+          type: object
+      type: object
+    LicenseIndexPublicResource:
+      allOf:
+      - $ref: '#/components/schemas/LicensePublicResource'
+    PlaylistPublicResource:
+      properties:
+        playlist_index:
+          description: Unique playlist index
+          type: string
+        category:
+          description: Category name of the playlist
+          type: string
+        group:
+          description: Group name of the playlist
+          type: string
+        channel:
+          description: Channel name of the playlist
+          type: string
+        params:
+          description: Array of allowed BPM ranges and corresponding keys for this playlist
+          type: array
+          items:
+            properties:
+              bpm:
+                description: Allowed BPM range
+                properties:
+                  gt:
+                    description: Greater than BPM value
+                    type: integer
+                    example: 45
+                  lt:
+                    description: Lower than BPM value
+                    type: integer
+                    example: 66
+                type: object
+              keys:
+                description: Allowed musical keys for the specified BPM range
+                type: array
+                items:
+                  $ref: '#/components/schemas/TrackKeyScaleEnum'
+            type: object
+      type: object
+    PlaylistIndexPublicResource:
+      allOf:
+      - $ref: '#/components/schemas/PlaylistPublicResource'
+    PriceLimitPublicResource:
+      properties:
+        id:
+          description: Unique identifier
+          type: string
+          format: uuid
+        max_track_duration:
+          description: Maximum allowed duration (in seconds) for a single track generation
+          type: integer
+        max_concurrent_track_generations:
+          description: Maximum number of tracks a user can generate concurrently
+          type: integer
+        total_tracks_count_limit:
+          description: Overall limit on the total number of tracks a user can generate
+          type: integer
+        total_tracks_duration_limit:
+          description: Overall limit on the total duration (in seconds) of tracks a user can generate
+          type: integer
+        monthly_tracks_count_limit:
+          description: Monthly limit on the number of tracks a user can generate
+          type: integer
+        monthly_tracks_duration_limit:
+          description: Monthly limit on the total duration (in seconds) of tracks a user can generate
+          type: integer
+        daily_tracks_count_limit:
+          description: Daily limit on the number of tracks a user can generate
+          type: integer
+        daily_tracks_duration_limit:
+          description: Daily limit on the total duration (in seconds) of tracks a user can generate
+          type: integer
+        total_streaming_duration_limit:
+          description: Overall limit on the total streaming duration (in seconds) for a user
+          type: integer
+        monthly_streaming_duration_limit:
+          description: Monthly limit on the streaming duration (in seconds) for a user
+          type: integer
+        daily_streaming_duration_limit:
+          description: Daily limit on the streaming duration (in seconds) for a user
+          type: integer
+      type: object
+    PriceOptionLinkPublicResource:
+      properties:
+        is_enabled:
+          description: Shows whether the option is enabled or not
+          type: boolean
+      type: object
+    PriceOptionPublicResource:
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        priority:
+          description: Priority (higher means higher priority)
+          type: integer
+        is_enabled:
+          description: Shows whether the option is enabled or not
+          type: boolean
+      type: object
+    PriceOptionTranslationPublicResource:
+      properties:
+        locale:
+          type: string
+        title:
+          type: string
+      type: object
+    PricePublicResource:
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        feature:
+          type: string
+          nullable: true
+        stripe_price:
+          $ref: '#/components/schemas/StripePricePublicResource'
+        options:
+          type: array
+          items:
+            $ref: '#/components/schemas/PriceOptionPublicResource'
+        limits:
+          $ref: '#/components/schemas/PriceLimitPublicResource'
+      type: object
+    PriceTranslationPublicResource:
+      properties:
+        lang:
+          type: string
+        name:
+          type: string
+          nullable: true
+        price_title:
+          type: string
+          nullable: true
+        page_description:
+          type: string
+          nullable: true
+        popup_description:
+          type: string
+          nullable: true
+        feature:
+          type: string
+          nullable: true
+      type: object
+    StripePricePublicResource:
+      properties:
+        id:
+          type: string
+          format: uuid
+        price_id:
+          type: string
+        product_id:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+          - one_time
+          - recurring
+        interval:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          nullable: true
+        amount:
+          type: integer
+        trial_period_days:
+          type: integer
+          nullable: true
+      type: object
+    TrackGenerationPublicResource:
+      properties:
+        session_id:
+          description: Session ID
+          type: string
+        format:
+          description: track format
+          type: string
+        bitrate:
+          description: Bitrate value
+          type: integer
+        status:
+          description: track status
+          type: string
+        generated_at:
+          description: Generation timestamp
+          type: string
+          format: date-time
+        expired_at:
+          description: Expiration timestamp
+          type: string
+          format: date-time
+        created_at:
+          description: Creation timestamp
+          type: string
+          format: date-time
+      type: object
+    TrackGenerationIndexPublicResource:
+      allOf:
+      - $ref: '#/components/schemas/TrackGenerationPublicResource'
+    TrackGenerationShowPublicResource:
+      allOf:
+      - $ref: '#/components/schemas/TrackGenerationPublicResource'
+      - properties:
+          url:
+            description: Download link
+            type: string
+            nullable: true
+        type: object
+    TrackPublicResource:
+      properties:
+        id:
+          description: ID
+          type: string
+          format: uuid
+        session_id:
+          description: Session ID
+          type: string
+        playlist_index:
+          description: Playlist index
+          type: string
+          nullable: true
+        prompt:
+          description: Prompt text
+          type: string
+          nullable: true
+        duration:
+          description: Duration in seconds
+          type: integer
+        intensity:
+          description: Intensity level
+          type: integer
+        mode:
+          description: Mode of the track
+          type: string
+        key:
+          description: Key of the track
+          type: string
+          nullable: true
+        bpm:
+          description: Beats per minute
+          type: integer
+          nullable: true
+        created_at:
+          description: Creation timestamp
+          type: string
+          format: date-time
+      type: object
+    TrackIndexPublicResource:
+      allOf:
+      - $ref: '#/components/schemas/TrackPublicResource'
+      - properties:
+          generations:
+            description: List of track generations
+            type: array
+            items:
+              $ref: '#/components/schemas/TrackGenerationIndexPublicResource'
+            nullable: true
+        type: object
+    TrackShowPublicResource:
+      allOf:
+      - $ref: '#/components/schemas/TrackPublicResource'
+      - properties:
+          generations:
+            description: List of track generations
+            type: array
+            items:
+              $ref: '#/components/schemas/TrackGenerationShowPublicResource'
+            nullable: true
+        type: object
+    TrackStorePublicResource:
+      properties:
+        company_id:
+          description: ID of the company associated with the track store
+          type: string
+          format: uuid
+        bitrates:
+          description: Available track bitrates
+          type: array
+          items:
+            type: integer
+        durations:
+          description: Available track durations
+          type: array
+          items:
+            type: integer
+        formats:
+          description: Available track formats
+          type: array
+          items:
+            type: string
+        intensities:
+          description: Available track intensities
+          type: array
+          items:
+            type: string
+        modes:
+          description: Available track modes
+          type: array
+          items:
+            type: string
+        tracks_amount:
+          description: Total number of tracks available in the store
+          type: integer
+        created_at:
+          description: Timestamp when the track store was created
+          type: string
+          format: date-time
+      type: object
+    TrackStoreIndexPublicResource:
+      allOf:
+      - $ref: '#/components/schemas/TrackStorePublicResource'
+    AccessTokenServiceResource:
+      properties:
+        id:
+          description: Access Token ID
+          type: string
+          format: uuid
+        customer_id:
+          description: Customer ID
+          type: string
+          format: uuid
+        license_id:
+          description: License ID
+          type: string
+          format: uuid
+        token:
+          description: Access token
+          type: string
+        expired_at:
+          description: Expiration timestamp
+          type: string
+          format: date-time
+        license:
+          oneOf:
+          - $ref: '#/components/schemas/LicenseServiceResource'
+          nullable: true
+          description: License
+        customer_limits:
+          oneOf:
+          - $ref: '#/components/schemas/CustomerLicenseLimitServiceResource'
+          nullable: true
+          description: Current license limit of the customer
+      type: object
+    AccessTokenCustomerServiceIndexResource:
+      allOf:
+      - $ref: '#/components/schemas/AccessTokenServiceResource'
+    AccessTokenCustomerServiceShow:
+      allOf:
+      - $ref: '#/components/schemas/AccessTokenServiceResource'
+    CompanyServiceResource:
+      properties:
+        id:
+          description: Company ID
+          type: string
+          format: uuid
+        name:
+          description: Company name
+          type: string
+        status:
+          description: Company status
+          type: string
+      type: object
+    CompanyCustomerServiceIndexResource:
+      allOf:
+      - $ref: '#/components/schemas/CompanyServiceResource'
+    CompanyCustomerServiceShow:
+      allOf:
+      - $ref: '#/components/schemas/CompanyServiceResource'
+    CustomerLicenseLimitServiceResource:
+      properties:
+        id:
+          description: Customer license limit ID
+          type: string
+          format: uuid
+        customer_id:
+          description: Customer ID
+          type: string
+          format: uuid
+        license_id:
+          description: License ID
+          type: string
+          format: uuid
+        max_concurrent_track_generations:
+          description: Maximum number of concurrent track generations
+          type: integer
+        total_tracks_count:
+          description: Total number of tracks generated
+          type: integer
+        total_tracks_count_limit:
+          description: Total track count limit
+          type: integer
+        total_tracks_duration:
+          description: Total duration of tracks generated
+          type: integer
+          format: seconds
+        total_tracks_duration_limit:
+          description: Total track duration limit
+          type: integer
+          format: seconds
+        monthly_tracks_count:
+          description: Tracks generated this month
+          type: integer
+        monthly_tracks_count_limit:
+          description: Monthly track count limit
+          type: integer
+        monthly_tracks_duration:
+          description: Monthly track duration generated
+          type: integer
+          format: seconds
+        monthly_tracks_duration_limit:
+          description: Monthly track duration limit
+          type: integer
+          format: seconds
+        daily_tracks_count:
+          description: Tracks generated today
+          type: integer
+        daily_tracks_count_limit:
+          description: Daily track count limit
+          type: integer
+        daily_tracks_duration:
+          description: Daily track duration generated
+          type: integer
+          format: seconds
+        daily_tracks_duration_limit:
+          description: Daily track duration limit
+          type: integer
+          format: seconds
+        total_streaming_duration:
+          description: Total streaming duration (in seconds)
+          type: integer
+        total_streaming_duration_limit:
+          description: Limit on total streaming duration (in seconds)
+          type: integer
+        monthly_streaming_duration:
+          description: Streaming duration this month (in seconds)
+          type: integer
+        monthly_streaming_duration_limit:
+          description: Limit on monthly streaming duration (in seconds)
+          type: integer
+        daily_streaming_duration:
+          description: Streaming duration today (in seconds)
+          type: integer
+        daily_streaming_duration_limit:
+          description: Limit on daily streaming duration (in seconds)
+          type: integer
+        daily_reset_at:
+          description: Last reset of daily limit
+          type: string
+          format: date-time
+          nullable: true
+        monthly_reset_at:
+          description: Last reset of monthly limit
+          type: string
+          format: date-time
+          nullable: true
+      type: object
+    CustomerLicenseLimitCustomerServiceIndexResource:
+      allOf:
+      - $ref: '#/components/schemas/CustomerLicenseLimitServiceResource'
+    CustomerLicenseLimitCustomerServiceShow:
+      allOf:
+      - $ref: '#/components/schemas/CustomerLicenseLimitServiceResource'
+    CustomerServiceResource:
+      properties:
+        id:
+          description: Customer ID
+          type: string
+          format: uuid
+        company_id:
+          description: Associated company ID
+          type: string
+          format: uuid
+        custom_id:
+          description: Custom identifier for the customer
+          type: string
+        status:
+          description: Customer status
+          type: string
+      type: object
+    CustomerCustomerServiceShowResourceResource:
+      allOf:
+      - $ref: '#/components/schemas/CustomerServiceResource'
+      - properties:
+          access:
+            oneOf:
+            - $ref: '#/components/schemas/AccessTokenServiceResource'
+            nullable: true
+            description: Access token associated with the customer
+          company:
+            oneOf:
+            - $ref: '#/components/schemas/CompanyServiceResource'
+            nullable: true
+            description: Company associated with the customer
+        type: object
+    LicenseLimitServiceResource:
+      properties:
+        id:
+          description: License Limit ID
+          type: string
+          format: uuid
+        license_id:
+          description: Associated License ID
+          type: string
+          format: uuid
+        max_track_duration:
+          description: Max track duration
+          type: integer
+        max_concurrent_track_generations:
+          description: Max concurrent track generations allowed
+          type: integer
+        total_tracks_count:
+          description: Total number of tracks generated
+          type: integer
+        total_tracks_count_limit:
+          description: Limit on total number of tracks that can be generated
+          type: integer
+        total_tracks_duration:
+          description: Total duration of generated tracks (in seconds)
+          type: integer
+        total_tracks_duration_limit:
+          description: Limit on the total duration of tracks (in seconds)
+          type: integer
+        monthly_tracks_count:
+          description: Tracks generated this month
+          type: integer
+        monthly_tracks_count_limit:
+          description: Limit on tracks that can be generated monthly
+          type: integer
+        monthly_tracks_duration:
+          description: Total duration of tracks generated this month (in seconds)
+          type: integer
+        monthly_tracks_duration_limit:
+          description: Limit on the total track duration per month (in seconds)
+          type: integer
+        daily_tracks_count:
+          description: Tracks generated today
+          type: integer
+        daily_tracks_count_limit:
+          description: Limit on tracks that can be generated daily
+          type: integer
+        daily_tracks_duration:
+          description: Total duration of tracks generated today (in seconds)
+          type: integer
+        daily_tracks_duration_limit:
+          description: Limit on the total track duration per day (in seconds)
+          type: integer
+        total_streaming_duration:
+          description: Total streaming duration (in seconds)
+          type: integer
+        total_streaming_duration_limit:
+          description: Limit on total streaming duration (in seconds)
+          type: integer
+        monthly_streaming_duration:
+          description: Streaming duration this month (in seconds)
+          type: integer
+        monthly_streaming_duration_limit:
+          description: Limit on monthly streaming duration (in seconds)
+          type: integer
+        daily_streaming_duration:
+          description: Streaming duration today (in seconds)
+          type: integer
+        daily_streaming_duration_limit:
+          description: Limit on daily streaming duration (in seconds)
+          type: integer
+        customers_count:
+          description: Number of customers utilizing this license limit
+          type: integer
+        customers_count_limit:
+          description: Maximum number of customers allowed
+          type: integer
+        customer_max_concurrent_track_generations:
+          description: Max concurrent track generations per customer
+          type: integer
+        customer_total_tracks_count_limit:
+          description: Limit on total number of tracks per customer
+          type: integer
+        customer_total_tracks_duration_limit:
+          description: Limit on total track duration per customer (in seconds)
+          type: integer
+        customer_monthly_tracks_count_limit:
+          description: Monthly track count limit per customer
+          type: integer
+        customer_monthly_tracks_duration_limit:
+          description: Monthly track duration limit per customer (in seconds)
+          type: integer
+        customer_daily_tracks_count_limit:
+          description: Daily track count limit per customer
+          type: integer
+        customer_daily_tracks_duration_limit:
+          description: Daily track duration limit per customer (in seconds)
+          type: integer
+        customer_total_streaming_duration_limit:
+          description: Limit on total streaming duration per customer (in seconds)
+          type: integer
+        customer_monthly_streaming_duration_limit:
+          description: Limit on monthly streaming duration per customer (in seconds)
+          type: integer
+        customer_daily_streaming_duration_limit:
+          description: Limit on daily streaming duration per customer (in seconds)
+          type: integer
+        daily_reset_at:
+          description: Last reset of daily limit
+          type: string
+          format: date-time
+          nullable: true
+        monthly_reset_at:
+          description: Last reset of monthly limit
+          type: string
+          format: date-time
+          nullable: true
+      type: object
+    LicenseServiceResource:
+      properties:
+        id:
+          description: License ID
+          type: string
+          format: uuid
+        company_id:
+          description: Company ID associated with the license
+          type: string
+          format: uuid
+        type:
+          description: License type
+          type: string
+        status:
+          description: License status
+          type: string
+        webhook_url:
+          description: Webhook URL for the company
+          type: string
+          nullable: true
+        webhook_enabled:
+          description: Whether the webhook is enabled for the company
+          type: boolean
+        track_expiration_time:
+          description: Time after which generated tracks expire
+          type: integer
+        allow_all_features:
+          description: Allow all features flag
+          type: boolean
+        features:
+          description: Available features for the license
+          type: array
+          items:
+            $ref: '#/components/schemas/FeatureEnum'
+        allow_all_bitrates:
+          description: Allow all bitrates flag
+          type: boolean
+        default_bitrate:
+          description: Default bitrate
+          type: integer
+        bitrates:
+          description: Available bitrates
+          type: array
+          items:
+            $ref: '#/components/schemas/TrackBitrateEnum'
+        allow_all_intensities:
+          description: Allow all intensities flag
+          type: boolean
+        default_intensity:
+          description: Default intensity
+          type: string
+        intensities:
+          description: Available intensities
+          type: array
+          items:
+            $ref: '#/components/schemas/TrackIntensityEnum'
+        allow_all_formats:
+          description: Allow all formats flag
+          type: boolean
+        default_format:
+          description: Default track format
+          type: string
+        track_formats:
+          description: Available formats for tracks
+          type: array
+          items:
+            $ref: '#/components/schemas/TrackFormatEnum'
+        allow_all_modes:
+          description: Allow all modes flag
+          type: boolean
+        default_mode:
+          description: Default track mode
+          type: string
+        track_modes:
+          description: Available modes for tracks
+          type: array
+          items:
+            $ref: '#/components/schemas/TrackModeEnum'
+        expired_at:
+          description: License expiration date
+          type: string
+          format: date-time
+        license_limits:
+          oneOf:
+          - $ref: '#/components/schemas/LicenseLimitServiceResource'
+          nullable: true
+          description: Associated License Limit
+          type: object
+      type: object
+    LicenseCustomerServiceIndex:
+      allOf:
+      - $ref: '#/components/schemas/LicenseServiceResource'
+    PlaylistServiceResource:
+      properties:
+        playlist_index:
+          description: Unique playlist index
+          type: string
+        category:
+          description: Category name of the playlist
+          type: string
+        group:
+          description: Group name of the playlist
+          type: string
+        channel:
+          description: Channel name of the playlist
+          type: string
+      type: object
+    PlaylistCustomerServiceIndexResource:
+      allOf:
+      - $ref: '#/components/schemas/PlaylistServiceResource'
+    TrackGenerationServiceResource:
+      properties:
+        session_id:
+          description: Session ID
+          type: string
+        format:
+          description: track format
+          type: string
+        bitrate:
+          description: Bitrate value
+          type: integer
+        status:
+          description: track status
+          type: string
+        generated_at:
+          description: Generation timestamp
+          type: string
+          format: date-time
+        expired_at:
+          description: Expiration timestamp
+          type: string
+          format: date-time
+        created_at:
+          description: Creation timestamp
+          type: string
+          format: date-time
+      type: object
+    TrackGenerationCustomerServiceIndexResource:
+      allOf:
+      - $ref: '#/components/schemas/TrackGenerationServiceResource'
+    TrackGenerationCustomerServiceShow:
+      allOf:
+      - $ref: '#/components/schemas/TrackGenerationServiceResource'
+      - properties:
+          url:
+            description: Download link
+            type: string
+            nullable: true
+        type: object
+    TrackServiceResource:
+      properties:
+        id:
+          description: ID
+          type: string
+          format: uuid
+        session_id:
+          description: Session ID
+          type: string
+        playlist_index:
+          description: Playlist index
+          type: string
+        prompt:
+          description: Prompt text
+          type: string
+          nullable: true
+        duration:
+          description: Duration in seconds
+          type: integer
+        intensity:
+          description: Intensity level
+          type: integer
+        mode:
+          description: Mode of the track
+          type: string
+        key:
+          description: Key of the track
+          type: string
+          nullable: true
+        bpm:
+          description: Beats per minute
+          type: integer
+          nullable: true
+      type: object
+    TrackCustomerServiceIndexResource:
+      allOf:
+      - $ref: '#/components/schemas/TrackServiceResource'
+      - properties:
+          generations:
+            description: List of track generations
+            type: array
+            items:
+              $ref: '#/components/schemas/TrackGenerationCustomerServiceIndexResource'
+            nullable: true
+        type: object
+    TrackCustomerServiceShow:
+      allOf:
+      - $ref: '#/components/schemas/TrackServiceResource'
+      - properties:
+          generations:
+            description: List of track generations
+            type: array
+            items:
+              $ref: '#/components/schemas/TrackGenerationCustomerServiceShow'
+            nullable: true
+        type: object
+    TrackStoreServiceResource:
+      properties:
+        company_id:
+          description: ID of the company associated with the track store
+          type: string
+          format: uuid
+        bitrates:
+          description: Available track bitrates
+          type: array
+          items:
+            type: integer
+        durations:
+          description: Available track durations
+          type: array
+          items:
+            type: integer
+        formats:
+          description: Available track formats
+          type: array
+          items:
+            type: string
+        intensities:
+          description: Available track intensities
+          type: array
+          items:
+            type: string
+        modes:
+          description: Available track modes
+          type: array
+          items:
+            type: string
+        tracks_amount:
+          description: Total number of tracks available in the store
+          type: integer
+      type: object
+    TrackStoreCustomerServiceIndexResource:
+      allOf:
+      - $ref: '#/components/schemas/TrackStoreServiceResource'
+    InstrumentEnum:
+      description: Instruments
+      type: string
+      enum:
+      - DRUMS
+      - PERCS
+      - HATS
+      - CLAPS
+      - BASS
+      - MIDS
+      - LEADS
+      - FX
+      - VOCALS
+      - PADS
+      - RISER
+      - IMPACT
+      example: DRUMS
+    StemEnum:
+      description: Stems
+      type: string
+      enum:
+      - DRUMS
+      - BASS
+      - LEADS
+      - VOCALS
+      - FX
+      example: DRUMS
+    TrackBitrateEnum:
+      description: Enumeration representing different track bitrates.
+      type: integer
+      enum:
+      - 32
+      - 96
+      - 128
+      - 192
+      - 256
+      - 320
+      example: 320
+    TrackDurationEnum:
+      description: Enumeration representing different track durations in seconds.
+      type: integer
+      enum:
+      - 5
+      - 6
+      - 8
+      - 10
+      - 15
+      - 20
+      - 30
+      - 40
+      - 60
+      - 180
+      - 240
+      - 300
+      example: 60
+    TrackFormatEnum:
+      description: Enumeration representing different track formats.
+      type: string
+      enum:
+      - mp3
+      - wav
+      example: mp3
+    TrackIntensityEnum:
+      description: Enumeration representing different intensity levels of a track.
+      type: string
+      enum:
+      - low
+      - medium
+      - high
+      example: medium
+    TrackKeyEnum:
+      description: Enumeration representing different musical keys for a track.
+      type: string
+      enum:
+      - ALL
+      - C
+      - C#
+      - D
+      - D#
+      - E
+      - F
+      - F#
+      - G
+      - G#
+      - A
+      - A#
+      - B
+      example: C#
+    TrackKeyScaleEnum:
+      description: Key-Scale for a track.
+      type: string
+      enum:
+      - C
+      - C#
+      - D
+      - D#
+      - E
+      - F
+      - F#
+      - G
+      - G#
+      - A
+      - A#
+      - B
+      - Cm
+      - C#m
+      - Dm
+      - D#m
+      - Em
+      - Fm
+      - F#m
+      - Gm
+      - G#m
+      - Am
+      - A#m
+      - Bm
+      example: C#
+    TrackModeEnum:
+      description: Enumeration representing different modes of a track.
+      type: string
+      enum:
+      - track
+      - jingle
+      - loop
+      - mix
+      example: loop
+    TrackScaleEnum:
+      description: Enumeration representing different musical scale for a track.
+      type: string
+      enum:
+      - ALL
+      - MINOR
+      - MAJOR
+      example: MINOR
+    BucketEnum:
+      description: Enumeration representing different buckets.
+      type: string
+      enum:
+      - internal-eu.mubert.com
+      - static-eu.mubert.com
+      example: static-eu.mubert.com
+    StreamingLoopStateEnum:
+      description: Streaming Loop State
+      type: string
+      enum:
+      - 'on'
+      - 'off'
+    StreamingTypeEnum:
+      description: Streaming Type Enum
+      type: string
+      enum:
+      - http
+      - webrtc
+    LanguageEnum:
+      description: Languages
+      type: string
+      enum:
+      - ko
+      - es
+      - fr
+      - de
+      - pt
+      - ja
+  parameters:
+    internal-token:
+      name: internal-token
+      in: header
+      description: Internal Token
+      required: true
+      schema:
+        type: string
+    CompanyPathParameter:
+      name: company
+      in: path
+      description: The unique identifier of the company.
+      required: true
+      schema:
+        type: string
+        format: uuid
+        example: 123e4567-e89b-12d3-a456-426614174000
+    CustomerCustomIdPathParameter:
+      name: customId
+      in: path
+      description: The unique identifier of the customer.
+      required: true
+      schema:
+        type: string
+        format: uuid
+        example: 123e4567-e89b-12d3-a456-426614174000
+    CustomerPathParameter:
+      name: customer
+      in: path
+      description: The unique identifier of the customer.
+      required: true
+      schema:
+        type: string
+        format: uuid
+        example: 123e4567-e89b-12d3-a456-426614174000
+    LicensePathParameter:
+      name: license
+      in: path
+      description: The unique identifier of the license.
+      required: true
+      schema:
+        type: string
+        format: uuid
+        example: 123e4567-e89b-12d3-a456-426614174000
+    PricePathParameter:
+      name: price
+      in: path
+      description: The unique identifier of the price.
+      required: true
+      schema:
+        type: string
+        format: uuid
+        example: 123e4567-e89b-12d3-a456-426614174000
+    TrackPathParameter:
+      name: track
+      in: path
+      description: The unique identifier of the track.
+      required: true
+      schema:
+        type: string
+        format: uuid
+        example: 123e4567-e89b-12d3-a456-426614174000
+    TrackSessionIdPathParameter:
+      name: track
+      in: path
+      description: The unique session_id of the track.
+      required: true
+      schema:
+        type: string
+        example: 4b19470aec7446d0a8e3c05d06b23ce2
+    ActivitiesQueryParameter:
+      name: activities
+      in: query
+      description: Activity filter for the tracks.
+      required: false
+      schema:
+        type: string
+        example: Minimal 170
+        nullable: true
+    BitrateQueryParameter:
+      name: bitrate
+      in: query
+      description: Bitrate for the track.
+      required: false
+      schema:
+        $ref: '#/components/schemas/TrackBitrateEnum'
+    BpmQueryParameter:
+      name: bpm
+      in: query
+      description: Beats per minute filter for the tracks.
+      required: false
+      schema:
+        type: integer
+        maximum: 500
+        minimum: 1
+        example: 120
+        nullable: true
+    DurationQueryParameter:
+      name: duration
+      in: query
+      description: Duration filter for the tracks (in seconds).
+      required: false
+      schema:
+        type: integer
+        minimum: 5
+        example: 180
+        nullable: true
+    GenresQueryParameter:
+      name: genres
+      in: query
+      description: Genre filter for the tracks.
+      required: false
+      schema:
+        type: string
+        example: Rock
+        nullable: true
+    InstrumentsQueryParameter:
+      name: instruments
+      in: query
+      description: Instrument filter for the tracks.
+      required: false
+      schema:
+        type: string
+        example: Guitar
+        nullable: true
+    IntensityQueryParameter:
+      name: intensity
+      in: query
+      description: Intensity level of the track.
+      required: false
+      schema:
+        $ref: '#/components/schemas/TrackIntensityEnum'
+    KeyQueryParameter:
+      name: key
+      in: query
+      description: Musical key
+      required: false
+      schema:
+        $ref: '#/components/schemas/TrackKeyScaleEnum'
+    LangQueryParameter:
+      name: lang
+      in: query
+      description: Language code
+      required: false
+      schema:
+        $ref: '#/components/schemas/LanguageEnum'
+    LimitQueryParameter:
+      name: limit
+      in: query
+      description: The number of items to return in the result set.
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        example: 25
+    ModeQueryParameter:
+      name: mode
+      in: query
+      description: Track mode
+      required: false
+      schema:
+        $ref: '#/components/schemas/TrackModeEnum'
+    MoodsQueryParameter:
+      name: moods
+      in: query
+      description: Mood filter for the tracks.
+      required: false
+      schema:
+        type: string
+        example: Happy
+        nullable: true
+    OffsetQueryParameter:
+      name: offset
+      in: query
+      description: The number of items to skip before starting to collect the result set.
+      required: false
+      schema:
+        type: integer
+        minimum: 0
+        example: 0
+    OrderByQueryParameter:
+      name: order_by
+      in: query
+      description: The field by which the results should be ordered.
+      required: false
+      schema:
+        type: string
+        example: created_at
+    OrderQueryParameter:
+      name: order
+      in: query
+      description: The direction of the ordering.
+      required: false
+      schema:
+        type: string
+        enum:
+        - asc
+        - desc
+        example: asc
+    PlaylistIndexQueryParameter:
+      name: playlist_index
+      in: query
+      description: Index of the playlist
+      required: true
+      schema:
+        type: string
+        maxLength: 10
+        example: 1.0.0
+    PlaylistsQueryParameter:
+      name: playlists
+      in: query
+      description: Playlist filter for the tracks.
+      required: false
+      schema:
+        type: string
+        example: Chill Vibes
+        nullable: true
+    StreamingTypeQueryParameter:
+      name: type
+      in: query
+      description: Streaming Type
+      required: false
+      schema:
+        $ref: '#/components/schemas/StreamingTypeEnum'
+    ThemesQueryParameter:
+      name: themes
+      in: query
+      description: Theme filter for the tracks.
+      required: false
+      schema:
+        type: string
+        example: Corporate
+        nullable: true
+  requestBodies:
+    MusicLibraryParamsPublicRequest:
+      description: Request to fetch a paginated list of tracks with filtering and sorting options.
+      required: false
+      content:
+        application/json:
+          schema:
+            properties:
+              bpm:
+                description: Beats per minute filter for the tracks.
+                type: integer
+                maximum: 500
+                minimum: 1
+                example: 120
+                nullable: true
+              key:
+                oneOf:
+                - $ref: '#/components/schemas/TrackKeyScaleEnum'
+                nullable: true
+                description: Musical key
+              genres:
+                description: Genre filter for the tracks.
+                type: string
+                example: Rock
+                nullable: true
+              moods:
+                description: Mood filter for the tracks.
+                type: string
+                example: Happy
+                nullable: true
+              activities:
+                description: Activity filter for the tracks.
+                type: string
+                example: Minimal 170
+                nullable: true
+              playlists:
+                description: Playlist filter for the tracks.
+                type: string
+                example: Chill Vibes
+                nullable: true
+              instruments:
+                description: Instrument filter for the tracks.
+                type: string
+                example: Guitar
+                nullable: true
+              themes:
+                description: Theme filter for the tracks.
+                type: string
+                example: Corporate
+                nullable: true
+              duration:
+                description: Duration filter for the tracks (in seconds).
+                type: integer
+                minimum: 5
+                example: 180
+                nullable: true
+              mode:
+                oneOf:
+                - $ref: '#/components/schemas/TrackModeEnum'
+                nullable: true
+                description: Track mode
+            type: object
+    MusicLibraryTracksPublicRequest:
+      description: Request to fetch a paginated list of tracks with filtering and sorting options.
+      required: false
+      content:
+        application/json:
+          schema:
+            properties:
+              offset:
+                description: The offset for the results, used for pagination.
+                type: integer
+                minimum: 0
+                example: 0
+              limit:
+                description: The number of tracks to return, used for pagination.
+                type: integer
+                minimum: 1
+                example: 10
+              order:
+                description: The direction of the ordering.
+                type: string
+                enum:
+                - asc
+                - desc
+                example: asc
+              order_by:
+                description: The field by which the results should be ordered.
+                type: string
+                example: created_at
+              bpm:
+                description: Beats per minute filter for the tracks.
+                type: integer
+                maximum: 500
+                minimum: 1
+                example: 120
+                nullable: true
+              key:
+                oneOf:
+                - $ref: '#/components/schemas/TrackKeyScaleEnum'
+                nullable: true
+                description: Musical key
+              genres:
+                description: Genre filter for the tracks.
+                type: string
+                example: Rock
+                nullable: true
+              moods:
+                description: Mood filter for the tracks.
+                type: string
+                example: Happy
+                nullable: true
+              activities:
+                description: Activity filter for the tracks.
+                type: string
+                example: Minimal 170
+                nullable: true
+              playlists:
+                description: Playlist filter for the tracks.
+                type: string
+                example: Chill Vibes
+                nullable: true
+              instruments:
+                description: Instrument filter for the tracks.
+                type: string
+                example: Guitar
+                nullable: true
+              themes:
+                description: Theme filter for the tracks.
+                type: string
+                example: Corporate
+                nullable: true
+              duration:
+                description: Duration filter for the tracks (in seconds).
+                type: integer
+                minimum: 5
+                example: 180
+                nullable: true
+              mode:
+                oneOf:
+                - $ref: '#/components/schemas/TrackModeEnum'
+                nullable: true
+                description: Track mode
+            type: object
+    PlaylistIndexPublicRequest:
+      description: Get a list of available playlists
+      content:
+        application/json:
+          schema:
+            properties: {}
+            type: object
+    PriceIndexPublicRequest:
+      description: Request to retrieve a list of available prices
+      content:
+        application/json:
+          schema:
+            properties:
+              lang:
+                $ref: '#/components/schemas/LanguageEnum'
+            type: object
+    PriceShowPublicRequest:
+      description: Request to retrieve a single price
+      content:
+        application/json:
+          schema:
+            properties:
+              lang:
+                $ref: '#/components/schemas/LanguageEnum'
+            type: object
+    StreamingGetLinkRequest:
+      description: Get a link for streaming
+      content:
+        application/json:
+          schema:
+            required:
+            - playlist_index
+            properties:
+              playlist_index:
+                description: Index of the playlist
+                type: string
+                maxLength: 10
+                example: 1.0.0
+              bitrate:
+                $ref: '#/components/schemas/TrackBitrateEnum'
+              intensity:
+                $ref: '#/components/schemas/TrackIntensityEnum'
+              type:
+                $ref: '#/components/schemas/StreamingTypeEnum'
+            type: object
+    StreamingRestartRequest:
+      description: Restart the stream so that a different track is played using the same streaming URL. No body required.
+      content:
+        application/json:
+          schema:
+            type: object
+    StreamingSetIntensityRequest:
+      description: Dynamically adjust the arrangement complexity during streaming.
+      content:
+        application/json:
+          schema:
+            required:
+            - intensity
+            properties:
+              intensity:
+                $ref: '#/components/schemas/TrackIntensityEnum'
+            type: object
+    StreamingSetLoopStateRequest:
+      description: Enable or disable loop mode for the current stream segment.
+      content:
+        application/json:
+          schema:
+            required:
+            - loop
+            properties:
+              loop:
+                $ref: '#/components/schemas/StreamingLoopStateEnum'
+              time:
+                description: Set equal to the current stream playback time in seconds (since session start) to improve the UX
+                type: integer
+                minimum: 0
+                example: 0
+            type: object
+    SubscriptionBuyPublicRequest:
+      description: Request to buy a subscription
+      required: true
+      content:
+        application/json:
+          schema:
+            required:
+            - email
+            - stripe_price_id
+            properties:
+              company_name:
+                type: string
+                maxLength: 255
+                example: Acme Inc
+                nullable: true
+              email:
+                type: string
+                format: email
+                example: contact@acme.com
+              stripe_price_id:
+                type: string
+                maxLength: 255
+                example: price_1234567890
+              redirect_url:
+                type: string
+                format: url
+                example: https://example.com/success
+                nullable: true
+              redirect_url_cancel:
+                type: string
+                format: url
+                example: https://example.com/cancel
+                nullable: true
+              coupon_id:
+                type: string
+                maxLength: 255
+                example: DISCOUNT20
+                nullable: true
+              redirect:
+                type: boolean
+                example: true
+                nullable: true
+            type: object
+    SubscriptionCancelPublicRequest:
+      description: Request to cancel a subscription by company ID and license token
+      required: true
+      content:
+        application/json:
+          schema:
+            required:
+            - company_id
+            - license_token
+            properties:
+              company_id:
+                type: string
+                format: uuid
+                example: 550e8400-e29b-41d4-a716-446655440000
+              license_token:
+                type: string
+                example: abc123def456
+            type: object
+    TrackCreatePublicRequest:
+      description: Request to create a new track. At least one of `playlist_index`, `prompt`, or `image` must be provided. Some parameters are restricted based on provided values.
+      required: true
+      content:
+        application/json:
+          schema:
+            required:
+            - duration
+            properties:
+              playlist_index:
+                description: Index of the playlist. Required if `prompt`, and `image` are not provided. If provided, `bpm` and `key` can be optionally specified.
+                type: string
+                maxLength: 10
+                example: 1.0.0
+              prompt:
+                description: Text prompt for track creation. Required if `playlist_index`, and `image` are not provided. If provided, `bpm` and `key` are not allowed.
+                type: string
+                maxLength: 255
+                example: Relaxing ambient music
+              image:
+                description: 'Image file for track creation. Required if `playlist_index` and `prompt` are not provided. If provided, `bpm` and `key` are not allowed. Supported formats: PNG, JPG, JPEG,
+                  WEBP, BMP. Size: 50 KB — 10 MB.'
+                type: string
+                format: binary
+              bitrate:
+                $ref: '#/components/schemas/TrackBitrateEnum'
+              duration:
+                description: Duration of the track in seconds.
+                type: integer
+                minimum: 5
+                example: 300
+              format:
+                $ref: '#/components/schemas/TrackFormatEnum'
+              intensity:
+                $ref: '#/components/schemas/TrackIntensityEnum'
+              mode:
+                $ref: '#/components/schemas/TrackModeEnum'
+              bpm:
+                description: Beats per minute (BPM). Can only be provided if `playlist_index` is specified. Not allowed if `prompt`, or `image` are used.
+                type: integer
+                maximum: 500
+                minimum: 1
+                example: 120
+              key:
+                $ref: '#/components/schemas/TrackKeyScaleEnum'
+            type: object
+    TrackEditPublicRequest:
+      description: Request for editing track parameters.
+      required: true
+      content:
+        application/json:
+          schema:
+            properties:
+              bitrate:
+                $ref: '#/components/schemas/TrackBitrateEnum'
+              duration:
+                description: The duration of the track in seconds. Must be between 5 and 3600.
+                type: integer
+                minimum: 5
+                example: 300
+              format:
+                $ref: '#/components/schemas/TrackFormatEnum'
+              intensity:
+                $ref: '#/components/schemas/TrackIntensityEnum'
+              replace_stems:
+                description: Replace stems
+                type: array
+                items:
+                  $ref: '#/components/schemas/StemEnum'
+              delete_stems:
+                description: Delete stems
+                type: array
+                items:
+                  $ref: '#/components/schemas/StemEnum'
+              replace_instruments:
+                description: Replace instruments
+                type: array
+                items:
+                  $ref: '#/components/schemas/InstrumentEnum'
+              delete_instruments:
+                description: Delete instruments
+                type: array
+                items:
+                  $ref: '#/components/schemas/InstrumentEnum'
+            type: object
+    TrackIndexPublicRequest:
+      description: Request to fetch a paginated list of tracks with sorting options.
+      required: false
+      content:
+        application/json:
+          schema:
+            properties:
+              offset:
+                description: The offset for the results, used for pagination.
+                type: integer
+                minimum: 0
+                example: 0
+              limit:
+                description: The number of tracks to return, used for pagination.
+                type: integer
+                minimum: 1
+                example: 10
+              order:
+                $ref: '#/components/schemas/OrderDirectionEnum'
+              order_by:
+                description: The field by which the results should be ordered.
+                type: string
+                example: created_at
+            type: object
+    TrackShowPublicRequest:
+      description: Get track
+      required: false
+      content:
+        application/json:
+          schema:
+            properties: {}
+            type: object
+    TrackSimilarPublicRequest:
+      description: Request to create a similar track.
+      required: true
+      content:
+        application/json:
+          schema:
+            required:
+            - duration
+            properties:
+              bitrate:
+                $ref: '#/components/schemas/TrackBitrateEnum'
+              duration:
+                description: Duration of the track in seconds.
+                type: integer
+                minimum: 5
+                example: 300
+              format:
+                $ref: '#/components/schemas/TrackFormatEnum'
+              intensity:
+                $ref: '#/components/schemas/TrackIntensityEnum'
+              mode:
+                $ref: '#/components/schemas/TrackModeEnum'
+            type: object
+    TrackStoredPublicRequest:
+      description: Request for storing track details with validation for playlist and stream parameters.
+      required: true
+      content:
+        application/json:
+          schema:
+            required:
+            - duration
+            properties:
+              playlist_index:
+                description: The index of the playlist, required if stream_id is not provided.
+                type: string
+                maxLength: 10
+                example: 1.0.1
+              stream_id:
+                description: The ID of the stream, required if playlist_index is not provided.
+                type: integer
+                minimum: 1
+                example: 123
+              bitrate:
+                $ref: '#/components/schemas/TrackBitrateEnum'
+              duration:
+                description: The duration of the track in seconds.
+                type: integer
+                minimum: 5
+                example: 300
+              format:
+                $ref: '#/components/schemas/TrackFormatEnum'
+              intensity:
+                $ref: '#/components/schemas/TrackIntensityEnum'
+              mode:
+                $ref: '#/components/schemas/TrackModeEnum'
+            type: object
+    CustomerDeleteServiceRequest:
+      description: Request to delete a customer by the customer service. Authorization is required, and the customer's company ID must match the authenticated service company.
+      required: false
+      content:
+        application/json:
+          schema:
+            properties: {}
+            type: object
+    CustomerIndexServiceRequest:
+      description: Request to retrieve a list of customers with optional pagination parameters.
+      required: false
+      content:
+        application/json:
+          schema:
+            properties:
+              offset:
+                description: The starting point for the list of customers to retrieve.
+                type: integer
+                example: 0
+              limit:
+                description: The maximum number of customers to retrieve.
+                type: integer
+                example: 10
+            type: object
+    CustomerShowByCustomIdServiceRequest:
+      description: Request to show a customer by their custom ID
+      required: false
+      content:
+        application/json:
+          schema:
+            type: object
+    CustomerShowServiceRequest:
+      description: Request to show the details of a specific customer. Authorization ensures that the customer belongs to the requesting service company.
+      required: false
+      content:
+        application/json:
+          schema:
+            type: object
+    CustomerStoreServiceRequest:
+      description: Request to create a new customer with a custom ID and optional webhook settings.
+      required: true
+      content:
+        application/json:
+          schema:
+            required:
+            - custom_id
+            properties:
+              custom_id:
+                description: A unique identifier for the customer.
+                type: string
+                maxLength: 255
+                minLength: 1
+                example: customer123
+            type: object
+    CustomerUpdateServiceRequest:
+      description: Request to update an existing customer with updated custom ID and webhook settings.
+      required: true
+      content:
+        application/json:
+          schema:
+            required:
+            - custom_id
+            properties:
+              custom_id:
+                description: A unique identifier for the customer.
+                type: string
+                maxLength: 255
+                minLength: 1
+                example: customer456
+            type: object
+    LicenseIndexServiceRequest:
+      description: Request to retrieve a paginated list of licenses with optional offset and limit parameters.
+      required: false
+      content:
+        application/json:
+          schema:
+            properties:
+              offset:
+                description: The number of items to skip before starting to collect the result set.
+                type: integer
+                example: 10
+              limit:
+                description: The number of items to return in the result set.
+                type: integer
+                example: 25
+            type: object
+    LicenseShowServiceRequest:
+      description: Request to retrieve the details of a specific license by its identifier.
+      required: false
+      content:
+        application/json:
+          schema:
+            properties: {}
+            type: object
+    LicenseUpdateServiceRequest:
+      description: Request to update an existing license.
+      required: true
+      content:
+        application/json:
+          schema:
+            properties:
+              webhook_url:
+                description: The URL for the webhook.
+                type: string
+                maxLength: 255
+                example: https://example.com/webhook
+                nullable: true
+              webhook_enabled:
+                description: A flag indicating whether the webhook is enabled.
+                type: boolean
+                example: true
+            type: object
+    StripeBillingPortalServiceRequest:
+      description: Request to create a Stripe billing portal session by company ID and license token
+      required: true
+      content:
+        application/json:
+          schema:
+            required:
+            - company_id
+            - license_token
+            properties:
+              company_id:
+                type: string
+                format: uuid
+                example: 550e8400-e29b-41d4-a716-446655440000
+              license_token:
+                type: string
+                example: abc123def456
+              redirect_url:
+                description: URL to return to after leaving the billing portal
+                type: string
+                format: uri
+                example: https://mubert.com/success
+                nullable: true
+            type: object
+    SubscriptionBuyServiceRequest:
+      description: Request to buy a subscription
+      required: true
+      content:
+        application/json:
+          schema:
+            required:
+            - email
+            - stripe_price_id
+            properties:
+              company_name:
+                type: string
+                maxLength: 255
+                example: Acme Inc
+                nullable: true
+              email:
+                type: string
+                format: email
+                example: contact@acme.com
+              stripe_price_id:
+                type: string
+                maxLength: 255
+                example: price_1234567890
+              redirect_url:
+                type: string
+                format: url
+                example: https://example.com/success
+                nullable: true
+              redirect_url_cancel:
+                type: string
+                format: url
+                example: https://example.com/cancel
+                nullable: true
+              coupon_id:
+                type: string
+                maxLength: 255
+                example: DISCOUNT20
+                nullable: true
+              redirect:
+                type: boolean
+                example: true
+                nullable: true
+            type: object
+    SubscriptionCancelServiceRequest:
+      description: Request to cancel a subscription by company ID and license token
+      required: true
+      content:
+        application/json:
+          schema:
+            required:
+            - company_id
+            - license_token
+            properties:
+              company_id:
+                type: string
+                format: uuid
+                example: 550e8400-e29b-41d4-a716-446655440000
+              license_token:
+                type: string
+                example: abc123def456
+            type: object
+tags:
+- name: Public
+  description: Public
+- name: Price
+  description: Price
+- name: Stripe
+  description: Stripe
+- name: Subscription
+  description: Subscription
+- name: Public Service
+  description: Public Service
+- name: Service
+  description: Service
+externalDocs:
+  description: AI-optimized documentation (llms-full.txt)
+  url: https://music-api.mubert.com/swagger-doc/llms-full.txt
