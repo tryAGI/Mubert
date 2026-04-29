@@ -127,7 +127,7 @@ namespace Mubert
                 PrepareGetPublicTracksByTrackRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    track: track);
+                    track: track!);
 
                 return __httpRequest;
             }

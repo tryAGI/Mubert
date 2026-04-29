@@ -127,7 +127,7 @@ namespace Mubert
                 PrepareGetServiceCustomersCustomIdByCustomidRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    customId: customId);
+                    customId: customId!);
 
                 return __httpRequest;
             }

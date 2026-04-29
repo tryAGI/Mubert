@@ -156,7 +156,7 @@ namespace Mubert
                 PrepareGetPublicStreamingGetLinkRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    playlistIndex: playlistIndex,
+                    playlistIndex: playlistIndex!,
                     bitrate: bitrate,
                     intensity: intensity,
                     type: type);
