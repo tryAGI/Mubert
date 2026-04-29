@@ -136,7 +136,7 @@ namespace Mubert
                 PrepareDeleteServiceCustomersByCustomerRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    customer: customer,
+                    customer: customer!,
                     request: request);
 
                 return __httpRequest;

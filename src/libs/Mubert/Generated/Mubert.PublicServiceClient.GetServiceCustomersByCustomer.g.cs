@@ -127,7 +127,7 @@ namespace Mubert
                 PrepareGetServiceCustomersByCustomerRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    customer: customer);
+                    customer: customer!);
 
                 return __httpRequest;
             }

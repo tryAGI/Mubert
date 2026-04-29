@@ -141,7 +141,7 @@ namespace Mubert
                 PreparePutServiceLicensesByLicenseRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    license: license,
+                    license: license!,
                     request: request);
 
                 return __httpRequest;

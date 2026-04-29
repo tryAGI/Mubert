@@ -136,7 +136,7 @@ namespace Mubert
                 PrepareGetPublicPricesByPriceRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    price: price,
+                    price: price!,
                     lang: lang);
 
                 return __httpRequest;

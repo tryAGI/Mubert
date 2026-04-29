@@ -132,8 +132,8 @@ namespace Mubert
                 PrepareGetPublicTracksSessionBySessionIdRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    track: track,
-                    sessionId: sessionId);
+                    track: track!,
+                    sessionId: sessionId!);
 
                 return __httpRequest;
             }

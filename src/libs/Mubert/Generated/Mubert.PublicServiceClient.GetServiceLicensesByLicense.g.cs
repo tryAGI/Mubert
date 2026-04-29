@@ -127,7 +127,7 @@ namespace Mubert
                 PrepareGetServiceLicensesByLicenseRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    license: license);
+                    license: license!);
 
                 return __httpRequest;
             }

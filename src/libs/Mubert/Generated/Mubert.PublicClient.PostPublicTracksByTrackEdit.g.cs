@@ -141,7 +141,7 @@ namespace Mubert
                 PreparePostPublicTracksByTrackEditRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    track: track,
+                    track: track!,
                     request: request);
 
                 return __httpRequest;
