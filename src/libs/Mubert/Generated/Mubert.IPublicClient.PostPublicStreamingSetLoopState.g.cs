@@ -21,6 +21,19 @@ namespace Mubert
         /// Set stream loop state<br/>
         /// Enable or disable loop mode for the current stream segment. When enabled, the later part of the music composition will loop continuously.
         /// </summary>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Mubert.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Mubert.AutoSDKHttpResponse> PostPublicStreamingSetLoopStateAsResponseAsync(
+
+            global::Mubert.PostPublicStreamingSetLoopStateRequest request,
+            global::Mubert.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Set stream loop state<br/>
+        /// Enable or disable loop mode for the current stream segment. When enabled, the later part of the music composition will loop continuously.
+        /// </summary>
         /// <param name="loop">
         /// Streaming Loop State
         /// </param>
