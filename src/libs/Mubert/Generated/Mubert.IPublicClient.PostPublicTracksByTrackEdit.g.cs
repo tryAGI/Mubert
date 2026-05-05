@@ -28,6 +28,23 @@ namespace Mubert
         /// <param name="track">
         /// Example: 123e4567-e89b-12d3-a456-426614174000
         /// </param>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Mubert.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Mubert.AutoSDKHttpResponse<global::Mubert.PostPublicTracksByTrackEditResponse>> PostPublicTracksByTrackEditAsResponseAsync(
+            global::System.Guid track,
+
+            global::Mubert.PostPublicTracksByTrackEditRequest request,
+            global::Mubert.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Edit track<br/>
+        /// Modify track parameters or manipulate instrument/stem composition. Allows changing duration, bitrate, format, intensity, as well as replacing or removing specific instruments and stems.
+        /// </summary>
+        /// <param name="track">
+        /// Example: 123e4567-e89b-12d3-a456-426614174000
+        /// </param>
         /// <param name="bitrate">
         /// Enumeration representing different track bitrates.<br/>
         /// Example: 320

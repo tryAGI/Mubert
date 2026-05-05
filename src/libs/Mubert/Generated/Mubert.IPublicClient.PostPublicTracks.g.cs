@@ -21,6 +21,19 @@ namespace Mubert
         /// Create track<br/>
         /// Create a custom music track from channel/category parameters, text prompt, or image. Supports multiple generation modes: track, loop, jingle, and mix.
         /// </summary>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Mubert.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Mubert.AutoSDKHttpResponse<global::Mubert.PostPublicTracksResponse>> PostPublicTracksAsResponseAsync(
+
+            global::Mubert.PostPublicTracksRequest request,
+            global::Mubert.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Create track<br/>
+        /// Create a custom music track from channel/category parameters, text prompt, or image. Supports multiple generation modes: track, loop, jingle, and mix.
+        /// </summary>
         /// <param name="playlistIndex">
         /// Index of the playlist. Required if `prompt`, and `image` are not provided. If provided, `bpm` and `key` can be optionally specified.<br/>
         /// Example: 1.0.0
