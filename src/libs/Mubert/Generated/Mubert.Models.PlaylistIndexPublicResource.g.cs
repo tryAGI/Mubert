@@ -25,6 +25,19 @@ namespace Mubert
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(PlaylistPublicResource))]
 #endif
         public bool IsPlaylistPublicResource => PlaylistPublicResource != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickPlaylistPublicResource(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mubert.PlaylistPublicResource? value)
+        {
+            value = PlaylistPublicResource;
+            return IsPlaylistPublicResource;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -69,7 +82,7 @@ namespace Mubert
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Mubert.PlaylistPublicResource?, TResult>? playlistPublicResource = null,
+            global::System.Func<global::Mubert.PlaylistPublicResource, TResult>? playlistPublicResource = null,
             bool validate = true)
         {
             if (validate)
@@ -89,7 +102,25 @@ namespace Mubert
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Mubert.PlaylistPublicResource?>? playlistPublicResource = null,
+            global::System.Action<global::Mubert.PlaylistPublicResource>? playlistPublicResource = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsPlaylistPublicResource)
+            {
+                playlistPublicResource?.Invoke(PlaylistPublicResource!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Mubert.PlaylistPublicResource>? playlistPublicResource = null,
             bool validate = true)
         {
             if (validate)

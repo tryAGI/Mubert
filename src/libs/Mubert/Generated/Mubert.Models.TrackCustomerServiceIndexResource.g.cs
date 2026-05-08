@@ -29,6 +29,19 @@ namespace Mubert
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickTrackServiceResource(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mubert.TrackServiceResource? value)
+        {
+            value = TrackServiceResource;
+            return IsTrackServiceResource;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mubert.TrackCustomerServiceIndexResourceVariant2? TrackCustomerServiceIndexResourceVariant2 { get; init; }
 #else
@@ -42,6 +55,19 @@ namespace Mubert
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(TrackCustomerServiceIndexResourceVariant2))]
 #endif
         public bool IsTrackCustomerServiceIndexResourceVariant2 => TrackCustomerServiceIndexResourceVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickTrackCustomerServiceIndexResourceVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mubert.TrackCustomerServiceIndexResourceVariant2? value)
+        {
+            value = TrackCustomerServiceIndexResourceVariant2;
+            return IsTrackCustomerServiceIndexResourceVariant2;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -118,8 +144,8 @@ namespace Mubert
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Mubert.TrackServiceResource?, TResult>? trackServiceResource = null,
-            global::System.Func<global::Mubert.TrackCustomerServiceIndexResourceVariant2?, TResult>? trackCustomerServiceIndexResourceVariant2 = null,
+            global::System.Func<global::Mubert.TrackServiceResource, TResult>? trackServiceResource = null,
+            global::System.Func<global::Mubert.TrackCustomerServiceIndexResourceVariant2, TResult>? trackCustomerServiceIndexResourceVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +169,32 @@ namespace Mubert
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Mubert.TrackServiceResource?>? trackServiceResource = null,
-            global::System.Action<global::Mubert.TrackCustomerServiceIndexResourceVariant2?>? trackCustomerServiceIndexResourceVariant2 = null,
+            global::System.Action<global::Mubert.TrackServiceResource>? trackServiceResource = null,
+
+            global::System.Action<global::Mubert.TrackCustomerServiceIndexResourceVariant2>? trackCustomerServiceIndexResourceVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsTrackServiceResource)
+            {
+                trackServiceResource?.Invoke(TrackServiceResource!);
+            }
+            else if (IsTrackCustomerServiceIndexResourceVariant2)
+            {
+                trackCustomerServiceIndexResourceVariant2?.Invoke(TrackCustomerServiceIndexResourceVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Mubert.TrackServiceResource>? trackServiceResource = null,
+            global::System.Action<global::Mubert.TrackCustomerServiceIndexResourceVariant2>? trackCustomerServiceIndexResourceVariant2 = null,
             bool validate = true)
         {
             if (validate)

@@ -25,6 +25,19 @@ namespace Mubert
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(AccessTokenPublicResource))]
 #endif
         public bool IsAccessTokenPublicResource => AccessTokenPublicResource != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickAccessTokenPublicResource(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mubert.AccessTokenPublicResource? value)
+        {
+            value = AccessTokenPublicResource;
+            return IsAccessTokenPublicResource;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -69,7 +82,7 @@ namespace Mubert
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Mubert.AccessTokenPublicResource?, TResult>? accessTokenPublicResource = null,
+            global::System.Func<global::Mubert.AccessTokenPublicResource, TResult>? accessTokenPublicResource = null,
             bool validate = true)
         {
             if (validate)
@@ -89,7 +102,25 @@ namespace Mubert
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Mubert.AccessTokenPublicResource?>? accessTokenPublicResource = null,
+            global::System.Action<global::Mubert.AccessTokenPublicResource>? accessTokenPublicResource = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsAccessTokenPublicResource)
+            {
+                accessTokenPublicResource?.Invoke(AccessTokenPublicResource!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Mubert.AccessTokenPublicResource>? accessTokenPublicResource = null,
             bool validate = true)
         {
             if (validate)
