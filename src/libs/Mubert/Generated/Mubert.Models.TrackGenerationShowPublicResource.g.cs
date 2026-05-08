@@ -29,6 +29,19 @@ namespace Mubert
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickTrackGenerationPublicResource(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mubert.TrackGenerationPublicResource? value)
+        {
+            value = TrackGenerationPublicResource;
+            return IsTrackGenerationPublicResource;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mubert.TrackGenerationShowPublicResourceVariant2? TrackGenerationShowPublicResourceVariant2 { get; init; }
 #else
@@ -42,6 +55,19 @@ namespace Mubert
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(TrackGenerationShowPublicResourceVariant2))]
 #endif
         public bool IsTrackGenerationShowPublicResourceVariant2 => TrackGenerationShowPublicResourceVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickTrackGenerationShowPublicResourceVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mubert.TrackGenerationShowPublicResourceVariant2? value)
+        {
+            value = TrackGenerationShowPublicResourceVariant2;
+            return IsTrackGenerationShowPublicResourceVariant2;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -118,8 +144,8 @@ namespace Mubert
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Mubert.TrackGenerationPublicResource?, TResult>? trackGenerationPublicResource = null,
-            global::System.Func<global::Mubert.TrackGenerationShowPublicResourceVariant2?, TResult>? trackGenerationShowPublicResourceVariant2 = null,
+            global::System.Func<global::Mubert.TrackGenerationPublicResource, TResult>? trackGenerationPublicResource = null,
+            global::System.Func<global::Mubert.TrackGenerationShowPublicResourceVariant2, TResult>? trackGenerationShowPublicResourceVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +169,32 @@ namespace Mubert
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Mubert.TrackGenerationPublicResource?>? trackGenerationPublicResource = null,
-            global::System.Action<global::Mubert.TrackGenerationShowPublicResourceVariant2?>? trackGenerationShowPublicResourceVariant2 = null,
+            global::System.Action<global::Mubert.TrackGenerationPublicResource>? trackGenerationPublicResource = null,
+
+            global::System.Action<global::Mubert.TrackGenerationShowPublicResourceVariant2>? trackGenerationShowPublicResourceVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsTrackGenerationPublicResource)
+            {
+                trackGenerationPublicResource?.Invoke(TrackGenerationPublicResource!);
+            }
+            else if (IsTrackGenerationShowPublicResourceVariant2)
+            {
+                trackGenerationShowPublicResourceVariant2?.Invoke(TrackGenerationShowPublicResourceVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Mubert.TrackGenerationPublicResource>? trackGenerationPublicResource = null,
+            global::System.Action<global::Mubert.TrackGenerationShowPublicResourceVariant2>? trackGenerationShowPublicResourceVariant2 = null,
             bool validate = true)
         {
             if (validate)

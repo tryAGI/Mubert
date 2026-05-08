@@ -25,6 +25,19 @@ namespace Mubert
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(TrackStorePublicResource))]
 #endif
         public bool IsTrackStorePublicResource => TrackStorePublicResource != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickTrackStorePublicResource(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mubert.TrackStorePublicResource? value)
+        {
+            value = TrackStorePublicResource;
+            return IsTrackStorePublicResource;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -69,7 +82,7 @@ namespace Mubert
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Mubert.TrackStorePublicResource?, TResult>? trackStorePublicResource = null,
+            global::System.Func<global::Mubert.TrackStorePublicResource, TResult>? trackStorePublicResource = null,
             bool validate = true)
         {
             if (validate)
@@ -89,7 +102,25 @@ namespace Mubert
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Mubert.TrackStorePublicResource?>? trackStorePublicResource = null,
+            global::System.Action<global::Mubert.TrackStorePublicResource>? trackStorePublicResource = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsTrackStorePublicResource)
+            {
+                trackStorePublicResource?.Invoke(TrackStorePublicResource!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Mubert.TrackStorePublicResource>? trackStorePublicResource = null,
             bool validate = true)
         {
             if (validate)

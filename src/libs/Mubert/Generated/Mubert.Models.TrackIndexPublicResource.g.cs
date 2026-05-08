@@ -29,6 +29,19 @@ namespace Mubert
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickTrackPublicResource(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mubert.TrackPublicResource? value)
+        {
+            value = TrackPublicResource;
+            return IsTrackPublicResource;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mubert.TrackIndexPublicResourceVariant2? TrackIndexPublicResourceVariant2 { get; init; }
 #else
@@ -42,6 +55,19 @@ namespace Mubert
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(TrackIndexPublicResourceVariant2))]
 #endif
         public bool IsTrackIndexPublicResourceVariant2 => TrackIndexPublicResourceVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickTrackIndexPublicResourceVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mubert.TrackIndexPublicResourceVariant2? value)
+        {
+            value = TrackIndexPublicResourceVariant2;
+            return IsTrackIndexPublicResourceVariant2;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -118,8 +144,8 @@ namespace Mubert
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Mubert.TrackPublicResource?, TResult>? trackPublicResource = null,
-            global::System.Func<global::Mubert.TrackIndexPublicResourceVariant2?, TResult>? trackIndexPublicResourceVariant2 = null,
+            global::System.Func<global::Mubert.TrackPublicResource, TResult>? trackPublicResource = null,
+            global::System.Func<global::Mubert.TrackIndexPublicResourceVariant2, TResult>? trackIndexPublicResourceVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +169,32 @@ namespace Mubert
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Mubert.TrackPublicResource?>? trackPublicResource = null,
-            global::System.Action<global::Mubert.TrackIndexPublicResourceVariant2?>? trackIndexPublicResourceVariant2 = null,
+            global::System.Action<global::Mubert.TrackPublicResource>? trackPublicResource = null,
+
+            global::System.Action<global::Mubert.TrackIndexPublicResourceVariant2>? trackIndexPublicResourceVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsTrackPublicResource)
+            {
+                trackPublicResource?.Invoke(TrackPublicResource!);
+            }
+            else if (IsTrackIndexPublicResourceVariant2)
+            {
+                trackIndexPublicResourceVariant2?.Invoke(TrackIndexPublicResourceVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Mubert.TrackPublicResource>? trackPublicResource = null,
+            global::System.Action<global::Mubert.TrackIndexPublicResourceVariant2>? trackIndexPublicResourceVariant2 = null,
             bool validate = true)
         {
             if (validate)

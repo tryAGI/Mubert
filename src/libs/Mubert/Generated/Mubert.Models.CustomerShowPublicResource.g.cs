@@ -29,6 +29,19 @@ namespace Mubert
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickCustomerPublicResource(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mubert.CustomerPublicResource? value)
+        {
+            value = CustomerPublicResource;
+            return IsCustomerPublicResource;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mubert.CustomerShowPublicResourceVariant2? CustomerShowPublicResourceVariant2 { get; init; }
 #else
@@ -42,6 +55,19 @@ namespace Mubert
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CustomerShowPublicResourceVariant2))]
 #endif
         public bool IsCustomerShowPublicResourceVariant2 => CustomerShowPublicResourceVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickCustomerShowPublicResourceVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mubert.CustomerShowPublicResourceVariant2? value)
+        {
+            value = CustomerShowPublicResourceVariant2;
+            return IsCustomerShowPublicResourceVariant2;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -118,8 +144,8 @@ namespace Mubert
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Mubert.CustomerPublicResource?, TResult>? customerPublicResource = null,
-            global::System.Func<global::Mubert.CustomerShowPublicResourceVariant2?, TResult>? customerShowPublicResourceVariant2 = null,
+            global::System.Func<global::Mubert.CustomerPublicResource, TResult>? customerPublicResource = null,
+            global::System.Func<global::Mubert.CustomerShowPublicResourceVariant2, TResult>? customerShowPublicResourceVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +169,32 @@ namespace Mubert
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Mubert.CustomerPublicResource?>? customerPublicResource = null,
-            global::System.Action<global::Mubert.CustomerShowPublicResourceVariant2?>? customerShowPublicResourceVariant2 = null,
+            global::System.Action<global::Mubert.CustomerPublicResource>? customerPublicResource = null,
+
+            global::System.Action<global::Mubert.CustomerShowPublicResourceVariant2>? customerShowPublicResourceVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsCustomerPublicResource)
+            {
+                customerPublicResource?.Invoke(CustomerPublicResource!);
+            }
+            else if (IsCustomerShowPublicResourceVariant2)
+            {
+                customerShowPublicResourceVariant2?.Invoke(CustomerShowPublicResourceVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Mubert.CustomerPublicResource>? customerPublicResource = null,
+            global::System.Action<global::Mubert.CustomerShowPublicResourceVariant2>? customerShowPublicResourceVariant2 = null,
             bool validate = true)
         {
             if (validate)

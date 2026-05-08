@@ -25,6 +25,19 @@ namespace Mubert
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(LicensePublicResource))]
 #endif
         public bool IsLicensePublicResource => LicensePublicResource != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickLicensePublicResource(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mubert.LicensePublicResource? value)
+        {
+            value = LicensePublicResource;
+            return IsLicensePublicResource;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -69,7 +82,7 @@ namespace Mubert
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Mubert.LicensePublicResource?, TResult>? licensePublicResource = null,
+            global::System.Func<global::Mubert.LicensePublicResource, TResult>? licensePublicResource = null,
             bool validate = true)
         {
             if (validate)
@@ -89,7 +102,25 @@ namespace Mubert
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Mubert.LicensePublicResource?>? licensePublicResource = null,
+            global::System.Action<global::Mubert.LicensePublicResource>? licensePublicResource = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsLicensePublicResource)
+            {
+                licensePublicResource?.Invoke(LicensePublicResource!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Mubert.LicensePublicResource>? licensePublicResource = null,
             bool validate = true)
         {
             if (validate)

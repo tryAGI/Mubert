@@ -25,6 +25,19 @@ namespace Mubert
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CustomerLicenseLimitPublicResource))]
 #endif
         public bool IsCustomerLicenseLimitPublicResource => CustomerLicenseLimitPublicResource != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickCustomerLicenseLimitPublicResource(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mubert.CustomerLicenseLimitPublicResource? value)
+        {
+            value = CustomerLicenseLimitPublicResource;
+            return IsCustomerLicenseLimitPublicResource;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -69,7 +82,7 @@ namespace Mubert
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Mubert.CustomerLicenseLimitPublicResource?, TResult>? customerLicenseLimitPublicResource = null,
+            global::System.Func<global::Mubert.CustomerLicenseLimitPublicResource, TResult>? customerLicenseLimitPublicResource = null,
             bool validate = true)
         {
             if (validate)
@@ -89,7 +102,25 @@ namespace Mubert
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Mubert.CustomerLicenseLimitPublicResource?>? customerLicenseLimitPublicResource = null,
+            global::System.Action<global::Mubert.CustomerLicenseLimitPublicResource>? customerLicenseLimitPublicResource = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsCustomerLicenseLimitPublicResource)
+            {
+                customerLicenseLimitPublicResource?.Invoke(CustomerLicenseLimitPublicResource!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Mubert.CustomerLicenseLimitPublicResource>? customerLicenseLimitPublicResource = null,
             bool validate = true)
         {
             if (validate)

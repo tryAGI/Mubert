@@ -25,6 +25,19 @@ namespace Mubert
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(AccessTokenServiceResource))]
 #endif
         public bool IsAccessTokenServiceResource => AccessTokenServiceResource != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickAccessTokenServiceResource(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mubert.AccessTokenServiceResource? value)
+        {
+            value = AccessTokenServiceResource;
+            return IsAccessTokenServiceResource;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -69,7 +82,7 @@ namespace Mubert
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Mubert.AccessTokenServiceResource?, TResult>? accessTokenServiceResource = null,
+            global::System.Func<global::Mubert.AccessTokenServiceResource, TResult>? accessTokenServiceResource = null,
             bool validate = true)
         {
             if (validate)
@@ -89,7 +102,25 @@ namespace Mubert
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Mubert.AccessTokenServiceResource?>? accessTokenServiceResource = null,
+            global::System.Action<global::Mubert.AccessTokenServiceResource>? accessTokenServiceResource = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsAccessTokenServiceResource)
+            {
+                accessTokenServiceResource?.Invoke(AccessTokenServiceResource!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Mubert.AccessTokenServiceResource>? accessTokenServiceResource = null,
             bool validate = true)
         {
             if (validate)
