@@ -74,5 +74,6 @@ namespace Mubert
         public CustomerPublicResource()
         {
         }
+
     }
 }

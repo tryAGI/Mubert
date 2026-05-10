@@ -52,5 +52,6 @@ namespace Mubert
         public CustomerCustomerServiceShowResourceResourceVariant2()
         {
         }
+
     }
 }

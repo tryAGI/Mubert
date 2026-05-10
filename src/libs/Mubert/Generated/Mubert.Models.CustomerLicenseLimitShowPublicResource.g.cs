@@ -38,6 +38,13 @@ namespace Mubert
             value = CustomerLicenseLimitPublicResource;
             return IsCustomerLicenseLimitPublicResource;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mubert.CustomerLicenseLimitPublicResource PickCustomerLicenseLimitPublicResource() => IsCustomerLicenseLimitPublicResource
+            ? CustomerLicenseLimitPublicResource!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'CustomerLicenseLimitPublicResource' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

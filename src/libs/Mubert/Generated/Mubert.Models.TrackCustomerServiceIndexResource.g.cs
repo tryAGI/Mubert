@@ -42,6 +42,13 @@ namespace Mubert
         /// <summary>
         /// 
         /// </summary>
+        public global::Mubert.TrackServiceResource PickTrackServiceResource() => IsTrackServiceResource
+            ? TrackServiceResource!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'TrackServiceResource' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mubert.TrackCustomerServiceIndexResourceVariant2? TrackCustomerServiceIndexResourceVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace Mubert
             value = TrackCustomerServiceIndexResourceVariant2;
             return IsTrackCustomerServiceIndexResourceVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mubert.TrackCustomerServiceIndexResourceVariant2 PickTrackCustomerServiceIndexResourceVariant2() => IsTrackCustomerServiceIndexResourceVariant2
+            ? TrackCustomerServiceIndexResourceVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'TrackCustomerServiceIndexResourceVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

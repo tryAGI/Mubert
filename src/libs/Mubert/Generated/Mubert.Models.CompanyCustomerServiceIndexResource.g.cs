@@ -38,6 +38,13 @@ namespace Mubert
             value = CompanyServiceResource;
             return IsCompanyServiceResource;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mubert.CompanyServiceResource PickCompanyServiceResource() => IsCompanyServiceResource
+            ? CompanyServiceResource!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'CompanyServiceResource' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

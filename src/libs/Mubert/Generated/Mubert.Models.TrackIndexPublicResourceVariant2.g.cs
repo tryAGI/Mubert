@@ -41,5 +41,6 @@ namespace Mubert
         public TrackIndexPublicResourceVariant2()
         {
         }
+
     }
 }

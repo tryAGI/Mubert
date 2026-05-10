@@ -38,6 +38,13 @@ namespace Mubert
             value = AccessTokenServiceResource;
             return IsAccessTokenServiceResource;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mubert.AccessTokenServiceResource PickAccessTokenServiceResource() => IsAccessTokenServiceResource
+            ? AccessTokenServiceResource!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'AccessTokenServiceResource' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

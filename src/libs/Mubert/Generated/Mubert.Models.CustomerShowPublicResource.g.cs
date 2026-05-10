@@ -42,6 +42,13 @@ namespace Mubert
         /// <summary>
         /// 
         /// </summary>
+        public global::Mubert.CustomerPublicResource PickCustomerPublicResource() => IsCustomerPublicResource
+            ? CustomerPublicResource!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'CustomerPublicResource' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mubert.CustomerShowPublicResourceVariant2? CustomerShowPublicResourceVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace Mubert
             value = CustomerShowPublicResourceVariant2;
             return IsCustomerShowPublicResourceVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mubert.CustomerShowPublicResourceVariant2 PickCustomerShowPublicResourceVariant2() => IsCustomerShowPublicResourceVariant2
+            ? CustomerShowPublicResourceVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'CustomerShowPublicResourceVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

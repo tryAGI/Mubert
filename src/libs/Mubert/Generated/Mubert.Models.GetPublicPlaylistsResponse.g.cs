@@ -39,5 +39,6 @@ namespace Mubert
         public GetPublicPlaylistsResponse()
         {
         }
+
     }
 }

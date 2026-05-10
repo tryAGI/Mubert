@@ -57,5 +57,6 @@ namespace Mubert
         public PostPublicStreamingSetLoopStateRequest()
         {
         }
+
     }
 }

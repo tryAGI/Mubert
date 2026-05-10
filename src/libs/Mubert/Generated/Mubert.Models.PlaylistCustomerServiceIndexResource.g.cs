@@ -38,6 +38,13 @@ namespace Mubert
             value = PlaylistServiceResource;
             return IsPlaylistServiceResource;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mubert.PlaylistServiceResource PickPlaylistServiceResource() => IsPlaylistServiceResource
+            ? PlaylistServiceResource!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'PlaylistServiceResource' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
