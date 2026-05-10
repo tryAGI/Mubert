@@ -63,6 +63,7 @@ namespace Mubert.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Mubert.TrackStoreServiceResource), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Mubert.TrackStoreServiceResource> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Mubert.TrackStoreServiceResource).Name}");
                     trackStoreServiceResource = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);

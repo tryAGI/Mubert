@@ -63,6 +63,7 @@ namespace Mubert.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Mubert.TrackGenerationPublicResource), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Mubert.TrackGenerationPublicResource> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Mubert.TrackGenerationPublicResource).Name}");
                     trackGenerationPublicResource = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
