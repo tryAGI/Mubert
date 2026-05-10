@@ -38,6 +38,13 @@ namespace Mubert
             value = TrackStoreServiceResource;
             return IsTrackStoreServiceResource;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mubert.TrackStoreServiceResource PickTrackStoreServiceResource() => IsTrackStoreServiceResource
+            ? TrackStoreServiceResource!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'TrackStoreServiceResource' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

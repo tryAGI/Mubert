@@ -84,5 +84,6 @@ namespace Mubert
         public PriceTranslationPublicResource()
         {
         }
+
     }
 }

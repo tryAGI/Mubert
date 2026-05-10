@@ -38,6 +38,13 @@ namespace Mubert
             value = LicensePublicResource;
             return IsLicensePublicResource;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mubert.LicensePublicResource PickLicensePublicResource() => IsLicensePublicResource
+            ? LicensePublicResource!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'LicensePublicResource' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

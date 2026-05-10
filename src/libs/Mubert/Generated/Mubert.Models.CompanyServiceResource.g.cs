@@ -63,5 +63,6 @@ namespace Mubert
         public CompanyServiceResource()
         {
         }
+
     }
 }

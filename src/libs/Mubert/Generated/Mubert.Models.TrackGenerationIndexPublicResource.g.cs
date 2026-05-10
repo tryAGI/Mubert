@@ -38,6 +38,13 @@ namespace Mubert
             value = TrackGenerationPublicResource;
             return IsTrackGenerationPublicResource;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mubert.TrackGenerationPublicResource PickTrackGenerationPublicResource() => IsTrackGenerationPublicResource
+            ? TrackGenerationPublicResource!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'TrackGenerationPublicResource' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

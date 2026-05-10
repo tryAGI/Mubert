@@ -38,6 +38,13 @@ namespace Mubert
             value = AccessTokenPublicResource;
             return IsAccessTokenPublicResource;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mubert.AccessTokenPublicResource PickAccessTokenPublicResource() => IsAccessTokenPublicResource
+            ? AccessTokenPublicResource!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'AccessTokenPublicResource' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
