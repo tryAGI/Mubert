@@ -89,6 +89,11 @@ namespace Mubert
         /// <summary>
         /// 
         /// </summary>
+        public static TrackIndexPublicResource FromTrackPublicResource(global::Mubert.TrackPublicResource? value) => new TrackIndexPublicResource(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator TrackIndexPublicResource(global::Mubert.TrackIndexPublicResourceVariant2 value) => new TrackIndexPublicResource((global::Mubert.TrackIndexPublicResourceVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace Mubert
         {
             TrackIndexPublicResourceVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static TrackIndexPublicResource FromTrackIndexPublicResourceVariant2(global::Mubert.TrackIndexPublicResourceVariant2? value) => new TrackIndexPublicResource(value);
 
         /// <summary>
         /// 

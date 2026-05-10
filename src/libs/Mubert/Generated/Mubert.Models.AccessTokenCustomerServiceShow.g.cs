@@ -59,6 +59,11 @@ namespace Mubert
         /// <summary>
         /// 
         /// </summary>
+        public static AccessTokenCustomerServiceShow FromResource(global::Mubert.AccessTokenServiceResource? value) => new AccessTokenCustomerServiceShow(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public object? Object =>
             Resource as object 
             ;

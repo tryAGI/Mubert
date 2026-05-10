@@ -59,6 +59,11 @@ namespace Mubert
         /// <summary>
         /// 
         /// </summary>
+        public static TrackStoreIndexPublicResource FromTrackStorePublicResource(global::Mubert.TrackStorePublicResource? value) => new TrackStoreIndexPublicResource(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public object? Object =>
             TrackStorePublicResource as object 
             ;

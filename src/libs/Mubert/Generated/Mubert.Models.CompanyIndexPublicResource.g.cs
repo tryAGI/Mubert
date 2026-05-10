@@ -59,6 +59,11 @@ namespace Mubert
         /// <summary>
         /// 
         /// </summary>
+        public static CompanyIndexPublicResource FromCompanyPublicResource(global::Mubert.CompanyPublicResource? value) => new CompanyIndexPublicResource(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public object? Object =>
             CompanyPublicResource as object 
             ;

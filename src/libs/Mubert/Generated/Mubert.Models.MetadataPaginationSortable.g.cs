@@ -89,6 +89,11 @@ namespace Mubert
         /// <summary>
         /// 
         /// </summary>
+        public static MetadataPaginationSortable FromMetadataPagination(global::Mubert.MetadataPagination? value) => new MetadataPaginationSortable(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator MetadataPaginationSortable(global::Mubert.MetadataPaginationSortableVariant2 value) => new MetadataPaginationSortable((global::Mubert.MetadataPaginationSortableVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace Mubert
         {
             MetadataPaginationSortableVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static MetadataPaginationSortable FromMetadataPaginationSortableVariant2(global::Mubert.MetadataPaginationSortableVariant2? value) => new MetadataPaginationSortable(value);
 
         /// <summary>
         /// 

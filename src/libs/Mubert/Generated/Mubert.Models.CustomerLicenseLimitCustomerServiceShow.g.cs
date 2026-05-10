@@ -59,6 +59,11 @@ namespace Mubert
         /// <summary>
         /// 
         /// </summary>
+        public static CustomerLicenseLimitCustomerServiceShow FromResource(global::Mubert.CustomerLicenseLimitServiceResource? value) => new CustomerLicenseLimitCustomerServiceShow(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public object? Object =>
             Resource as object 
             ;

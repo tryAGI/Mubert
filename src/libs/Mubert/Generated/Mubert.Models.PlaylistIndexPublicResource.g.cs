@@ -59,6 +59,11 @@ namespace Mubert
         /// <summary>
         /// 
         /// </summary>
+        public static PlaylistIndexPublicResource FromPlaylistPublicResource(global::Mubert.PlaylistPublicResource? value) => new PlaylistIndexPublicResource(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public object? Object =>
             PlaylistPublicResource as object 
             ;

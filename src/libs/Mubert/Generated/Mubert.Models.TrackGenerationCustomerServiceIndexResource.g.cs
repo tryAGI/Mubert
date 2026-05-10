@@ -59,6 +59,11 @@ namespace Mubert
         /// <summary>
         /// 
         /// </summary>
+        public static TrackGenerationCustomerServiceIndexResource FromTrackGenerationServiceResource(global::Mubert.TrackGenerationServiceResource? value) => new TrackGenerationCustomerServiceIndexResource(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public object? Object =>
             TrackGenerationServiceResource as object 
             ;
