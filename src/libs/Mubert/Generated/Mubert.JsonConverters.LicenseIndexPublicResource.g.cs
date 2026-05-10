@@ -80,6 +80,7 @@ namespace Mubert.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Mubert.LicensePublicResource), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Mubert.LicensePublicResource> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Mubert.LicensePublicResource).Name}");
                     licensePublicResource = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
