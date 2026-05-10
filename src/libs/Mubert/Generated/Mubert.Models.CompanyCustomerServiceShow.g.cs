@@ -59,6 +59,11 @@ namespace Mubert
         /// <summary>
         /// 
         /// </summary>
+        public static CompanyCustomerServiceShow FromResource(global::Mubert.CompanyServiceResource? value) => new CompanyCustomerServiceShow(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public object? Object =>
             Resource as object 
             ;

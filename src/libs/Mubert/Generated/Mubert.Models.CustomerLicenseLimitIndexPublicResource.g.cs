@@ -59,6 +59,11 @@ namespace Mubert
         /// <summary>
         /// 
         /// </summary>
+        public static CustomerLicenseLimitIndexPublicResource FromCustomerLicenseLimitPublicResource(global::Mubert.CustomerLicenseLimitPublicResource? value) => new CustomerLicenseLimitIndexPublicResource(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public object? Object =>
             CustomerLicenseLimitPublicResource as object 
             ;

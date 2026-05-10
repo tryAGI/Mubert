@@ -89,6 +89,11 @@ namespace Mubert
         /// <summary>
         /// 
         /// </summary>
+        public static TrackCustomerServiceShow FromResource(global::Mubert.TrackServiceResource? value) => new TrackCustomerServiceShow(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator TrackCustomerServiceShow(global::Mubert.TrackCustomerServiceShowVariant2 value) => new TrackCustomerServiceShow((global::Mubert.TrackCustomerServiceShowVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace Mubert
         {
             TrackCustomerServiceShowVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static TrackCustomerServiceShow FromTrackCustomerServiceShowVariant2(global::Mubert.TrackCustomerServiceShowVariant2? value) => new TrackCustomerServiceShow(value);
 
         /// <summary>
         /// 

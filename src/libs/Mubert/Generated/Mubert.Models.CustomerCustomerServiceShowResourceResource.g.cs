@@ -89,6 +89,11 @@ namespace Mubert
         /// <summary>
         /// 
         /// </summary>
+        public static CustomerCustomerServiceShowResourceResource FromCustomerServiceResource(global::Mubert.CustomerServiceResource? value) => new CustomerCustomerServiceShowResourceResource(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator CustomerCustomerServiceShowResourceResource(global::Mubert.CustomerCustomerServiceShowResourceResourceVariant2 value) => new CustomerCustomerServiceShowResourceResource((global::Mubert.CustomerCustomerServiceShowResourceResourceVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace Mubert
         {
             CustomerCustomerServiceShowResourceResourceVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static CustomerCustomerServiceShowResourceResource FromCustomerCustomerServiceShowResourceResourceVariant2(global::Mubert.CustomerCustomerServiceShowResourceResourceVariant2? value) => new CustomerCustomerServiceShowResourceResource(value);
 
         /// <summary>
         /// 

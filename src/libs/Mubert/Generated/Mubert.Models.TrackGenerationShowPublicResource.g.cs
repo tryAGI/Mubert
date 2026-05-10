@@ -89,6 +89,11 @@ namespace Mubert
         /// <summary>
         /// 
         /// </summary>
+        public static TrackGenerationShowPublicResource FromTrackGenerationPublicResource(global::Mubert.TrackGenerationPublicResource? value) => new TrackGenerationShowPublicResource(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator TrackGenerationShowPublicResource(global::Mubert.TrackGenerationShowPublicResourceVariant2 value) => new TrackGenerationShowPublicResource((global::Mubert.TrackGenerationShowPublicResourceVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace Mubert
         {
             TrackGenerationShowPublicResourceVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static TrackGenerationShowPublicResource FromTrackGenerationShowPublicResourceVariant2(global::Mubert.TrackGenerationShowPublicResourceVariant2? value) => new TrackGenerationShowPublicResource(value);
 
         /// <summary>
         /// 
