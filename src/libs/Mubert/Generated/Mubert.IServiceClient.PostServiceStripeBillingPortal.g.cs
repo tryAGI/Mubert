@@ -21,6 +21,19 @@ namespace Mubert
         /// Stripe Billing Portal<br/>
         /// Create a Stripe billing portal session by company ID and license token.
         /// </summary>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Mubert.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Mubert.AutoSDKHttpResponse> PostServiceStripeBillingPortalAsResponseAsync(
+
+            global::Mubert.PostServiceStripeBillingPortalRequest request,
+            global::Mubert.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Stripe Billing Portal<br/>
+        /// Create a Stripe billing portal session by company ID and license token.
+        /// </summary>
         /// <param name="companyId">
         /// Example: 550e8400-e29b-41d4-a716-446655440000
         /// </param>

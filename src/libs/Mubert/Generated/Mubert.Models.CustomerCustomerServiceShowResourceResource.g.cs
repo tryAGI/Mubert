@@ -29,6 +29,26 @@ namespace Mubert
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickCustomerServiceResource(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mubert.CustomerServiceResource? value)
+        {
+            value = CustomerServiceResource;
+            return IsCustomerServiceResource;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mubert.CustomerServiceResource PickCustomerServiceResource() => IsCustomerServiceResource
+            ? CustomerServiceResource!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'CustomerServiceResource' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mubert.CustomerCustomerServiceShowResourceResourceVariant2? CustomerCustomerServiceShowResourceResourceVariant2 { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace Mubert
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CustomerCustomerServiceShowResourceResourceVariant2))]
 #endif
         public bool IsCustomerCustomerServiceShowResourceResourceVariant2 => CustomerCustomerServiceShowResourceResourceVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickCustomerCustomerServiceShowResourceResourceVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mubert.CustomerCustomerServiceShowResourceResourceVariant2? value)
+        {
+            value = CustomerCustomerServiceShowResourceResourceVariant2;
+            return IsCustomerCustomerServiceShowResourceResourceVariant2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mubert.CustomerCustomerServiceShowResourceResourceVariant2 PickCustomerCustomerServiceShowResourceResourceVariant2() => IsCustomerCustomerServiceShowResourceResourceVariant2
+            ? CustomerCustomerServiceShowResourceResourceVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'CustomerCustomerServiceShowResourceResourceVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -63,6 +103,11 @@ namespace Mubert
         /// <summary>
         /// 
         /// </summary>
+        public static CustomerCustomerServiceShowResourceResource FromCustomerServiceResource(global::Mubert.CustomerServiceResource? value) => new CustomerCustomerServiceShowResourceResource(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator CustomerCustomerServiceShowResourceResource(global::Mubert.CustomerCustomerServiceShowResourceResourceVariant2 value) => new CustomerCustomerServiceShowResourceResource((global::Mubert.CustomerCustomerServiceShowResourceResourceVariant2?)value);
 
         /// <summary>
@@ -77,6 +122,11 @@ namespace Mubert
         {
             CustomerCustomerServiceShowResourceResourceVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static CustomerCustomerServiceShowResourceResource FromCustomerCustomerServiceShowResourceResourceVariant2(global::Mubert.CustomerCustomerServiceShowResourceResourceVariant2? value) => new CustomerCustomerServiceShowResourceResource(value);
 
         /// <summary>
         /// 
@@ -118,8 +168,8 @@ namespace Mubert
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Mubert.CustomerServiceResource?, TResult>? customerServiceResource = null,
-            global::System.Func<global::Mubert.CustomerCustomerServiceShowResourceResourceVariant2?, TResult>? customerCustomerServiceShowResourceResourceVariant2 = null,
+            global::System.Func<global::Mubert.CustomerServiceResource, TResult>? customerServiceResource = null,
+            global::System.Func<global::Mubert.CustomerCustomerServiceShowResourceResourceVariant2, TResult>? customerCustomerServiceShowResourceResourceVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +193,32 @@ namespace Mubert
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Mubert.CustomerServiceResource?>? customerServiceResource = null,
-            global::System.Action<global::Mubert.CustomerCustomerServiceShowResourceResourceVariant2?>? customerCustomerServiceShowResourceResourceVariant2 = null,
+            global::System.Action<global::Mubert.CustomerServiceResource>? customerServiceResource = null,
+
+            global::System.Action<global::Mubert.CustomerCustomerServiceShowResourceResourceVariant2>? customerCustomerServiceShowResourceResourceVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsCustomerServiceResource)
+            {
+                customerServiceResource?.Invoke(CustomerServiceResource!);
+            }
+            else if (IsCustomerCustomerServiceShowResourceResourceVariant2)
+            {
+                customerCustomerServiceShowResourceResourceVariant2?.Invoke(CustomerCustomerServiceShowResourceResourceVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Mubert.CustomerServiceResource>? customerServiceResource = null,
+            global::System.Action<global::Mubert.CustomerCustomerServiceShowResourceResourceVariant2>? customerCustomerServiceShowResourceResourceVariant2 = null,
             bool validate = true)
         {
             if (validate)

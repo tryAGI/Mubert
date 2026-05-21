@@ -29,6 +29,26 @@ namespace Mubert
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickResource(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mubert.TrackGenerationServiceResource? value)
+        {
+            value = Resource;
+            return IsResource;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mubert.TrackGenerationServiceResource PickResource() => IsResource
+            ? Resource!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Resource' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mubert.TrackGenerationCustomerServiceShowVariant2? TrackGenerationCustomerServiceShowVariant2 { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace Mubert
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(TrackGenerationCustomerServiceShowVariant2))]
 #endif
         public bool IsTrackGenerationCustomerServiceShowVariant2 => TrackGenerationCustomerServiceShowVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickTrackGenerationCustomerServiceShowVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mubert.TrackGenerationCustomerServiceShowVariant2? value)
+        {
+            value = TrackGenerationCustomerServiceShowVariant2;
+            return IsTrackGenerationCustomerServiceShowVariant2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mubert.TrackGenerationCustomerServiceShowVariant2 PickTrackGenerationCustomerServiceShowVariant2() => IsTrackGenerationCustomerServiceShowVariant2
+            ? TrackGenerationCustomerServiceShowVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'TrackGenerationCustomerServiceShowVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -63,6 +103,11 @@ namespace Mubert
         /// <summary>
         /// 
         /// </summary>
+        public static TrackGenerationCustomerServiceShow FromResource(global::Mubert.TrackGenerationServiceResource? value) => new TrackGenerationCustomerServiceShow(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator TrackGenerationCustomerServiceShow(global::Mubert.TrackGenerationCustomerServiceShowVariant2 value) => new TrackGenerationCustomerServiceShow((global::Mubert.TrackGenerationCustomerServiceShowVariant2?)value);
 
         /// <summary>
@@ -77,6 +122,11 @@ namespace Mubert
         {
             TrackGenerationCustomerServiceShowVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static TrackGenerationCustomerServiceShow FromTrackGenerationCustomerServiceShowVariant2(global::Mubert.TrackGenerationCustomerServiceShowVariant2? value) => new TrackGenerationCustomerServiceShow(value);
 
         /// <summary>
         /// 
@@ -118,8 +168,8 @@ namespace Mubert
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Mubert.TrackGenerationServiceResource?, TResult>? resource = null,
-            global::System.Func<global::Mubert.TrackGenerationCustomerServiceShowVariant2?, TResult>? trackGenerationCustomerServiceShowVariant2 = null,
+            global::System.Func<global::Mubert.TrackGenerationServiceResource, TResult>? resource = null,
+            global::System.Func<global::Mubert.TrackGenerationCustomerServiceShowVariant2, TResult>? trackGenerationCustomerServiceShowVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +193,32 @@ namespace Mubert
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Mubert.TrackGenerationServiceResource?>? resource = null,
-            global::System.Action<global::Mubert.TrackGenerationCustomerServiceShowVariant2?>? trackGenerationCustomerServiceShowVariant2 = null,
+            global::System.Action<global::Mubert.TrackGenerationServiceResource>? resource = null,
+
+            global::System.Action<global::Mubert.TrackGenerationCustomerServiceShowVariant2>? trackGenerationCustomerServiceShowVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsResource)
+            {
+                resource?.Invoke(Resource!);
+            }
+            else if (IsTrackGenerationCustomerServiceShowVariant2)
+            {
+                trackGenerationCustomerServiceShowVariant2?.Invoke(TrackGenerationCustomerServiceShowVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Mubert.TrackGenerationServiceResource>? resource = null,
+            global::System.Action<global::Mubert.TrackGenerationCustomerServiceShowVariant2>? trackGenerationCustomerServiceShowVariant2 = null,
             bool validate = true)
         {
             if (validate)

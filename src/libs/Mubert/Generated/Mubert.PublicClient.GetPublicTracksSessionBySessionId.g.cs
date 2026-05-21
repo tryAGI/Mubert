@@ -60,6 +60,32 @@ namespace Mubert
             global::Mubert.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            var __response = await GetPublicTracksSessionBySessionIdAsResponseAsync(
+                track: track,
+                sessionId: sessionId,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken
+            ).ConfigureAwait(false);
+
+            return __response.Body;
+        }
+        /// <summary>
+        /// Get track by session ID<br/>
+        /// Retrieve specific track details by session ID including generation status, download URLs, and expiration times.
+        /// </summary>
+        /// <param name="track">
+        /// Example: 4b19470aec7446d0a8e3c05d06b23ce2
+        /// </param>
+        /// <param name="sessionId"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Mubert.ApiException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Mubert.AutoSDKHttpResponse<global::Mubert.GetPublicTracksSessionBySessionIdResponse>> GetPublicTracksSessionBySessionIdAsResponseAsync(
+            string track,
+            string sessionId,
+            global::Mubert.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
             PrepareArguments(
                 client: HttpClient);
             PrepareGetPublicTracksSessionBySessionIdArguments(
@@ -89,6 +115,7 @@ namespace Mubert
 
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
+
                             var __pathBuilder = new global::Mubert.PathBuilder(
                                 path: $"/api/v3/public/tracks/session/{sessionId}",
                                 baseUri: HttpClient.BaseAddress);
@@ -163,6 +190,8 @@ namespace Mubert
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                     try
                     {
@@ -173,6 +202,11 @@ namespace Mubert
                     }
                     catch (global::System.Net.Http.HttpRequestException __exception)
                     {
+                        var __retryDelay = global::Mubert.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: null,
+                            attempt: __attempt);
                         var __willRetry = __attempt < __maxAttempts && !__effectiveCancellationToken.IsCancellationRequested;
                         await global::Mubert.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
@@ -190,6 +224,8 @@ namespace Mubert
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: __willRetry,
+                                retryDelay: __willRetry ? __retryDelay : (global::System.TimeSpan?)null,
+                                retryReason: "exception",
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         if (!__willRetry)
                         {
@@ -199,8 +235,7 @@ namespace Mubert
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Mubert.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -209,6 +244,11 @@ namespace Mubert
                         __attempt < __maxAttempts &&
                         global::Mubert.AutoSDKRequestOptionsSupport.ShouldRetryStatusCode(__response.StatusCode))
                     {
+                        var __retryDelay = global::Mubert.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: __response,
+                            attempt: __attempt);
                         await global::Mubert.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Mubert.AutoSDKRequestOptionsSupport.CreateHookContext(
@@ -225,14 +265,15 @@ namespace Mubert
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: true,
+                                retryDelay: __retryDelay,
+                                retryReason: "status:" + ((int)__response.StatusCode).ToString(global::System.Globalization.CultureInfo.InvariantCulture),
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         __response.Dispose();
                         __response = null;
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Mubert.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -272,6 +313,8 @@ namespace Mubert
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
                 else
@@ -292,6 +335,8 @@ namespace Mubert
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
                             // Unauthenticated - the user is not authenticated to access this resource
@@ -463,9 +508,13 @@ namespace Mubert
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    return
-                                        global::Mubert.GetPublicTracksSessionBySessionIdResponse.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Mubert.GetPublicTracksSessionBySessionIdResponse.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                                    return new global::Mubert.AutoSDKHttpResponse<global::Mubert.GetPublicTracksSessionBySessionIdResponse>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Mubert.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -493,9 +542,13 @@ namespace Mubert
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    return
-                                        await global::Mubert.GetPublicTracksSessionBySessionIdResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Mubert.GetPublicTracksSessionBySessionIdResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
+                                    return new global::Mubert.AutoSDKHttpResponse<global::Mubert.GetPublicTracksSessionBySessionIdResponse>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Mubert.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {

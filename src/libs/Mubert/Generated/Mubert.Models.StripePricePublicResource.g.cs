@@ -104,5 +104,6 @@ namespace Mubert
         public StripePricePublicResource()
         {
         }
+
     }
 }

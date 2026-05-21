@@ -25,6 +25,26 @@ namespace Mubert
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(PlaylistServiceResource))]
 #endif
         public bool IsPlaylistServiceResource => PlaylistServiceResource != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickPlaylistServiceResource(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mubert.PlaylistServiceResource? value)
+        {
+            value = PlaylistServiceResource;
+            return IsPlaylistServiceResource;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mubert.PlaylistServiceResource PickPlaylistServiceResource() => IsPlaylistServiceResource
+            ? PlaylistServiceResource!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'PlaylistServiceResource' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -42,6 +62,11 @@ namespace Mubert
         {
             PlaylistServiceResource = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static PlaylistCustomerServiceIndexResource FromPlaylistServiceResource(global::Mubert.PlaylistServiceResource? value) => new PlaylistCustomerServiceIndexResource(value);
 
         /// <summary>
         /// 
@@ -69,7 +94,7 @@ namespace Mubert
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Mubert.PlaylistServiceResource?, TResult>? playlistServiceResource = null,
+            global::System.Func<global::Mubert.PlaylistServiceResource, TResult>? playlistServiceResource = null,
             bool validate = true)
         {
             if (validate)
@@ -89,7 +114,25 @@ namespace Mubert
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Mubert.PlaylistServiceResource?>? playlistServiceResource = null,
+            global::System.Action<global::Mubert.PlaylistServiceResource>? playlistServiceResource = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsPlaylistServiceResource)
+            {
+                playlistServiceResource?.Invoke(PlaylistServiceResource!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Mubert.PlaylistServiceResource>? playlistServiceResource = null,
             bool validate = true)
         {
             if (validate)

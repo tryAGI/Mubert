@@ -25,6 +25,26 @@ namespace Mubert
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Resource))]
 #endif
         public bool IsResource => Resource != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickResource(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mubert.AccessTokenServiceResource? value)
+        {
+            value = Resource;
+            return IsResource;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mubert.AccessTokenServiceResource PickResource() => IsResource
+            ? Resource!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Resource' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -42,6 +62,11 @@ namespace Mubert
         {
             Resource = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static AccessTokenCustomerServiceShow FromResource(global::Mubert.AccessTokenServiceResource? value) => new AccessTokenCustomerServiceShow(value);
 
         /// <summary>
         /// 
@@ -69,7 +94,7 @@ namespace Mubert
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Mubert.AccessTokenServiceResource?, TResult>? resource = null,
+            global::System.Func<global::Mubert.AccessTokenServiceResource, TResult>? resource = null,
             bool validate = true)
         {
             if (validate)
@@ -89,7 +114,25 @@ namespace Mubert
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Mubert.AccessTokenServiceResource?>? resource = null,
+            global::System.Action<global::Mubert.AccessTokenServiceResource>? resource = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsResource)
+            {
+                resource?.Invoke(Resource!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Mubert.AccessTokenServiceResource>? resource = null,
             bool validate = true)
         {
             if (validate)

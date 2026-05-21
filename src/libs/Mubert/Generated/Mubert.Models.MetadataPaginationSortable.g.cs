@@ -29,6 +29,26 @@ namespace Mubert
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickMetadataPagination(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mubert.MetadataPagination? value)
+        {
+            value = MetadataPagination;
+            return IsMetadataPagination;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mubert.MetadataPagination PickMetadataPagination() => IsMetadataPagination
+            ? MetadataPagination!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'MetadataPagination' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mubert.MetadataPaginationSortableVariant2? MetadataPaginationSortableVariant2 { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace Mubert
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(MetadataPaginationSortableVariant2))]
 #endif
         public bool IsMetadataPaginationSortableVariant2 => MetadataPaginationSortableVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickMetadataPaginationSortableVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mubert.MetadataPaginationSortableVariant2? value)
+        {
+            value = MetadataPaginationSortableVariant2;
+            return IsMetadataPaginationSortableVariant2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mubert.MetadataPaginationSortableVariant2 PickMetadataPaginationSortableVariant2() => IsMetadataPaginationSortableVariant2
+            ? MetadataPaginationSortableVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'MetadataPaginationSortableVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -63,6 +103,11 @@ namespace Mubert
         /// <summary>
         /// 
         /// </summary>
+        public static MetadataPaginationSortable FromMetadataPagination(global::Mubert.MetadataPagination? value) => new MetadataPaginationSortable(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator MetadataPaginationSortable(global::Mubert.MetadataPaginationSortableVariant2 value) => new MetadataPaginationSortable((global::Mubert.MetadataPaginationSortableVariant2?)value);
 
         /// <summary>
@@ -77,6 +122,11 @@ namespace Mubert
         {
             MetadataPaginationSortableVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static MetadataPaginationSortable FromMetadataPaginationSortableVariant2(global::Mubert.MetadataPaginationSortableVariant2? value) => new MetadataPaginationSortable(value);
 
         /// <summary>
         /// 
@@ -118,8 +168,8 @@ namespace Mubert
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Mubert.MetadataPagination?, TResult>? metadataPagination = null,
-            global::System.Func<global::Mubert.MetadataPaginationSortableVariant2?, TResult>? metadataPaginationSortableVariant2 = null,
+            global::System.Func<global::Mubert.MetadataPagination, TResult>? metadataPagination = null,
+            global::System.Func<global::Mubert.MetadataPaginationSortableVariant2, TResult>? metadataPaginationSortableVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +193,32 @@ namespace Mubert
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Mubert.MetadataPagination?>? metadataPagination = null,
-            global::System.Action<global::Mubert.MetadataPaginationSortableVariant2?>? metadataPaginationSortableVariant2 = null,
+            global::System.Action<global::Mubert.MetadataPagination>? metadataPagination = null,
+
+            global::System.Action<global::Mubert.MetadataPaginationSortableVariant2>? metadataPaginationSortableVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsMetadataPagination)
+            {
+                metadataPagination?.Invoke(MetadataPagination!);
+            }
+            else if (IsMetadataPaginationSortableVariant2)
+            {
+                metadataPaginationSortableVariant2?.Invoke(MetadataPaginationSortableVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Mubert.MetadataPagination>? metadataPagination = null,
+            global::System.Action<global::Mubert.MetadataPaginationSortableVariant2>? metadataPaginationSortableVariant2 = null,
             bool validate = true)
         {
             if (validate)

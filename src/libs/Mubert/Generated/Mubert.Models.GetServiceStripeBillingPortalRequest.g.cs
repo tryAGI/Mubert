@@ -70,5 +70,6 @@ namespace Mubert
         public GetServiceStripeBillingPortalRequest()
         {
         }
+
     }
 }

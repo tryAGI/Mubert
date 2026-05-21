@@ -72,5 +72,6 @@ namespace Mubert
         public CompanyNotFoundException()
         {
         }
+
     }
 }

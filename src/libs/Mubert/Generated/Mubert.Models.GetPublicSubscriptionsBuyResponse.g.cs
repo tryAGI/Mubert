@@ -54,5 +54,6 @@ namespace Mubert
         public GetPublicSubscriptionsBuyResponse()
         {
         }
+
     }
 }

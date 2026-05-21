@@ -25,6 +25,26 @@ namespace Mubert
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(AccessTokenPublicResource))]
 #endif
         public bool IsAccessTokenPublicResource => AccessTokenPublicResource != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickAccessTokenPublicResource(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mubert.AccessTokenPublicResource? value)
+        {
+            value = AccessTokenPublicResource;
+            return IsAccessTokenPublicResource;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mubert.AccessTokenPublicResource PickAccessTokenPublicResource() => IsAccessTokenPublicResource
+            ? AccessTokenPublicResource!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'AccessTokenPublicResource' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -42,6 +62,11 @@ namespace Mubert
         {
             AccessTokenPublicResource = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static AccessTokenShowPublicResource FromAccessTokenPublicResource(global::Mubert.AccessTokenPublicResource? value) => new AccessTokenShowPublicResource(value);
 
         /// <summary>
         /// 
@@ -69,7 +94,7 @@ namespace Mubert
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Mubert.AccessTokenPublicResource?, TResult>? accessTokenPublicResource = null,
+            global::System.Func<global::Mubert.AccessTokenPublicResource, TResult>? accessTokenPublicResource = null,
             bool validate = true)
         {
             if (validate)
@@ -89,7 +114,25 @@ namespace Mubert
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Mubert.AccessTokenPublicResource?>? accessTokenPublicResource = null,
+            global::System.Action<global::Mubert.AccessTokenPublicResource>? accessTokenPublicResource = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsAccessTokenPublicResource)
+            {
+                accessTokenPublicResource?.Invoke(AccessTokenPublicResource!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Mubert.AccessTokenPublicResource>? accessTokenPublicResource = null,
             bool validate = true)
         {
             if (validate)

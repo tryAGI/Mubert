@@ -60,6 +60,7 @@ namespace Mubert.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Mubert.PlaylistServiceResource), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Mubert.PlaylistServiceResource> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Mubert.PlaylistServiceResource).Name}");
                     playlistServiceResource = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);

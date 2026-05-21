@@ -41,5 +41,6 @@ namespace Mubert
         public TrackCustomerServiceIndexResourceVariant2()
         {
         }
+
     }
 }

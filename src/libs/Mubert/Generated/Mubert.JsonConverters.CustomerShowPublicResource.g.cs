@@ -80,6 +80,7 @@ namespace Mubert.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Mubert.CustomerPublicResource), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Mubert.CustomerPublicResource> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Mubert.CustomerPublicResource).Name}");
                     customerPublicResource = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -90,9 +91,13 @@ namespace Mubert.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (customerPublicResource == null && customerShowPublicResourceVariant2 == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Mubert.CustomerShowPublicResourceVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Mubert.CustomerShowPublicResourceVariant2> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Mubert.CustomerShowPublicResourceVariant2).Name}");
                     customerShowPublicResourceVariant2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);

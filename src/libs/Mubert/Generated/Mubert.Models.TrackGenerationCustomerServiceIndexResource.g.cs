@@ -25,6 +25,26 @@ namespace Mubert
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(TrackGenerationServiceResource))]
 #endif
         public bool IsTrackGenerationServiceResource => TrackGenerationServiceResource != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickTrackGenerationServiceResource(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mubert.TrackGenerationServiceResource? value)
+        {
+            value = TrackGenerationServiceResource;
+            return IsTrackGenerationServiceResource;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mubert.TrackGenerationServiceResource PickTrackGenerationServiceResource() => IsTrackGenerationServiceResource
+            ? TrackGenerationServiceResource!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'TrackGenerationServiceResource' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -42,6 +62,11 @@ namespace Mubert
         {
             TrackGenerationServiceResource = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static TrackGenerationCustomerServiceIndexResource FromTrackGenerationServiceResource(global::Mubert.TrackGenerationServiceResource? value) => new TrackGenerationCustomerServiceIndexResource(value);
 
         /// <summary>
         /// 
@@ -69,7 +94,7 @@ namespace Mubert
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Mubert.TrackGenerationServiceResource?, TResult>? trackGenerationServiceResource = null,
+            global::System.Func<global::Mubert.TrackGenerationServiceResource, TResult>? trackGenerationServiceResource = null,
             bool validate = true)
         {
             if (validate)
@@ -89,7 +114,25 @@ namespace Mubert
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Mubert.TrackGenerationServiceResource?>? trackGenerationServiceResource = null,
+            global::System.Action<global::Mubert.TrackGenerationServiceResource>? trackGenerationServiceResource = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsTrackGenerationServiceResource)
+            {
+                trackGenerationServiceResource?.Invoke(TrackGenerationServiceResource!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Mubert.TrackGenerationServiceResource>? trackGenerationServiceResource = null,
             bool validate = true)
         {
             if (validate)

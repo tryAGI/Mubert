@@ -25,6 +25,26 @@ namespace Mubert
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CompanyServiceResource))]
 #endif
         public bool IsCompanyServiceResource => CompanyServiceResource != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickCompanyServiceResource(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mubert.CompanyServiceResource? value)
+        {
+            value = CompanyServiceResource;
+            return IsCompanyServiceResource;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mubert.CompanyServiceResource PickCompanyServiceResource() => IsCompanyServiceResource
+            ? CompanyServiceResource!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'CompanyServiceResource' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -42,6 +62,11 @@ namespace Mubert
         {
             CompanyServiceResource = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static CompanyCustomerServiceIndexResource FromCompanyServiceResource(global::Mubert.CompanyServiceResource? value) => new CompanyCustomerServiceIndexResource(value);
 
         /// <summary>
         /// 
@@ -69,7 +94,7 @@ namespace Mubert
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Mubert.CompanyServiceResource?, TResult>? companyServiceResource = null,
+            global::System.Func<global::Mubert.CompanyServiceResource, TResult>? companyServiceResource = null,
             bool validate = true)
         {
             if (validate)
@@ -89,7 +114,25 @@ namespace Mubert
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Mubert.CompanyServiceResource?>? companyServiceResource = null,
+            global::System.Action<global::Mubert.CompanyServiceResource>? companyServiceResource = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsCompanyServiceResource)
+            {
+                companyServiceResource?.Invoke(CompanyServiceResource!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Mubert.CompanyServiceResource>? companyServiceResource = null,
             bool validate = true)
         {
             if (validate)

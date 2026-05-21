@@ -65,5 +65,6 @@ namespace Mubert
         public Error404Response()
         {
         }
+
     }
 }

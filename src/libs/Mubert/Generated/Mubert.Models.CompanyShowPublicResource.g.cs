@@ -25,6 +25,26 @@ namespace Mubert
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CompanyPublicResource))]
 #endif
         public bool IsCompanyPublicResource => CompanyPublicResource != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickCompanyPublicResource(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mubert.CompanyPublicResource? value)
+        {
+            value = CompanyPublicResource;
+            return IsCompanyPublicResource;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mubert.CompanyPublicResource PickCompanyPublicResource() => IsCompanyPublicResource
+            ? CompanyPublicResource!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'CompanyPublicResource' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -42,6 +62,11 @@ namespace Mubert
         {
             CompanyPublicResource = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static CompanyShowPublicResource FromCompanyPublicResource(global::Mubert.CompanyPublicResource? value) => new CompanyShowPublicResource(value);
 
         /// <summary>
         /// 
@@ -69,7 +94,7 @@ namespace Mubert
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Mubert.CompanyPublicResource?, TResult>? companyPublicResource = null,
+            global::System.Func<global::Mubert.CompanyPublicResource, TResult>? companyPublicResource = null,
             bool validate = true)
         {
             if (validate)
@@ -89,7 +114,25 @@ namespace Mubert
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Mubert.CompanyPublicResource?>? companyPublicResource = null,
+            global::System.Action<global::Mubert.CompanyPublicResource>? companyPublicResource = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsCompanyPublicResource)
+            {
+                companyPublicResource?.Invoke(CompanyPublicResource!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Mubert.CompanyPublicResource>? companyPublicResource = null,
             bool validate = true)
         {
             if (validate)

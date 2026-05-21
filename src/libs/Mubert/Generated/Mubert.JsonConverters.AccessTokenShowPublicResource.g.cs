@@ -63,6 +63,7 @@ namespace Mubert.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Mubert.AccessTokenPublicResource), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Mubert.AccessTokenPublicResource> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Mubert.AccessTokenPublicResource).Name}");
                     accessTokenPublicResource = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);

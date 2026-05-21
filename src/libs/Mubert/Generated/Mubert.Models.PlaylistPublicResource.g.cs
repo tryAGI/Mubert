@@ -85,5 +85,6 @@ namespace Mubert
         public PlaylistPublicResource()
         {
         }
+
     }
 }

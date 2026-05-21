@@ -25,6 +25,26 @@ namespace Mubert
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Resource))]
 #endif
         public bool IsResource => Resource != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickResource(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mubert.LicenseServiceResource? value)
+        {
+            value = Resource;
+            return IsResource;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mubert.LicenseServiceResource PickResource() => IsResource
+            ? Resource!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Resource' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -42,6 +62,11 @@ namespace Mubert
         {
             Resource = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static LicenseCustomerServiceIndex FromResource(global::Mubert.LicenseServiceResource? value) => new LicenseCustomerServiceIndex(value);
 
         /// <summary>
         /// 
@@ -69,7 +94,7 @@ namespace Mubert
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Mubert.LicenseServiceResource?, TResult>? resource = null,
+            global::System.Func<global::Mubert.LicenseServiceResource, TResult>? resource = null,
             bool validate = true)
         {
             if (validate)
@@ -89,7 +114,25 @@ namespace Mubert
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Mubert.LicenseServiceResource?>? resource = null,
+            global::System.Action<global::Mubert.LicenseServiceResource>? resource = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsResource)
+            {
+                resource?.Invoke(Resource!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Mubert.LicenseServiceResource>? resource = null,
             bool validate = true)
         {
             if (validate)

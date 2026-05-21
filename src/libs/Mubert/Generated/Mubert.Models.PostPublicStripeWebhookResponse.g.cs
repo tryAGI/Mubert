@@ -42,5 +42,6 @@ namespace Mubert
         public PostPublicStripeWebhookResponse()
         {
         }
+
     }
 }

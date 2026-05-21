@@ -58,5 +58,6 @@ namespace Mubert
         public PlaylistPublicResourceParamBpm()
         {
         }
+
     }
 }
