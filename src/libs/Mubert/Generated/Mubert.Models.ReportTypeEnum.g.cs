@@ -9,11 +9,11 @@ namespace Mubert
     public enum ReportTypeEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Analytics,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Tools,
     }

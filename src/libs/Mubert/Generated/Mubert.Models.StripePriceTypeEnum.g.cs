@@ -9,11 +9,11 @@ namespace Mubert
     public enum StripePriceTypeEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OneTime,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Recurring,
     }

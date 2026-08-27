@@ -9,23 +9,23 @@ namespace Mubert
     public enum StripeInvoiceStatusEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Draft,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Open,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Paid,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Uncollectible,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Void,
     }

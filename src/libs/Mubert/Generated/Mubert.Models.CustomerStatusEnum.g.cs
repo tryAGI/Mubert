@@ -9,15 +9,15 @@ namespace Mubert
     public enum CustomerStatusEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Active,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Banned,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Init,
     }

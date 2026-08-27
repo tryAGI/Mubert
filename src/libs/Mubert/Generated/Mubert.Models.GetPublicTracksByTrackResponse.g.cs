@@ -4,12 +4,12 @@
 namespace Mubert
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class GetPublicTracksByTrackResponse
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("data")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Mubert.JsonConverters.TrackShowPublicResourceJsonConverter))]

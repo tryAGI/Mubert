@@ -4,18 +4,18 @@
 namespace Mubert
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class PriceOptionTranslationPublicResource
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("locale")]
         public string? Locale { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("title")]
         public string? Title { get; set; }

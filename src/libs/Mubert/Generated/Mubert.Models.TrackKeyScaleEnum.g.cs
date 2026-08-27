@@ -10,99 +10,99 @@ namespace Mubert
     public enum TrackKeyScaleEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         A,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         A_,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         A_m,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Am,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         B,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Bm,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         C,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         C_,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         C_m,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Cm,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         D,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         D_,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         D_m,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Dm,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         E,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Em,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         F,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         F_,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         F_m,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Fm,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         G,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         G_,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         G_m,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gm,
     }

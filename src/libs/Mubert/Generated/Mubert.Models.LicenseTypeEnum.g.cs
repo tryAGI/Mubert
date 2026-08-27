@@ -9,11 +9,11 @@ namespace Mubert
     public enum LicenseTypeEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Paid,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Trial,
     }

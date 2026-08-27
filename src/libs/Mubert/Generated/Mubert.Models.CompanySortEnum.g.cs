@@ -9,51 +9,51 @@ namespace Mubert
     public enum CompanySortEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CreatedAt,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CustomersCount,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Email,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         LicensesActiveCount,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         LicensesTotalCount,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Name,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Status,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SubscriptionsActiveCount,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SubscriptionsTotalCount,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TotalPaid,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TracksCount,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UpdatedAt,
     }

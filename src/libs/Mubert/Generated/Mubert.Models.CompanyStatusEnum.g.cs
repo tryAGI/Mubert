@@ -9,15 +9,15 @@ namespace Mubert
     public enum CompanyStatusEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Active,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Banned,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Inactive,
     }

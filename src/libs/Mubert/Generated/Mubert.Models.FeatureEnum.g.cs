@@ -9,23 +9,23 @@ namespace Mubert
     public enum FeatureEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Itm,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MusicLibrary,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Streaming,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Track,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ttm,
     }

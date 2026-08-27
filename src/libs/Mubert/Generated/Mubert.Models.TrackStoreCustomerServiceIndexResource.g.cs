@@ -5,12 +5,12 @@
 namespace Mubert
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct TrackStoreCustomerServiceIndexResource : global::System.IEquatable<TrackStoreCustomerServiceIndexResource>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mubert.TrackStoreServiceResource? TrackStoreServiceResource { get; init; }
@@ -19,7 +19,7 @@ namespace Mubert
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(TrackStoreServiceResource))]
@@ -27,7 +27,7 @@ namespace Mubert
         public bool IsTrackStoreServiceResource => TrackStoreServiceResource != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickTrackStoreServiceResource(
 #if NET6_0_OR_GREATER
@@ -40,23 +40,23 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Mubert.TrackStoreServiceResource PickTrackStoreServiceResource() => IsTrackStoreServiceResource
             ? TrackStoreServiceResource!
             : throw new global::System.InvalidOperationException($"Expected union variant 'TrackStoreServiceResource' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator TrackStoreCustomerServiceIndexResource(global::Mubert.TrackStoreServiceResource value) => new TrackStoreCustomerServiceIndexResource((global::Mubert.TrackStoreServiceResource?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Mubert.TrackStoreServiceResource?(TrackStoreCustomerServiceIndexResource @this) => @this.TrackStoreServiceResource;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TrackStoreCustomerServiceIndexResource(global::Mubert.TrackStoreServiceResource? value)
         {
@@ -64,26 +64,26 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static TrackStoreCustomerServiceIndexResource FromTrackStoreServiceResource(global::Mubert.TrackStoreServiceResource? value) => new TrackStoreCustomerServiceIndexResource(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
-            TrackStoreServiceResource as object 
+            TrackStoreServiceResource as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
-            TrackStoreServiceResource?.ToString() 
+            TrackStoreServiceResource?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -91,7 +91,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Mubert.TrackStoreServiceResource, TResult>? trackStoreServiceResource = null,
@@ -111,7 +111,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Mubert.TrackStoreServiceResource>? trackStoreServiceResource = null,
@@ -129,7 +129,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Mubert.TrackStoreServiceResource>? trackStoreServiceResource = null,
@@ -147,7 +147,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -166,17 +166,17 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(TrackStoreCustomerServiceIndexResource other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Mubert.TrackStoreServiceResource?>.Default.Equals(TrackStoreServiceResource, other.TrackStoreServiceResource) 
+                global::System.Collections.Generic.EqualityComparer<global::Mubert.TrackStoreServiceResource?>.Default.Equals(TrackStoreServiceResource, other.TrackStoreServiceResource)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(TrackStoreCustomerServiceIndexResource obj1, TrackStoreCustomerServiceIndexResource obj2)
         {
@@ -184,7 +184,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(TrackStoreCustomerServiceIndexResource obj1, TrackStoreCustomerServiceIndexResource obj2)
         {
@@ -192,7 +192,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

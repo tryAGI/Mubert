@@ -9,11 +9,11 @@ namespace Mubert
     public enum UserRoleEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Admin,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SuperAdmin,
     }

@@ -9,19 +9,19 @@ namespace Mubert
     public enum WebhookStatusEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Awaiting,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Done,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Failed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Sending,
     }

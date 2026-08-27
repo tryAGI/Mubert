@@ -9,19 +9,19 @@ namespace Mubert
     public enum StripeInvoiceBillingReasonEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Manual,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SubscriptionCreate,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SubscriptionCycle,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SubscriptionUpdate,
     }

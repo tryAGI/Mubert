@@ -5,12 +5,12 @@
 namespace Mubert
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct LicenseCustomerServiceIndex : global::System.IEquatable<LicenseCustomerServiceIndex>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mubert.LicenseServiceResource? Resource { get; init; }
@@ -19,7 +19,7 @@ namespace Mubert
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Resource))]
@@ -27,7 +27,7 @@ namespace Mubert
         public bool IsResource => Resource != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickResource(
 #if NET6_0_OR_GREATER
@@ -40,23 +40,23 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Mubert.LicenseServiceResource PickResource() => IsResource
             ? Resource!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Resource' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator LicenseCustomerServiceIndex(global::Mubert.LicenseServiceResource value) => new LicenseCustomerServiceIndex((global::Mubert.LicenseServiceResource?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Mubert.LicenseServiceResource?(LicenseCustomerServiceIndex @this) => @this.Resource;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public LicenseCustomerServiceIndex(global::Mubert.LicenseServiceResource? value)
         {
@@ -64,26 +64,26 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static LicenseCustomerServiceIndex FromResource(global::Mubert.LicenseServiceResource? value) => new LicenseCustomerServiceIndex(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
-            Resource as object 
+            Resource as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
-            Resource?.ToString() 
+            Resource?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -91,7 +91,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Mubert.LicenseServiceResource, TResult>? resource = null,
@@ -111,7 +111,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Mubert.LicenseServiceResource>? resource = null,
@@ -129,7 +129,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Mubert.LicenseServiceResource>? resource = null,
@@ -147,7 +147,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -166,17 +166,17 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(LicenseCustomerServiceIndex other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Mubert.LicenseServiceResource?>.Default.Equals(Resource, other.Resource) 
+                global::System.Collections.Generic.EqualityComparer<global::Mubert.LicenseServiceResource?>.Default.Equals(Resource, other.Resource)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(LicenseCustomerServiceIndex obj1, LicenseCustomerServiceIndex obj2)
         {
@@ -184,7 +184,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(LicenseCustomerServiceIndex obj1, LicenseCustomerServiceIndex obj2)
         {
@@ -192,7 +192,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

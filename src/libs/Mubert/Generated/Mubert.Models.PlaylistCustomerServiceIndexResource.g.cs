@@ -5,12 +5,12 @@
 namespace Mubert
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct PlaylistCustomerServiceIndexResource : global::System.IEquatable<PlaylistCustomerServiceIndexResource>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mubert.PlaylistServiceResource? PlaylistServiceResource { get; init; }
@@ -19,7 +19,7 @@ namespace Mubert
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(PlaylistServiceResource))]
@@ -27,7 +27,7 @@ namespace Mubert
         public bool IsPlaylistServiceResource => PlaylistServiceResource != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickPlaylistServiceResource(
 #if NET6_0_OR_GREATER
@@ -40,23 +40,23 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Mubert.PlaylistServiceResource PickPlaylistServiceResource() => IsPlaylistServiceResource
             ? PlaylistServiceResource!
             : throw new global::System.InvalidOperationException($"Expected union variant 'PlaylistServiceResource' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator PlaylistCustomerServiceIndexResource(global::Mubert.PlaylistServiceResource value) => new PlaylistCustomerServiceIndexResource((global::Mubert.PlaylistServiceResource?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Mubert.PlaylistServiceResource?(PlaylistCustomerServiceIndexResource @this) => @this.PlaylistServiceResource;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public PlaylistCustomerServiceIndexResource(global::Mubert.PlaylistServiceResource? value)
         {
@@ -64,26 +64,26 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static PlaylistCustomerServiceIndexResource FromPlaylistServiceResource(global::Mubert.PlaylistServiceResource? value) => new PlaylistCustomerServiceIndexResource(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
-            PlaylistServiceResource as object 
+            PlaylistServiceResource as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
-            PlaylistServiceResource?.ToString() 
+            PlaylistServiceResource?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -91,7 +91,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Mubert.PlaylistServiceResource, TResult>? playlistServiceResource = null,
@@ -111,7 +111,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Mubert.PlaylistServiceResource>? playlistServiceResource = null,
@@ -129,7 +129,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Mubert.PlaylistServiceResource>? playlistServiceResource = null,
@@ -147,7 +147,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -166,17 +166,17 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(PlaylistCustomerServiceIndexResource other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Mubert.PlaylistServiceResource?>.Default.Equals(PlaylistServiceResource, other.PlaylistServiceResource) 
+                global::System.Collections.Generic.EqualityComparer<global::Mubert.PlaylistServiceResource?>.Default.Equals(PlaylistServiceResource, other.PlaylistServiceResource)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(PlaylistCustomerServiceIndexResource obj1, PlaylistCustomerServiceIndexResource obj2)
         {
@@ -184,7 +184,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(PlaylistCustomerServiceIndexResource obj1, PlaylistCustomerServiceIndexResource obj2)
         {
@@ -192,7 +192,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

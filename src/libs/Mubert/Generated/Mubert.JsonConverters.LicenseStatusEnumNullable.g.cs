@@ -20,7 +20,7 @@ namespace Mubert.JsonConverters
                     {
                         return global::Mubert.LicenseStatusEnumExtensions.ToEnum(stringValue);
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

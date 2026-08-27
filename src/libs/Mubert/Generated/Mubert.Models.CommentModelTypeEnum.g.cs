@@ -9,15 +9,15 @@ namespace Mubert
     public enum CommentModelTypeEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Company,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Customer,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         License,
     }

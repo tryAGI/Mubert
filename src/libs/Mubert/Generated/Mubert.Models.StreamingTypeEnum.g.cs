@@ -9,11 +9,11 @@ namespace Mubert
     public enum StreamingTypeEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Http,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Webrtc,
     }

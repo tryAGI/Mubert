@@ -9,11 +9,11 @@ namespace Mubert
     public enum LicenseStatusEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Active,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Inactive,
     }

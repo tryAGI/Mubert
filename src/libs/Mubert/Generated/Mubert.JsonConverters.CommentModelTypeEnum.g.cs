@@ -20,7 +20,7 @@ namespace Mubert.JsonConverters
                     {
                         return global::Mubert.CommentModelTypeEnumExtensions.ToEnum(stringValue) ?? default;
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

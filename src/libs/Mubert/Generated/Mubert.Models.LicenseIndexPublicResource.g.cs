@@ -5,12 +5,12 @@
 namespace Mubert
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct LicenseIndexPublicResource : global::System.IEquatable<LicenseIndexPublicResource>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mubert.LicensePublicResource? LicensePublicResource { get; init; }
@@ -19,7 +19,7 @@ namespace Mubert
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(LicensePublicResource))]
@@ -27,7 +27,7 @@ namespace Mubert
         public bool IsLicensePublicResource => LicensePublicResource != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickLicensePublicResource(
 #if NET6_0_OR_GREATER
@@ -40,23 +40,23 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Mubert.LicensePublicResource PickLicensePublicResource() => IsLicensePublicResource
             ? LicensePublicResource!
             : throw new global::System.InvalidOperationException($"Expected union variant 'LicensePublicResource' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator LicenseIndexPublicResource(global::Mubert.LicensePublicResource value) => new LicenseIndexPublicResource((global::Mubert.LicensePublicResource?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Mubert.LicensePublicResource?(LicenseIndexPublicResource @this) => @this.LicensePublicResource;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public LicenseIndexPublicResource(global::Mubert.LicensePublicResource? value)
         {
@@ -64,26 +64,26 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static LicenseIndexPublicResource FromLicensePublicResource(global::Mubert.LicensePublicResource? value) => new LicenseIndexPublicResource(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
-            LicensePublicResource as object 
+            LicensePublicResource as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
-            LicensePublicResource?.ToString() 
+            LicensePublicResource?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -91,7 +91,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Mubert.LicensePublicResource, TResult>? licensePublicResource = null,
@@ -111,7 +111,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Mubert.LicensePublicResource>? licensePublicResource = null,
@@ -129,7 +129,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Mubert.LicensePublicResource>? licensePublicResource = null,
@@ -147,7 +147,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -166,17 +166,17 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(LicenseIndexPublicResource other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Mubert.LicensePublicResource?>.Default.Equals(LicensePublicResource, other.LicensePublicResource) 
+                global::System.Collections.Generic.EqualityComparer<global::Mubert.LicensePublicResource?>.Default.Equals(LicensePublicResource, other.LicensePublicResource)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(LicenseIndexPublicResource obj1, LicenseIndexPublicResource obj2)
         {
@@ -184,7 +184,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(LicenseIndexPublicResource obj1, LicenseIndexPublicResource obj2)
         {
@@ -192,7 +192,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

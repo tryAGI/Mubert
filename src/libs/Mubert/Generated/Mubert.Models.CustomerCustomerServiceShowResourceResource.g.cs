@@ -5,12 +5,12 @@
 namespace Mubert
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct CustomerCustomerServiceShowResourceResource : global::System.IEquatable<CustomerCustomerServiceShowResourceResource>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mubert.CustomerServiceResource? CustomerServiceResource { get; init; }
@@ -19,7 +19,7 @@ namespace Mubert
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CustomerServiceResource))]
@@ -27,7 +27,7 @@ namespace Mubert
         public bool IsCustomerServiceResource => CustomerServiceResource != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickCustomerServiceResource(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Mubert.CustomerServiceResource PickCustomerServiceResource() => IsCustomerServiceResource
             ? CustomerServiceResource!
             : throw new global::System.InvalidOperationException($"Expected union variant 'CustomerServiceResource' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mubert.CustomerCustomerServiceShowResourceResourceVariant2? CustomerCustomerServiceShowResourceResourceVariant2 { get; init; }
@@ -56,7 +56,7 @@ namespace Mubert
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CustomerCustomerServiceShowResourceResourceVariant2))]
@@ -64,7 +64,7 @@ namespace Mubert
         public bool IsCustomerCustomerServiceShowResourceResourceVariant2 => CustomerCustomerServiceShowResourceResourceVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickCustomerCustomerServiceShowResourceResourceVariant2(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Mubert.CustomerCustomerServiceShowResourceResourceVariant2 PickCustomerCustomerServiceShowResourceResourceVariant2() => IsCustomerCustomerServiceShowResourceResourceVariant2
             ? CustomerCustomerServiceShowResourceResourceVariant2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'CustomerCustomerServiceShowResourceResourceVariant2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator CustomerCustomerServiceShowResourceResource(global::Mubert.CustomerServiceResource value) => new CustomerCustomerServiceShowResourceResource((global::Mubert.CustomerServiceResource?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Mubert.CustomerServiceResource?(CustomerCustomerServiceShowResourceResource @this) => @this.CustomerServiceResource;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CustomerCustomerServiceShowResourceResource(global::Mubert.CustomerServiceResource? value)
         {
@@ -101,22 +101,22 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CustomerCustomerServiceShowResourceResource FromCustomerServiceResource(global::Mubert.CustomerServiceResource? value) => new CustomerCustomerServiceShowResourceResource(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator CustomerCustomerServiceShowResourceResource(global::Mubert.CustomerCustomerServiceShowResourceResourceVariant2 value) => new CustomerCustomerServiceShowResourceResource((global::Mubert.CustomerCustomerServiceShowResourceResourceVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Mubert.CustomerCustomerServiceShowResourceResourceVariant2?(CustomerCustomerServiceShowResourceResource @this) => @this.CustomerCustomerServiceShowResourceResourceVariant2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CustomerCustomerServiceShowResourceResource(global::Mubert.CustomerCustomerServiceShowResourceResourceVariant2? value)
         {
@@ -124,12 +124,12 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CustomerCustomerServiceShowResourceResource FromCustomerCustomerServiceShowResourceResourceVariant2(global::Mubert.CustomerCustomerServiceShowResourceResourceVariant2? value) => new CustomerCustomerServiceShowResourceResource(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CustomerCustomerServiceShowResourceResource(
             global::Mubert.CustomerServiceResource? customerServiceResource,
@@ -141,23 +141,23 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             CustomerCustomerServiceShowResourceResourceVariant2 as object ??
-            CustomerServiceResource as object 
+            CustomerServiceResource as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             CustomerServiceResource?.ToString() ??
-            CustomerCustomerServiceShowResourceResourceVariant2?.ToString() 
+            CustomerCustomerServiceShowResourceResourceVariant2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Mubert.CustomerServiceResource, TResult>? customerServiceResource = null,
@@ -190,7 +190,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Mubert.CustomerServiceResource>? customerServiceResource = null,
@@ -214,7 +214,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Mubert.CustomerServiceResource>? customerServiceResource = null,
@@ -237,7 +237,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(CustomerCustomerServiceShowResourceResource other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Mubert.CustomerServiceResource?>.Default.Equals(CustomerServiceResource, other.CustomerServiceResource) &&
-                global::System.Collections.Generic.EqualityComparer<global::Mubert.CustomerCustomerServiceShowResourceResourceVariant2?>.Default.Equals(CustomerCustomerServiceShowResourceResourceVariant2, other.CustomerCustomerServiceShowResourceResourceVariant2) 
+                global::System.Collections.Generic.EqualityComparer<global::Mubert.CustomerCustomerServiceShowResourceResourceVariant2?>.Default.Equals(CustomerCustomerServiceShowResourceResourceVariant2, other.CustomerCustomerServiceShowResourceResourceVariant2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(CustomerCustomerServiceShowResourceResource obj1, CustomerCustomerServiceShowResourceResource obj2)
         {
@@ -277,7 +277,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(CustomerCustomerServiceShowResourceResource obj1, CustomerCustomerServiceShowResourceResource obj2)
         {
@@ -285,7 +285,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

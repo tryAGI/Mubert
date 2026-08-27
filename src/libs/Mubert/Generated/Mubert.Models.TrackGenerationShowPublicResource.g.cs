@@ -5,12 +5,12 @@
 namespace Mubert
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct TrackGenerationShowPublicResource : global::System.IEquatable<TrackGenerationShowPublicResource>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mubert.TrackGenerationPublicResource? TrackGenerationPublicResource { get; init; }
@@ -19,7 +19,7 @@ namespace Mubert
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(TrackGenerationPublicResource))]
@@ -27,7 +27,7 @@ namespace Mubert
         public bool IsTrackGenerationPublicResource => TrackGenerationPublicResource != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickTrackGenerationPublicResource(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Mubert.TrackGenerationPublicResource PickTrackGenerationPublicResource() => IsTrackGenerationPublicResource
             ? TrackGenerationPublicResource!
             : throw new global::System.InvalidOperationException($"Expected union variant 'TrackGenerationPublicResource' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mubert.TrackGenerationShowPublicResourceVariant2? TrackGenerationShowPublicResourceVariant2 { get; init; }
@@ -56,7 +56,7 @@ namespace Mubert
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(TrackGenerationShowPublicResourceVariant2))]
@@ -64,7 +64,7 @@ namespace Mubert
         public bool IsTrackGenerationShowPublicResourceVariant2 => TrackGenerationShowPublicResourceVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickTrackGenerationShowPublicResourceVariant2(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Mubert.TrackGenerationShowPublicResourceVariant2 PickTrackGenerationShowPublicResourceVariant2() => IsTrackGenerationShowPublicResourceVariant2
             ? TrackGenerationShowPublicResourceVariant2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'TrackGenerationShowPublicResourceVariant2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator TrackGenerationShowPublicResource(global::Mubert.TrackGenerationPublicResource value) => new TrackGenerationShowPublicResource((global::Mubert.TrackGenerationPublicResource?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Mubert.TrackGenerationPublicResource?(TrackGenerationShowPublicResource @this) => @this.TrackGenerationPublicResource;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TrackGenerationShowPublicResource(global::Mubert.TrackGenerationPublicResource? value)
         {
@@ -101,22 +101,22 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static TrackGenerationShowPublicResource FromTrackGenerationPublicResource(global::Mubert.TrackGenerationPublicResource? value) => new TrackGenerationShowPublicResource(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator TrackGenerationShowPublicResource(global::Mubert.TrackGenerationShowPublicResourceVariant2 value) => new TrackGenerationShowPublicResource((global::Mubert.TrackGenerationShowPublicResourceVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Mubert.TrackGenerationShowPublicResourceVariant2?(TrackGenerationShowPublicResource @this) => @this.TrackGenerationShowPublicResourceVariant2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TrackGenerationShowPublicResource(global::Mubert.TrackGenerationShowPublicResourceVariant2? value)
         {
@@ -124,12 +124,12 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static TrackGenerationShowPublicResource FromTrackGenerationShowPublicResourceVariant2(global::Mubert.TrackGenerationShowPublicResourceVariant2? value) => new TrackGenerationShowPublicResource(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TrackGenerationShowPublicResource(
             global::Mubert.TrackGenerationPublicResource? trackGenerationPublicResource,
@@ -141,23 +141,23 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             TrackGenerationShowPublicResourceVariant2 as object ??
-            TrackGenerationPublicResource as object 
+            TrackGenerationPublicResource as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             TrackGenerationPublicResource?.ToString() ??
-            TrackGenerationShowPublicResourceVariant2?.ToString() 
+            TrackGenerationShowPublicResourceVariant2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Mubert.TrackGenerationPublicResource, TResult>? trackGenerationPublicResource = null,
@@ -190,7 +190,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Mubert.TrackGenerationPublicResource>? trackGenerationPublicResource = null,
@@ -214,7 +214,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Mubert.TrackGenerationPublicResource>? trackGenerationPublicResource = null,
@@ -237,7 +237,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(TrackGenerationShowPublicResource other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Mubert.TrackGenerationPublicResource?>.Default.Equals(TrackGenerationPublicResource, other.TrackGenerationPublicResource) &&
-                global::System.Collections.Generic.EqualityComparer<global::Mubert.TrackGenerationShowPublicResourceVariant2?>.Default.Equals(TrackGenerationShowPublicResourceVariant2, other.TrackGenerationShowPublicResourceVariant2) 
+                global::System.Collections.Generic.EqualityComparer<global::Mubert.TrackGenerationShowPublicResourceVariant2?>.Default.Equals(TrackGenerationShowPublicResourceVariant2, other.TrackGenerationShowPublicResourceVariant2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(TrackGenerationShowPublicResource obj1, TrackGenerationShowPublicResource obj2)
         {
@@ -277,7 +277,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(TrackGenerationShowPublicResource obj1, TrackGenerationShowPublicResource obj2)
         {
@@ -285,7 +285,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

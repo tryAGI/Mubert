@@ -10,15 +10,15 @@ namespace Mubert
     public enum TrackScaleEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         All,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Major,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Minor,
     }

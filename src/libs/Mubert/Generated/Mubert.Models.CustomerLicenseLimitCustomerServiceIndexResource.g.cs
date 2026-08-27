@@ -5,12 +5,12 @@
 namespace Mubert
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct CustomerLicenseLimitCustomerServiceIndexResource : global::System.IEquatable<CustomerLicenseLimitCustomerServiceIndexResource>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mubert.CustomerLicenseLimitServiceResource? CustomerLicenseLimitServiceResource { get; init; }
@@ -19,7 +19,7 @@ namespace Mubert
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CustomerLicenseLimitServiceResource))]
@@ -27,7 +27,7 @@ namespace Mubert
         public bool IsCustomerLicenseLimitServiceResource => CustomerLicenseLimitServiceResource != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickCustomerLicenseLimitServiceResource(
 #if NET6_0_OR_GREATER
@@ -40,23 +40,23 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Mubert.CustomerLicenseLimitServiceResource PickCustomerLicenseLimitServiceResource() => IsCustomerLicenseLimitServiceResource
             ? CustomerLicenseLimitServiceResource!
             : throw new global::System.InvalidOperationException($"Expected union variant 'CustomerLicenseLimitServiceResource' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator CustomerLicenseLimitCustomerServiceIndexResource(global::Mubert.CustomerLicenseLimitServiceResource value) => new CustomerLicenseLimitCustomerServiceIndexResource((global::Mubert.CustomerLicenseLimitServiceResource?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Mubert.CustomerLicenseLimitServiceResource?(CustomerLicenseLimitCustomerServiceIndexResource @this) => @this.CustomerLicenseLimitServiceResource;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CustomerLicenseLimitCustomerServiceIndexResource(global::Mubert.CustomerLicenseLimitServiceResource? value)
         {
@@ -64,26 +64,26 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CustomerLicenseLimitCustomerServiceIndexResource FromCustomerLicenseLimitServiceResource(global::Mubert.CustomerLicenseLimitServiceResource? value) => new CustomerLicenseLimitCustomerServiceIndexResource(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
-            CustomerLicenseLimitServiceResource as object 
+            CustomerLicenseLimitServiceResource as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
-            CustomerLicenseLimitServiceResource?.ToString() 
+            CustomerLicenseLimitServiceResource?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -91,7 +91,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Mubert.CustomerLicenseLimitServiceResource, TResult>? customerLicenseLimitServiceResource = null,
@@ -111,7 +111,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Mubert.CustomerLicenseLimitServiceResource>? customerLicenseLimitServiceResource = null,
@@ -129,7 +129,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Mubert.CustomerLicenseLimitServiceResource>? customerLicenseLimitServiceResource = null,
@@ -147,7 +147,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -166,17 +166,17 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(CustomerLicenseLimitCustomerServiceIndexResource other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Mubert.CustomerLicenseLimitServiceResource?>.Default.Equals(CustomerLicenseLimitServiceResource, other.CustomerLicenseLimitServiceResource) 
+                global::System.Collections.Generic.EqualityComparer<global::Mubert.CustomerLicenseLimitServiceResource?>.Default.Equals(CustomerLicenseLimitServiceResource, other.CustomerLicenseLimitServiceResource)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(CustomerLicenseLimitCustomerServiceIndexResource obj1, CustomerLicenseLimitCustomerServiceIndexResource obj2)
         {
@@ -184,7 +184,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(CustomerLicenseLimitCustomerServiceIndexResource obj1, CustomerLicenseLimitCustomerServiceIndexResource obj2)
         {
@@ -192,7 +192,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

@@ -4,16 +4,16 @@
 namespace Mubert
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum StripePricePublicResourceType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OneTime,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Recurring,
     }

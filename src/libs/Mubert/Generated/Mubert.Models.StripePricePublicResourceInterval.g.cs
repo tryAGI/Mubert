@@ -4,24 +4,24 @@
 namespace Mubert
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum StripePricePublicResourceInterval
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Day,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Month,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Week,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Year,
     }

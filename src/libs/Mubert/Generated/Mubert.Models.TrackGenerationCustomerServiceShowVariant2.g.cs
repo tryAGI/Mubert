@@ -4,7 +4,7 @@
 namespace Mubert
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class TrackGenerationCustomerServiceShowVariant2
     {
