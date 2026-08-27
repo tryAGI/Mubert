@@ -4,28 +4,28 @@
 namespace Mubert
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum Error403ResponseDiscriminatorCode
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AccessTokenExpired,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CompanyIsNotActive,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CustomerIsNotActive,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Forbidden,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         LicenseExpired,
     }

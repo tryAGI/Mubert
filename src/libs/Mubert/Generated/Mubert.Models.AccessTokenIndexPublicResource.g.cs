@@ -5,12 +5,12 @@
 namespace Mubert
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct AccessTokenIndexPublicResource : global::System.IEquatable<AccessTokenIndexPublicResource>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mubert.AccessTokenPublicResource? AccessTokenPublicResource { get; init; }
@@ -19,7 +19,7 @@ namespace Mubert
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(AccessTokenPublicResource))]
@@ -27,7 +27,7 @@ namespace Mubert
         public bool IsAccessTokenPublicResource => AccessTokenPublicResource != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickAccessTokenPublicResource(
 #if NET6_0_OR_GREATER
@@ -40,23 +40,23 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Mubert.AccessTokenPublicResource PickAccessTokenPublicResource() => IsAccessTokenPublicResource
             ? AccessTokenPublicResource!
             : throw new global::System.InvalidOperationException($"Expected union variant 'AccessTokenPublicResource' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator AccessTokenIndexPublicResource(global::Mubert.AccessTokenPublicResource value) => new AccessTokenIndexPublicResource((global::Mubert.AccessTokenPublicResource?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Mubert.AccessTokenPublicResource?(AccessTokenIndexPublicResource @this) => @this.AccessTokenPublicResource;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AccessTokenIndexPublicResource(global::Mubert.AccessTokenPublicResource? value)
         {
@@ -64,26 +64,26 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static AccessTokenIndexPublicResource FromAccessTokenPublicResource(global::Mubert.AccessTokenPublicResource? value) => new AccessTokenIndexPublicResource(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
-            AccessTokenPublicResource as object 
+            AccessTokenPublicResource as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
-            AccessTokenPublicResource?.ToString() 
+            AccessTokenPublicResource?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -91,7 +91,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Mubert.AccessTokenPublicResource, TResult>? accessTokenPublicResource = null,
@@ -111,7 +111,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Mubert.AccessTokenPublicResource>? accessTokenPublicResource = null,
@@ -129,7 +129,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Mubert.AccessTokenPublicResource>? accessTokenPublicResource = null,
@@ -147,7 +147,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -166,17 +166,17 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(AccessTokenIndexPublicResource other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Mubert.AccessTokenPublicResource?>.Default.Equals(AccessTokenPublicResource, other.AccessTokenPublicResource) 
+                global::System.Collections.Generic.EqualityComparer<global::Mubert.AccessTokenPublicResource?>.Default.Equals(AccessTokenPublicResource, other.AccessTokenPublicResource)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(AccessTokenIndexPublicResource obj1, AccessTokenIndexPublicResource obj2)
         {
@@ -184,7 +184,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(AccessTokenIndexPublicResource obj1, AccessTokenIndexPublicResource obj2)
         {
@@ -192,7 +192,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

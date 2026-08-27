@@ -5,12 +5,12 @@
 namespace Mubert
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct CompanyCustomerServiceIndexResource : global::System.IEquatable<CompanyCustomerServiceIndexResource>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mubert.CompanyServiceResource? CompanyServiceResource { get; init; }
@@ -19,7 +19,7 @@ namespace Mubert
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CompanyServiceResource))]
@@ -27,7 +27,7 @@ namespace Mubert
         public bool IsCompanyServiceResource => CompanyServiceResource != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickCompanyServiceResource(
 #if NET6_0_OR_GREATER
@@ -40,23 +40,23 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Mubert.CompanyServiceResource PickCompanyServiceResource() => IsCompanyServiceResource
             ? CompanyServiceResource!
             : throw new global::System.InvalidOperationException($"Expected union variant 'CompanyServiceResource' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator CompanyCustomerServiceIndexResource(global::Mubert.CompanyServiceResource value) => new CompanyCustomerServiceIndexResource((global::Mubert.CompanyServiceResource?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Mubert.CompanyServiceResource?(CompanyCustomerServiceIndexResource @this) => @this.CompanyServiceResource;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CompanyCustomerServiceIndexResource(global::Mubert.CompanyServiceResource? value)
         {
@@ -64,26 +64,26 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CompanyCustomerServiceIndexResource FromCompanyServiceResource(global::Mubert.CompanyServiceResource? value) => new CompanyCustomerServiceIndexResource(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
-            CompanyServiceResource as object 
+            CompanyServiceResource as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
-            CompanyServiceResource?.ToString() 
+            CompanyServiceResource?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -91,7 +91,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Mubert.CompanyServiceResource, TResult>? companyServiceResource = null,
@@ -111,7 +111,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Mubert.CompanyServiceResource>? companyServiceResource = null,
@@ -129,7 +129,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Mubert.CompanyServiceResource>? companyServiceResource = null,
@@ -147,7 +147,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -166,17 +166,17 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(CompanyCustomerServiceIndexResource other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Mubert.CompanyServiceResource?>.Default.Equals(CompanyServiceResource, other.CompanyServiceResource) 
+                global::System.Collections.Generic.EqualityComparer<global::Mubert.CompanyServiceResource?>.Default.Equals(CompanyServiceResource, other.CompanyServiceResource)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(CompanyCustomerServiceIndexResource obj1, CompanyCustomerServiceIndexResource obj2)
         {
@@ -184,7 +184,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(CompanyCustomerServiceIndexResource obj1, CompanyCustomerServiceIndexResource obj2)
         {
@@ -192,7 +192,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

@@ -5,12 +5,12 @@
 namespace Mubert
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct CompanyShowPublicResource : global::System.IEquatable<CompanyShowPublicResource>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mubert.CompanyPublicResource? CompanyPublicResource { get; init; }
@@ -19,7 +19,7 @@ namespace Mubert
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CompanyPublicResource))]
@@ -27,7 +27,7 @@ namespace Mubert
         public bool IsCompanyPublicResource => CompanyPublicResource != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickCompanyPublicResource(
 #if NET6_0_OR_GREATER
@@ -40,23 +40,23 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Mubert.CompanyPublicResource PickCompanyPublicResource() => IsCompanyPublicResource
             ? CompanyPublicResource!
             : throw new global::System.InvalidOperationException($"Expected union variant 'CompanyPublicResource' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator CompanyShowPublicResource(global::Mubert.CompanyPublicResource value) => new CompanyShowPublicResource((global::Mubert.CompanyPublicResource?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Mubert.CompanyPublicResource?(CompanyShowPublicResource @this) => @this.CompanyPublicResource;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CompanyShowPublicResource(global::Mubert.CompanyPublicResource? value)
         {
@@ -64,26 +64,26 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CompanyShowPublicResource FromCompanyPublicResource(global::Mubert.CompanyPublicResource? value) => new CompanyShowPublicResource(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
-            CompanyPublicResource as object 
+            CompanyPublicResource as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
-            CompanyPublicResource?.ToString() 
+            CompanyPublicResource?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -91,7 +91,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Mubert.CompanyPublicResource, TResult>? companyPublicResource = null,
@@ -111,7 +111,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Mubert.CompanyPublicResource>? companyPublicResource = null,
@@ -129,7 +129,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Mubert.CompanyPublicResource>? companyPublicResource = null,
@@ -147,7 +147,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -166,17 +166,17 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(CompanyShowPublicResource other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Mubert.CompanyPublicResource?>.Default.Equals(CompanyPublicResource, other.CompanyPublicResource) 
+                global::System.Collections.Generic.EqualityComparer<global::Mubert.CompanyPublicResource?>.Default.Equals(CompanyPublicResource, other.CompanyPublicResource)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(CompanyShowPublicResource obj1, CompanyShowPublicResource obj2)
         {
@@ -184,7 +184,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(CompanyShowPublicResource obj1, CompanyShowPublicResource obj2)
         {
@@ -192,7 +192,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

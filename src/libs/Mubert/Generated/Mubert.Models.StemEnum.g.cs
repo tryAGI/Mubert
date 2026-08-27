@@ -10,23 +10,23 @@ namespace Mubert
     public enum StemEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Bass,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Drums,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Fx,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Leads,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Vocals,
     }

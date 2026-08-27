@@ -138,7 +138,7 @@ namespace Mubert
                          __authorization.Location == "Header")
                 {
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
-                } 
+                }
             }
                 global::Mubert.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
@@ -441,7 +441,7 @@ namespace Mubert
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // 
+                            //
                             if ((int)__response.StatusCode == 422)
                             {
                                 string? __content_422 = null;

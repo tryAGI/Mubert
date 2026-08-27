@@ -5,12 +5,12 @@
 namespace Mubert
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct TrackGenerationCustomerServiceShow : global::System.IEquatable<TrackGenerationCustomerServiceShow>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mubert.TrackGenerationServiceResource? Resource { get; init; }
@@ -19,7 +19,7 @@ namespace Mubert
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Resource))]
@@ -27,7 +27,7 @@ namespace Mubert
         public bool IsResource => Resource != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickResource(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Mubert.TrackGenerationServiceResource PickResource() => IsResource
             ? Resource!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Resource' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mubert.TrackGenerationCustomerServiceShowVariant2? TrackGenerationCustomerServiceShowVariant2 { get; init; }
@@ -56,7 +56,7 @@ namespace Mubert
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(TrackGenerationCustomerServiceShowVariant2))]
@@ -64,7 +64,7 @@ namespace Mubert
         public bool IsTrackGenerationCustomerServiceShowVariant2 => TrackGenerationCustomerServiceShowVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickTrackGenerationCustomerServiceShowVariant2(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Mubert.TrackGenerationCustomerServiceShowVariant2 PickTrackGenerationCustomerServiceShowVariant2() => IsTrackGenerationCustomerServiceShowVariant2
             ? TrackGenerationCustomerServiceShowVariant2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'TrackGenerationCustomerServiceShowVariant2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator TrackGenerationCustomerServiceShow(global::Mubert.TrackGenerationServiceResource value) => new TrackGenerationCustomerServiceShow((global::Mubert.TrackGenerationServiceResource?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Mubert.TrackGenerationServiceResource?(TrackGenerationCustomerServiceShow @this) => @this.Resource;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TrackGenerationCustomerServiceShow(global::Mubert.TrackGenerationServiceResource? value)
         {
@@ -101,22 +101,22 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static TrackGenerationCustomerServiceShow FromResource(global::Mubert.TrackGenerationServiceResource? value) => new TrackGenerationCustomerServiceShow(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator TrackGenerationCustomerServiceShow(global::Mubert.TrackGenerationCustomerServiceShowVariant2 value) => new TrackGenerationCustomerServiceShow((global::Mubert.TrackGenerationCustomerServiceShowVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Mubert.TrackGenerationCustomerServiceShowVariant2?(TrackGenerationCustomerServiceShow @this) => @this.TrackGenerationCustomerServiceShowVariant2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TrackGenerationCustomerServiceShow(global::Mubert.TrackGenerationCustomerServiceShowVariant2? value)
         {
@@ -124,12 +124,12 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static TrackGenerationCustomerServiceShow FromTrackGenerationCustomerServiceShowVariant2(global::Mubert.TrackGenerationCustomerServiceShowVariant2? value) => new TrackGenerationCustomerServiceShow(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TrackGenerationCustomerServiceShow(
             global::Mubert.TrackGenerationServiceResource? resource,
@@ -141,23 +141,23 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             TrackGenerationCustomerServiceShowVariant2 as object ??
-            Resource as object 
+            Resource as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Resource?.ToString() ??
-            TrackGenerationCustomerServiceShowVariant2?.ToString() 
+            TrackGenerationCustomerServiceShowVariant2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Mubert.TrackGenerationServiceResource, TResult>? resource = null,
@@ -190,7 +190,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Mubert.TrackGenerationServiceResource>? resource = null,
@@ -214,7 +214,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Mubert.TrackGenerationServiceResource>? resource = null,
@@ -237,7 +237,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(TrackGenerationCustomerServiceShow other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Mubert.TrackGenerationServiceResource?>.Default.Equals(Resource, other.Resource) &&
-                global::System.Collections.Generic.EqualityComparer<global::Mubert.TrackGenerationCustomerServiceShowVariant2?>.Default.Equals(TrackGenerationCustomerServiceShowVariant2, other.TrackGenerationCustomerServiceShowVariant2) 
+                global::System.Collections.Generic.EqualityComparer<global::Mubert.TrackGenerationCustomerServiceShowVariant2?>.Default.Equals(TrackGenerationCustomerServiceShowVariant2, other.TrackGenerationCustomerServiceShowVariant2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(TrackGenerationCustomerServiceShow obj1, TrackGenerationCustomerServiceShow obj2)
         {
@@ -277,7 +277,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(TrackGenerationCustomerServiceShow obj1, TrackGenerationCustomerServiceShow obj2)
         {
@@ -285,7 +285,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

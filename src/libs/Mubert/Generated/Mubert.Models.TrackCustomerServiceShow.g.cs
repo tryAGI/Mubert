@@ -5,12 +5,12 @@
 namespace Mubert
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct TrackCustomerServiceShow : global::System.IEquatable<TrackCustomerServiceShow>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mubert.TrackServiceResource? Resource { get; init; }
@@ -19,7 +19,7 @@ namespace Mubert
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Resource))]
@@ -27,7 +27,7 @@ namespace Mubert
         public bool IsResource => Resource != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickResource(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Mubert.TrackServiceResource PickResource() => IsResource
             ? Resource!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Resource' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mubert.TrackCustomerServiceShowVariant2? TrackCustomerServiceShowVariant2 { get; init; }
@@ -56,7 +56,7 @@ namespace Mubert
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(TrackCustomerServiceShowVariant2))]
@@ -64,7 +64,7 @@ namespace Mubert
         public bool IsTrackCustomerServiceShowVariant2 => TrackCustomerServiceShowVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickTrackCustomerServiceShowVariant2(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Mubert.TrackCustomerServiceShowVariant2 PickTrackCustomerServiceShowVariant2() => IsTrackCustomerServiceShowVariant2
             ? TrackCustomerServiceShowVariant2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'TrackCustomerServiceShowVariant2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator TrackCustomerServiceShow(global::Mubert.TrackServiceResource value) => new TrackCustomerServiceShow((global::Mubert.TrackServiceResource?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Mubert.TrackServiceResource?(TrackCustomerServiceShow @this) => @this.Resource;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TrackCustomerServiceShow(global::Mubert.TrackServiceResource? value)
         {
@@ -101,22 +101,22 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static TrackCustomerServiceShow FromResource(global::Mubert.TrackServiceResource? value) => new TrackCustomerServiceShow(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator TrackCustomerServiceShow(global::Mubert.TrackCustomerServiceShowVariant2 value) => new TrackCustomerServiceShow((global::Mubert.TrackCustomerServiceShowVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Mubert.TrackCustomerServiceShowVariant2?(TrackCustomerServiceShow @this) => @this.TrackCustomerServiceShowVariant2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TrackCustomerServiceShow(global::Mubert.TrackCustomerServiceShowVariant2? value)
         {
@@ -124,12 +124,12 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static TrackCustomerServiceShow FromTrackCustomerServiceShowVariant2(global::Mubert.TrackCustomerServiceShowVariant2? value) => new TrackCustomerServiceShow(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TrackCustomerServiceShow(
             global::Mubert.TrackServiceResource? resource,
@@ -141,23 +141,23 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             TrackCustomerServiceShowVariant2 as object ??
-            Resource as object 
+            Resource as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Resource?.ToString() ??
-            TrackCustomerServiceShowVariant2?.ToString() 
+            TrackCustomerServiceShowVariant2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Mubert.TrackServiceResource, TResult>? resource = null,
@@ -190,7 +190,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Mubert.TrackServiceResource>? resource = null,
@@ -214,7 +214,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Mubert.TrackServiceResource>? resource = null,
@@ -237,7 +237,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(TrackCustomerServiceShow other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Mubert.TrackServiceResource?>.Default.Equals(Resource, other.Resource) &&
-                global::System.Collections.Generic.EqualityComparer<global::Mubert.TrackCustomerServiceShowVariant2?>.Default.Equals(TrackCustomerServiceShowVariant2, other.TrackCustomerServiceShowVariant2) 
+                global::System.Collections.Generic.EqualityComparer<global::Mubert.TrackCustomerServiceShowVariant2?>.Default.Equals(TrackCustomerServiceShowVariant2, other.TrackCustomerServiceShowVariant2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(TrackCustomerServiceShow obj1, TrackCustomerServiceShow obj2)
         {
@@ -277,7 +277,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(TrackCustomerServiceShow obj1, TrackCustomerServiceShow obj2)
         {
@@ -285,7 +285,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

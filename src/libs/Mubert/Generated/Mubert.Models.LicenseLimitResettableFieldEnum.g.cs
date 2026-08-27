@@ -9,43 +9,43 @@ namespace Mubert
     public enum LicenseLimitResettableFieldEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CustomersCount,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DailyStreamingDuration,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DailyTracksCount,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DailyTracksDuration,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MonthlyStreamingDuration,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MonthlyTracksCount,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MonthlyTracksDuration,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TotalStreamingDuration,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TotalTracksCount,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TotalTracksDuration,
     }

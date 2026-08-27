@@ -9,15 +9,15 @@ namespace Mubert
     public enum LicenseLimitStreamingLimitTypeEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Daily,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Monthly,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Total,
     }

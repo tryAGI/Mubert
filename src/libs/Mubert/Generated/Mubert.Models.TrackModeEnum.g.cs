@@ -10,19 +10,19 @@ namespace Mubert
     public enum TrackModeEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Jingle,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Loop,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Mix,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Track,
     }

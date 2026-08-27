@@ -5,12 +5,12 @@
 namespace Mubert
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct TrackStoreIndexPublicResource : global::System.IEquatable<TrackStoreIndexPublicResource>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mubert.TrackStorePublicResource? TrackStorePublicResource { get; init; }
@@ -19,7 +19,7 @@ namespace Mubert
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(TrackStorePublicResource))]
@@ -27,7 +27,7 @@ namespace Mubert
         public bool IsTrackStorePublicResource => TrackStorePublicResource != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickTrackStorePublicResource(
 #if NET6_0_OR_GREATER
@@ -40,23 +40,23 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Mubert.TrackStorePublicResource PickTrackStorePublicResource() => IsTrackStorePublicResource
             ? TrackStorePublicResource!
             : throw new global::System.InvalidOperationException($"Expected union variant 'TrackStorePublicResource' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator TrackStoreIndexPublicResource(global::Mubert.TrackStorePublicResource value) => new TrackStoreIndexPublicResource((global::Mubert.TrackStorePublicResource?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Mubert.TrackStorePublicResource?(TrackStoreIndexPublicResource @this) => @this.TrackStorePublicResource;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TrackStoreIndexPublicResource(global::Mubert.TrackStorePublicResource? value)
         {
@@ -64,26 +64,26 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static TrackStoreIndexPublicResource FromTrackStorePublicResource(global::Mubert.TrackStorePublicResource? value) => new TrackStoreIndexPublicResource(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
-            TrackStorePublicResource as object 
+            TrackStorePublicResource as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
-            TrackStorePublicResource?.ToString() 
+            TrackStorePublicResource?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -91,7 +91,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Mubert.TrackStorePublicResource, TResult>? trackStorePublicResource = null,
@@ -111,7 +111,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Mubert.TrackStorePublicResource>? trackStorePublicResource = null,
@@ -129,7 +129,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Mubert.TrackStorePublicResource>? trackStorePublicResource = null,
@@ -147,7 +147,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -166,17 +166,17 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(TrackStoreIndexPublicResource other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Mubert.TrackStorePublicResource?>.Default.Equals(TrackStorePublicResource, other.TrackStorePublicResource) 
+                global::System.Collections.Generic.EqualityComparer<global::Mubert.TrackStorePublicResource?>.Default.Equals(TrackStorePublicResource, other.TrackStorePublicResource)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(TrackStoreIndexPublicResource obj1, TrackStoreIndexPublicResource obj2)
         {
@@ -184,7 +184,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(TrackStoreIndexPublicResource obj1, TrackStoreIndexPublicResource obj2)
         {
@@ -192,7 +192,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

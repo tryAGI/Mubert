@@ -9,11 +9,11 @@ namespace Mubert
     public enum GetPublicMusicLibraryTracksOrder
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Asc,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Desc,
     }

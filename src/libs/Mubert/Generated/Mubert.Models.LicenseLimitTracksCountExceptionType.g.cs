@@ -10,15 +10,15 @@ namespace Mubert
     public enum LicenseLimitTracksCountExceptionType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Daily,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Monthly,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Total,
     }

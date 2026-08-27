@@ -10,11 +10,11 @@ namespace Mubert
     public enum TrackFormatEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Mp3,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Wav,
     }

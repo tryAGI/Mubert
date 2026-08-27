@@ -9,35 +9,35 @@ namespace Mubert
     public enum StripeSubscriptionStatusEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Active,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Canceled,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Incomplete,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         IncompleteExpired,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PastDue,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Paused,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Trialing,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Unpaid,
     }

@@ -9,11 +9,11 @@ namespace Mubert
     public enum OrderDirectionEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Asc,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Desc,
     }

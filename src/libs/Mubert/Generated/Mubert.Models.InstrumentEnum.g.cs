@@ -10,51 +10,51 @@ namespace Mubert
     public enum InstrumentEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Bass,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Claps,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Drums,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Fx,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Hats,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Impact,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Leads,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Mids,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Pads,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Percs,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Riser,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Vocals,
     }

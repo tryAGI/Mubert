@@ -9,11 +9,11 @@ namespace Mubert
     public enum StreamingLoopStateEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Off,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         On,
     }

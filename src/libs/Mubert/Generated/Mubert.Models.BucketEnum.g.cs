@@ -10,11 +10,11 @@ namespace Mubert
     public enum BucketEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InternalEuMubertCom,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         StaticEuMubertCom,
     }

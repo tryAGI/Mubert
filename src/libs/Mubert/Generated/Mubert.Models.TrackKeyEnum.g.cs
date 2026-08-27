@@ -10,55 +10,55 @@ namespace Mubert
     public enum TrackKeyEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         A,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         A_,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         All,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         B,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         C,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         C_,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         D,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         D_,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         E,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         F,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         F_,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         G,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         G_,
     }

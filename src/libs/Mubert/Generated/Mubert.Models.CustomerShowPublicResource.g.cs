@@ -5,12 +5,12 @@
 namespace Mubert
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct CustomerShowPublicResource : global::System.IEquatable<CustomerShowPublicResource>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mubert.CustomerPublicResource? CustomerPublicResource { get; init; }
@@ -19,7 +19,7 @@ namespace Mubert
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CustomerPublicResource))]
@@ -27,7 +27,7 @@ namespace Mubert
         public bool IsCustomerPublicResource => CustomerPublicResource != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickCustomerPublicResource(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Mubert.CustomerPublicResource PickCustomerPublicResource() => IsCustomerPublicResource
             ? CustomerPublicResource!
             : throw new global::System.InvalidOperationException($"Expected union variant 'CustomerPublicResource' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mubert.CustomerShowPublicResourceVariant2? CustomerShowPublicResourceVariant2 { get; init; }
@@ -56,7 +56,7 @@ namespace Mubert
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CustomerShowPublicResourceVariant2))]
@@ -64,7 +64,7 @@ namespace Mubert
         public bool IsCustomerShowPublicResourceVariant2 => CustomerShowPublicResourceVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickCustomerShowPublicResourceVariant2(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Mubert.CustomerShowPublicResourceVariant2 PickCustomerShowPublicResourceVariant2() => IsCustomerShowPublicResourceVariant2
             ? CustomerShowPublicResourceVariant2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'CustomerShowPublicResourceVariant2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator CustomerShowPublicResource(global::Mubert.CustomerPublicResource value) => new CustomerShowPublicResource((global::Mubert.CustomerPublicResource?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Mubert.CustomerPublicResource?(CustomerShowPublicResource @this) => @this.CustomerPublicResource;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CustomerShowPublicResource(global::Mubert.CustomerPublicResource? value)
         {
@@ -101,22 +101,22 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CustomerShowPublicResource FromCustomerPublicResource(global::Mubert.CustomerPublicResource? value) => new CustomerShowPublicResource(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator CustomerShowPublicResource(global::Mubert.CustomerShowPublicResourceVariant2 value) => new CustomerShowPublicResource((global::Mubert.CustomerShowPublicResourceVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Mubert.CustomerShowPublicResourceVariant2?(CustomerShowPublicResource @this) => @this.CustomerShowPublicResourceVariant2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CustomerShowPublicResource(global::Mubert.CustomerShowPublicResourceVariant2? value)
         {
@@ -124,12 +124,12 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CustomerShowPublicResource FromCustomerShowPublicResourceVariant2(global::Mubert.CustomerShowPublicResourceVariant2? value) => new CustomerShowPublicResource(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CustomerShowPublicResource(
             global::Mubert.CustomerPublicResource? customerPublicResource,
@@ -141,23 +141,23 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             CustomerShowPublicResourceVariant2 as object ??
-            CustomerPublicResource as object 
+            CustomerPublicResource as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             CustomerPublicResource?.ToString() ??
-            CustomerShowPublicResourceVariant2?.ToString() 
+            CustomerShowPublicResourceVariant2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Mubert.CustomerPublicResource, TResult>? customerPublicResource = null,
@@ -190,7 +190,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Mubert.CustomerPublicResource>? customerPublicResource = null,
@@ -214,7 +214,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Mubert.CustomerPublicResource>? customerPublicResource = null,
@@ -237,7 +237,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(CustomerShowPublicResource other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Mubert.CustomerPublicResource?>.Default.Equals(CustomerPublicResource, other.CustomerPublicResource) &&
-                global::System.Collections.Generic.EqualityComparer<global::Mubert.CustomerShowPublicResourceVariant2?>.Default.Equals(CustomerShowPublicResourceVariant2, other.CustomerShowPublicResourceVariant2) 
+                global::System.Collections.Generic.EqualityComparer<global::Mubert.CustomerShowPublicResourceVariant2?>.Default.Equals(CustomerShowPublicResourceVariant2, other.CustomerShowPublicResourceVariant2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(CustomerShowPublicResource obj1, CustomerShowPublicResource obj2)
         {
@@ -277,7 +277,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(CustomerShowPublicResource obj1, CustomerShowPublicResource obj2)
         {
@@ -285,7 +285,7 @@ namespace Mubert
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {
