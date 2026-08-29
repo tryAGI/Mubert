@@ -242,6 +242,7 @@ namespace Mubert
             typeof(global::Mubert.JsonConverters.UnixTimestampJsonConverter),
         })]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Mubert.JsonSerializerContextTypes))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<object>), TypeInfoPropertyName = "SystemCollectionsGeneric_ObjectList")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Mubert.CommentModelTypeEnum), TypeInfoPropertyName = "CommentModelTypeEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Mubert.CompanyStatusEnum), TypeInfoPropertyName = "CompanyStatusEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Mubert.CustomerStatusEnum), TypeInfoPropertyName = "CustomerStatusEnum2")]

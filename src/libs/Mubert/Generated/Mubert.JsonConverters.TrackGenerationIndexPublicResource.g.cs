@@ -17,65 +17,20 @@ namespace Mubert.JsonConverters
 
             using var __jsonDocument = global::System.Text.Json.JsonDocument.ParseValue(ref reader);
             var __rawJson = __jsonDocument.RootElement.GetRawText();
-            var __jsonProps = new global::System.Collections.Generic.HashSet<string>();
-            if (__jsonDocument.RootElement.ValueKind == global::System.Text.Json.JsonValueKind.Object)
-            {
-                foreach (var __jsonProp in __jsonDocument.RootElement.EnumerateObject())
-                {
-                    __jsonProps.Add(__jsonProp.Name);
-
-                }
-            }
-
-            var __score0 = 0;
-            if (__jsonProps.Contains("bitrate")) __score0++;
-            if (__jsonProps.Contains("created_at")) __score0++;
-            if (__jsonProps.Contains("expired_at")) __score0++;
-            if (__jsonProps.Contains("format")) __score0++;
-            if (__jsonProps.Contains("generated_at")) __score0++;
-            if (__jsonProps.Contains("session_id")) __score0++;
-            if (__jsonProps.Contains("status")) __score0++;
-            var __bestScore = 0;
-            var __bestIndex = -1;
-            if (__score0 > __bestScore) { __bestScore = __score0; __bestIndex = 0; }
 
             global::Mubert.TrackGenerationPublicResource? trackGenerationPublicResource = default;
-            if (__bestIndex >= 0)
+            try
             {
-                if (__bestIndex == 0)
-                {
-                    try
-                    {
-                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Mubert.TrackGenerationPublicResource), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Mubert.TrackGenerationPublicResource> ??
-                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Mubert.TrackGenerationPublicResource).Name}");
-                        trackGenerationPublicResource = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                    }
-                    catch (global::System.Text.Json.JsonException)
-                    {
-                    }
-                    catch (global::System.InvalidOperationException)
-                    {
-                    }
-                }
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Mubert.TrackGenerationPublicResource), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Mubert.TrackGenerationPublicResource> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Mubert.TrackGenerationPublicResource).Name}");
+                trackGenerationPublicResource = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
             }
-
-            if (trackGenerationPublicResource == null)
+            catch (global::System.Text.Json.JsonException)
             {
-                try
-                {
-
-                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Mubert.TrackGenerationPublicResource), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Mubert.TrackGenerationPublicResource> ??
-                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Mubert.TrackGenerationPublicResource).Name}");
-                    trackGenerationPublicResource = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                }
-                catch (global::System.Text.Json.JsonException)
-                {
-                }
-                catch (global::System.InvalidOperationException)
-                {
-                }
             }
-
+            catch (global::System.InvalidOperationException)
+            {
+            }
             var __value = new global::Mubert.TrackGenerationIndexPublicResource(
                 trackGenerationPublicResource
                 );
@@ -92,12 +47,28 @@ namespace Mubert.JsonConverters
             options = options ?? throw new global::System.ArgumentNullException(nameof(options));
             var typeInfoResolver = options.TypeInfoResolver ?? throw new global::System.InvalidOperationException("TypeInfoResolver is not set.");
 
+
+            writer.WriteStartObject();
+            var __writtenPropertyNames = new global::System.Collections.Generic.HashSet<string>(global::System.StringComparer.Ordinal);
             if (value.IsTrackGenerationPublicResource)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Mubert.TrackGenerationPublicResource), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Mubert.TrackGenerationPublicResource?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Mubert.TrackGenerationPublicResource).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.TrackGenerationPublicResource!, typeInfo);
+                var __element0 = global::System.Text.Json.JsonSerializer.SerializeToElement(value.TrackGenerationPublicResource!, typeInfo);
+                if (__element0.ValueKind != global::System.Text.Json.JsonValueKind.Object)
+                {
+                    throw new global::System.Text.Json.JsonException("AllOf values must serialize as JSON objects.");
+                }
+
+                foreach (var __property in __element0.EnumerateObject())
+                {
+                    if (__writtenPropertyNames.Add(__property.Name))
+                    {
+                        __property.WriteTo(writer);
+                    }
+                }
             }
+            writer.WriteEndObject();
         }
     }
 }
