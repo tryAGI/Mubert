@@ -42,8 +42,8 @@ namespace Mubert
         /// <summary>
         ///
         /// </summary>
-        public global::Mubert.TrackStoreServiceResource PickTrackStoreServiceResource() => IsTrackStoreServiceResource
-            ? TrackStoreServiceResource!
+        public global::Mubert.TrackStoreServiceResource PickTrackStoreServiceResource() => TrackStoreServiceResource is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TrackStoreServiceResource' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -102,9 +102,9 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsTrackStoreServiceResource && trackStoreServiceResource != null)
+            if (TrackStoreServiceResource is { } __value0 && trackStoreServiceResource != null)
             {
-                return trackStoreServiceResource(TrackStoreServiceResource!);
+                return trackStoreServiceResource(__value0);
             }
 
             return default(TResult);
@@ -122,9 +122,9 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsTrackStoreServiceResource)
+            if (TrackStoreServiceResource is { } __value0)
             {
-                trackStoreServiceResource?.Invoke(TrackStoreServiceResource!);
+                trackStoreServiceResource?.Invoke(__value0);
             }
         }
 
@@ -140,9 +140,9 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsTrackStoreServiceResource)
+            if (TrackStoreServiceResource is { } __value0)
             {
-                trackStoreServiceResource?.Invoke(TrackStoreServiceResource!);
+                trackStoreServiceResource?.Invoke(__value0);
             }
         }
 

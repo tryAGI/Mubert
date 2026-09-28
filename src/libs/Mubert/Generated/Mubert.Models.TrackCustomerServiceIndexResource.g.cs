@@ -42,8 +42,8 @@ namespace Mubert
         /// <summary>
         ///
         /// </summary>
-        public global::Mubert.TrackServiceResource PickTrackServiceResource() => IsTrackServiceResource
-            ? TrackServiceResource!
+        public global::Mubert.TrackServiceResource PickTrackServiceResource() => TrackServiceResource is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TrackServiceResource' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Mubert
         /// <summary>
         ///
         /// </summary>
-        public global::Mubert.TrackCustomerServiceIndexResourceVariant2 PickTrackCustomerServiceIndexResourceVariant2() => IsTrackCustomerServiceIndexResourceVariant2
-            ? TrackCustomerServiceIndexResourceVariant2!
+        public global::Mubert.TrackCustomerServiceIndexResourceVariant2 PickTrackCustomerServiceIndexResourceVariant2() => TrackCustomerServiceIndexResourceVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TrackCustomerServiceIndexResourceVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsTrackServiceResource && trackServiceResource != null)
+            if (TrackServiceResource is { } __value0 && trackServiceResource != null)
             {
-                return trackServiceResource(TrackServiceResource!);
+                return trackServiceResource(__value0);
             }
-            else if (IsTrackCustomerServiceIndexResourceVariant2 && trackCustomerServiceIndexResourceVariant2 != null)
+            else if (TrackCustomerServiceIndexResourceVariant2 is { } __value1 && trackCustomerServiceIndexResourceVariant2 != null)
             {
-                return trackCustomerServiceIndexResourceVariant2(TrackCustomerServiceIndexResourceVariant2!);
+                return trackCustomerServiceIndexResourceVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsTrackServiceResource)
+            if (TrackServiceResource is { } __value0)
             {
-                trackServiceResource?.Invoke(TrackServiceResource!);
+                trackServiceResource?.Invoke(__value0);
             }
-            else if (IsTrackCustomerServiceIndexResourceVariant2)
+            else if (TrackCustomerServiceIndexResourceVariant2 is { } __value1)
             {
-                trackCustomerServiceIndexResourceVariant2?.Invoke(TrackCustomerServiceIndexResourceVariant2!);
+                trackCustomerServiceIndexResourceVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsTrackServiceResource)
+            if (TrackServiceResource is { } __value0)
             {
-                trackServiceResource?.Invoke(TrackServiceResource!);
+                trackServiceResource?.Invoke(__value0);
             }
-            else if (IsTrackCustomerServiceIndexResourceVariant2)
+            else if (TrackCustomerServiceIndexResourceVariant2 is { } __value1)
             {
-                trackCustomerServiceIndexResourceVariant2?.Invoke(TrackCustomerServiceIndexResourceVariant2!);
+                trackCustomerServiceIndexResourceVariant2?.Invoke(__value1);
             }
         }
 

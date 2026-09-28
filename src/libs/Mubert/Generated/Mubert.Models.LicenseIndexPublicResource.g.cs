@@ -42,8 +42,8 @@ namespace Mubert
         /// <summary>
         ///
         /// </summary>
-        public global::Mubert.LicensePublicResource PickLicensePublicResource() => IsLicensePublicResource
-            ? LicensePublicResource!
+        public global::Mubert.LicensePublicResource PickLicensePublicResource() => LicensePublicResource is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'LicensePublicResource' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -102,9 +102,9 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsLicensePublicResource && licensePublicResource != null)
+            if (LicensePublicResource is { } __value0 && licensePublicResource != null)
             {
-                return licensePublicResource(LicensePublicResource!);
+                return licensePublicResource(__value0);
             }
 
             return default(TResult);
@@ -122,9 +122,9 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsLicensePublicResource)
+            if (LicensePublicResource is { } __value0)
             {
-                licensePublicResource?.Invoke(LicensePublicResource!);
+                licensePublicResource?.Invoke(__value0);
             }
         }
 
@@ -140,9 +140,9 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsLicensePublicResource)
+            if (LicensePublicResource is { } __value0)
             {
-                licensePublicResource?.Invoke(LicensePublicResource!);
+                licensePublicResource?.Invoke(__value0);
             }
         }
 

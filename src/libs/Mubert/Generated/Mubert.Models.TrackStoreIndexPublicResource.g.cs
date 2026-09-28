@@ -42,8 +42,8 @@ namespace Mubert
         /// <summary>
         ///
         /// </summary>
-        public global::Mubert.TrackStorePublicResource PickTrackStorePublicResource() => IsTrackStorePublicResource
-            ? TrackStorePublicResource!
+        public global::Mubert.TrackStorePublicResource PickTrackStorePublicResource() => TrackStorePublicResource is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TrackStorePublicResource' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -102,9 +102,9 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsTrackStorePublicResource && trackStorePublicResource != null)
+            if (TrackStorePublicResource is { } __value0 && trackStorePublicResource != null)
             {
-                return trackStorePublicResource(TrackStorePublicResource!);
+                return trackStorePublicResource(__value0);
             }
 
             return default(TResult);
@@ -122,9 +122,9 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsTrackStorePublicResource)
+            if (TrackStorePublicResource is { } __value0)
             {
-                trackStorePublicResource?.Invoke(TrackStorePublicResource!);
+                trackStorePublicResource?.Invoke(__value0);
             }
         }
 
@@ -140,9 +140,9 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsTrackStorePublicResource)
+            if (TrackStorePublicResource is { } __value0)
             {
-                trackStorePublicResource?.Invoke(TrackStorePublicResource!);
+                trackStorePublicResource?.Invoke(__value0);
             }
         }
 

@@ -42,8 +42,8 @@ namespace Mubert
         /// <summary>
         ///
         /// </summary>
-        public global::Mubert.CustomerLicenseLimitServiceResource PickResource() => IsResource
-            ? Resource!
+        public global::Mubert.CustomerLicenseLimitServiceResource PickResource() => Resource is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Resource' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -102,9 +102,9 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsResource && resource != null)
+            if (Resource is { } __value0 && resource != null)
             {
-                return resource(Resource!);
+                return resource(__value0);
             }
 
             return default(TResult);
@@ -122,9 +122,9 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsResource)
+            if (Resource is { } __value0)
             {
-                resource?.Invoke(Resource!);
+                resource?.Invoke(__value0);
             }
         }
 
@@ -140,9 +140,9 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsResource)
+            if (Resource is { } __value0)
             {
-                resource?.Invoke(Resource!);
+                resource?.Invoke(__value0);
             }
         }
 

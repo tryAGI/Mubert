@@ -42,8 +42,8 @@ namespace Mubert
         /// <summary>
         ///
         /// </summary>
-        public global::Mubert.CustomerPublicResource PickCustomerPublicResource() => IsCustomerPublicResource
-            ? CustomerPublicResource!
+        public global::Mubert.CustomerPublicResource PickCustomerPublicResource() => CustomerPublicResource is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'CustomerPublicResource' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Mubert
         /// <summary>
         ///
         /// </summary>
-        public global::Mubert.CustomerShowPublicResourceVariant2 PickCustomerShowPublicResourceVariant2() => IsCustomerShowPublicResourceVariant2
-            ? CustomerShowPublicResourceVariant2!
+        public global::Mubert.CustomerShowPublicResourceVariant2 PickCustomerShowPublicResourceVariant2() => CustomerShowPublicResourceVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'CustomerShowPublicResourceVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsCustomerPublicResource && customerPublicResource != null)
+            if (CustomerPublicResource is { } __value0 && customerPublicResource != null)
             {
-                return customerPublicResource(CustomerPublicResource!);
+                return customerPublicResource(__value0);
             }
-            else if (IsCustomerShowPublicResourceVariant2 && customerShowPublicResourceVariant2 != null)
+            else if (CustomerShowPublicResourceVariant2 is { } __value1 && customerShowPublicResourceVariant2 != null)
             {
-                return customerShowPublicResourceVariant2(CustomerShowPublicResourceVariant2!);
+                return customerShowPublicResourceVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsCustomerPublicResource)
+            if (CustomerPublicResource is { } __value0)
             {
-                customerPublicResource?.Invoke(CustomerPublicResource!);
+                customerPublicResource?.Invoke(__value0);
             }
-            else if (IsCustomerShowPublicResourceVariant2)
+            else if (CustomerShowPublicResourceVariant2 is { } __value1)
             {
-                customerShowPublicResourceVariant2?.Invoke(CustomerShowPublicResourceVariant2!);
+                customerShowPublicResourceVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsCustomerPublicResource)
+            if (CustomerPublicResource is { } __value0)
             {
-                customerPublicResource?.Invoke(CustomerPublicResource!);
+                customerPublicResource?.Invoke(__value0);
             }
-            else if (IsCustomerShowPublicResourceVariant2)
+            else if (CustomerShowPublicResourceVariant2 is { } __value1)
             {
-                customerShowPublicResourceVariant2?.Invoke(CustomerShowPublicResourceVariant2!);
+                customerShowPublicResourceVariant2?.Invoke(__value1);
             }
         }
 

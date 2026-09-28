@@ -42,8 +42,8 @@ namespace Mubert
         /// <summary>
         ///
         /// </summary>
-        public global::Mubert.TrackGenerationServiceResource PickTrackGenerationServiceResource() => IsTrackGenerationServiceResource
-            ? TrackGenerationServiceResource!
+        public global::Mubert.TrackGenerationServiceResource PickTrackGenerationServiceResource() => TrackGenerationServiceResource is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TrackGenerationServiceResource' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -102,9 +102,9 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsTrackGenerationServiceResource && trackGenerationServiceResource != null)
+            if (TrackGenerationServiceResource is { } __value0 && trackGenerationServiceResource != null)
             {
-                return trackGenerationServiceResource(TrackGenerationServiceResource!);
+                return trackGenerationServiceResource(__value0);
             }
 
             return default(TResult);
@@ -122,9 +122,9 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsTrackGenerationServiceResource)
+            if (TrackGenerationServiceResource is { } __value0)
             {
-                trackGenerationServiceResource?.Invoke(TrackGenerationServiceResource!);
+                trackGenerationServiceResource?.Invoke(__value0);
             }
         }
 
@@ -140,9 +140,9 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsTrackGenerationServiceResource)
+            if (TrackGenerationServiceResource is { } __value0)
             {
-                trackGenerationServiceResource?.Invoke(TrackGenerationServiceResource!);
+                trackGenerationServiceResource?.Invoke(__value0);
             }
         }
 

@@ -42,8 +42,8 @@ namespace Mubert
         /// <summary>
         ///
         /// </summary>
-        public global::Mubert.CompanyPublicResource PickCompanyPublicResource() => IsCompanyPublicResource
-            ? CompanyPublicResource!
+        public global::Mubert.CompanyPublicResource PickCompanyPublicResource() => CompanyPublicResource is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'CompanyPublicResource' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -102,9 +102,9 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsCompanyPublicResource && companyPublicResource != null)
+            if (CompanyPublicResource is { } __value0 && companyPublicResource != null)
             {
-                return companyPublicResource(CompanyPublicResource!);
+                return companyPublicResource(__value0);
             }
 
             return default(TResult);
@@ -122,9 +122,9 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsCompanyPublicResource)
+            if (CompanyPublicResource is { } __value0)
             {
-                companyPublicResource?.Invoke(CompanyPublicResource!);
+                companyPublicResource?.Invoke(__value0);
             }
         }
 
@@ -140,9 +140,9 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsCompanyPublicResource)
+            if (CompanyPublicResource is { } __value0)
             {
-                companyPublicResource?.Invoke(CompanyPublicResource!);
+                companyPublicResource?.Invoke(__value0);
             }
         }
 

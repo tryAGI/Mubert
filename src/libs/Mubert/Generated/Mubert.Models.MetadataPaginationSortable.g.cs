@@ -42,8 +42,8 @@ namespace Mubert
         /// <summary>
         ///
         /// </summary>
-        public global::Mubert.MetadataPagination PickMetadataPagination() => IsMetadataPagination
-            ? MetadataPagination!
+        public global::Mubert.MetadataPagination PickMetadataPagination() => MetadataPagination is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'MetadataPagination' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Mubert
         /// <summary>
         ///
         /// </summary>
-        public global::Mubert.MetadataPaginationSortableVariant2 PickMetadataPaginationSortableVariant2() => IsMetadataPaginationSortableVariant2
-            ? MetadataPaginationSortableVariant2!
+        public global::Mubert.MetadataPaginationSortableVariant2 PickMetadataPaginationSortableVariant2() => MetadataPaginationSortableVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'MetadataPaginationSortableVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsMetadataPagination && metadataPagination != null)
+            if (MetadataPagination is { } __value0 && metadataPagination != null)
             {
-                return metadataPagination(MetadataPagination!);
+                return metadataPagination(__value0);
             }
-            else if (IsMetadataPaginationSortableVariant2 && metadataPaginationSortableVariant2 != null)
+            else if (MetadataPaginationSortableVariant2 is { } __value1 && metadataPaginationSortableVariant2 != null)
             {
-                return metadataPaginationSortableVariant2(MetadataPaginationSortableVariant2!);
+                return metadataPaginationSortableVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsMetadataPagination)
+            if (MetadataPagination is { } __value0)
             {
-                metadataPagination?.Invoke(MetadataPagination!);
+                metadataPagination?.Invoke(__value0);
             }
-            else if (IsMetadataPaginationSortableVariant2)
+            else if (MetadataPaginationSortableVariant2 is { } __value1)
             {
-                metadataPaginationSortableVariant2?.Invoke(MetadataPaginationSortableVariant2!);
+                metadataPaginationSortableVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsMetadataPagination)
+            if (MetadataPagination is { } __value0)
             {
-                metadataPagination?.Invoke(MetadataPagination!);
+                metadataPagination?.Invoke(__value0);
             }
-            else if (IsMetadataPaginationSortableVariant2)
+            else if (MetadataPaginationSortableVariant2 is { } __value1)
             {
-                metadataPaginationSortableVariant2?.Invoke(MetadataPaginationSortableVariant2!);
+                metadataPaginationSortableVariant2?.Invoke(__value1);
             }
         }
 
