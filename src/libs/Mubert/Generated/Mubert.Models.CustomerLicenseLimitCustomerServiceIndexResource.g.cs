@@ -42,8 +42,8 @@ namespace Mubert
         /// <summary>
         ///
         /// </summary>
-        public global::Mubert.CustomerLicenseLimitServiceResource PickCustomerLicenseLimitServiceResource() => IsCustomerLicenseLimitServiceResource
-            ? CustomerLicenseLimitServiceResource!
+        public global::Mubert.CustomerLicenseLimitServiceResource PickCustomerLicenseLimitServiceResource() => CustomerLicenseLimitServiceResource is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'CustomerLicenseLimitServiceResource' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -102,9 +102,9 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsCustomerLicenseLimitServiceResource && customerLicenseLimitServiceResource != null)
+            if (CustomerLicenseLimitServiceResource is { } __value0 && customerLicenseLimitServiceResource != null)
             {
-                return customerLicenseLimitServiceResource(CustomerLicenseLimitServiceResource!);
+                return customerLicenseLimitServiceResource(__value0);
             }
 
             return default(TResult);
@@ -122,9 +122,9 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsCustomerLicenseLimitServiceResource)
+            if (CustomerLicenseLimitServiceResource is { } __value0)
             {
-                customerLicenseLimitServiceResource?.Invoke(CustomerLicenseLimitServiceResource!);
+                customerLicenseLimitServiceResource?.Invoke(__value0);
             }
         }
 
@@ -140,9 +140,9 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsCustomerLicenseLimitServiceResource)
+            if (CustomerLicenseLimitServiceResource is { } __value0)
             {
-                customerLicenseLimitServiceResource?.Invoke(CustomerLicenseLimitServiceResource!);
+                customerLicenseLimitServiceResource?.Invoke(__value0);
             }
         }
 

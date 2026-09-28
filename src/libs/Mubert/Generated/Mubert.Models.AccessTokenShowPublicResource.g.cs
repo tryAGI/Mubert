@@ -42,8 +42,8 @@ namespace Mubert
         /// <summary>
         ///
         /// </summary>
-        public global::Mubert.AccessTokenPublicResource PickAccessTokenPublicResource() => IsAccessTokenPublicResource
-            ? AccessTokenPublicResource!
+        public global::Mubert.AccessTokenPublicResource PickAccessTokenPublicResource() => AccessTokenPublicResource is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'AccessTokenPublicResource' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -102,9 +102,9 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsAccessTokenPublicResource && accessTokenPublicResource != null)
+            if (AccessTokenPublicResource is { } __value0 && accessTokenPublicResource != null)
             {
-                return accessTokenPublicResource(AccessTokenPublicResource!);
+                return accessTokenPublicResource(__value0);
             }
 
             return default(TResult);
@@ -122,9 +122,9 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsAccessTokenPublicResource)
+            if (AccessTokenPublicResource is { } __value0)
             {
-                accessTokenPublicResource?.Invoke(AccessTokenPublicResource!);
+                accessTokenPublicResource?.Invoke(__value0);
             }
         }
 
@@ -140,9 +140,9 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsAccessTokenPublicResource)
+            if (AccessTokenPublicResource is { } __value0)
             {
-                accessTokenPublicResource?.Invoke(AccessTokenPublicResource!);
+                accessTokenPublicResource?.Invoke(__value0);
             }
         }
 

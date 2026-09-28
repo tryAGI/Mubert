@@ -42,8 +42,8 @@ namespace Mubert
         /// <summary>
         ///
         /// </summary>
-        public global::Mubert.PlaylistPublicResource PickPlaylistPublicResource() => IsPlaylistPublicResource
-            ? PlaylistPublicResource!
+        public global::Mubert.PlaylistPublicResource PickPlaylistPublicResource() => PlaylistPublicResource is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'PlaylistPublicResource' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -102,9 +102,9 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsPlaylistPublicResource && playlistPublicResource != null)
+            if (PlaylistPublicResource is { } __value0 && playlistPublicResource != null)
             {
-                return playlistPublicResource(PlaylistPublicResource!);
+                return playlistPublicResource(__value0);
             }
 
             return default(TResult);
@@ -122,9 +122,9 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsPlaylistPublicResource)
+            if (PlaylistPublicResource is { } __value0)
             {
-                playlistPublicResource?.Invoke(PlaylistPublicResource!);
+                playlistPublicResource?.Invoke(__value0);
             }
         }
 
@@ -140,9 +140,9 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsPlaylistPublicResource)
+            if (PlaylistPublicResource is { } __value0)
             {
-                playlistPublicResource?.Invoke(PlaylistPublicResource!);
+                playlistPublicResource?.Invoke(__value0);
             }
         }
 

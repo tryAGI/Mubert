@@ -42,8 +42,8 @@ namespace Mubert
         /// <summary>
         ///
         /// </summary>
-        public global::Mubert.CustomerLicenseLimitPublicResource PickCustomerLicenseLimitPublicResource() => IsCustomerLicenseLimitPublicResource
-            ? CustomerLicenseLimitPublicResource!
+        public global::Mubert.CustomerLicenseLimitPublicResource PickCustomerLicenseLimitPublicResource() => CustomerLicenseLimitPublicResource is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'CustomerLicenseLimitPublicResource' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -102,9 +102,9 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsCustomerLicenseLimitPublicResource && customerLicenseLimitPublicResource != null)
+            if (CustomerLicenseLimitPublicResource is { } __value0 && customerLicenseLimitPublicResource != null)
             {
-                return customerLicenseLimitPublicResource(CustomerLicenseLimitPublicResource!);
+                return customerLicenseLimitPublicResource(__value0);
             }
 
             return default(TResult);
@@ -122,9 +122,9 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsCustomerLicenseLimitPublicResource)
+            if (CustomerLicenseLimitPublicResource is { } __value0)
             {
-                customerLicenseLimitPublicResource?.Invoke(CustomerLicenseLimitPublicResource!);
+                customerLicenseLimitPublicResource?.Invoke(__value0);
             }
         }
 
@@ -140,9 +140,9 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsCustomerLicenseLimitPublicResource)
+            if (CustomerLicenseLimitPublicResource is { } __value0)
             {
-                customerLicenseLimitPublicResource?.Invoke(CustomerLicenseLimitPublicResource!);
+                customerLicenseLimitPublicResource?.Invoke(__value0);
             }
         }
 

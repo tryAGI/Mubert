@@ -42,8 +42,8 @@ namespace Mubert
         /// <summary>
         ///
         /// </summary>
-        public global::Mubert.TrackPublicResource PickTrackPublicResource() => IsTrackPublicResource
-            ? TrackPublicResource!
+        public global::Mubert.TrackPublicResource PickTrackPublicResource() => TrackPublicResource is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TrackPublicResource' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Mubert
         /// <summary>
         ///
         /// </summary>
-        public global::Mubert.TrackIndexPublicResourceVariant2 PickTrackIndexPublicResourceVariant2() => IsTrackIndexPublicResourceVariant2
-            ? TrackIndexPublicResourceVariant2!
+        public global::Mubert.TrackIndexPublicResourceVariant2 PickTrackIndexPublicResourceVariant2() => TrackIndexPublicResourceVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TrackIndexPublicResourceVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsTrackPublicResource && trackPublicResource != null)
+            if (TrackPublicResource is { } __value0 && trackPublicResource != null)
             {
-                return trackPublicResource(TrackPublicResource!);
+                return trackPublicResource(__value0);
             }
-            else if (IsTrackIndexPublicResourceVariant2 && trackIndexPublicResourceVariant2 != null)
+            else if (TrackIndexPublicResourceVariant2 is { } __value1 && trackIndexPublicResourceVariant2 != null)
             {
-                return trackIndexPublicResourceVariant2(TrackIndexPublicResourceVariant2!);
+                return trackIndexPublicResourceVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsTrackPublicResource)
+            if (TrackPublicResource is { } __value0)
             {
-                trackPublicResource?.Invoke(TrackPublicResource!);
+                trackPublicResource?.Invoke(__value0);
             }
-            else if (IsTrackIndexPublicResourceVariant2)
+            else if (TrackIndexPublicResourceVariant2 is { } __value1)
             {
-                trackIndexPublicResourceVariant2?.Invoke(TrackIndexPublicResourceVariant2!);
+                trackIndexPublicResourceVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsTrackPublicResource)
+            if (TrackPublicResource is { } __value0)
             {
-                trackPublicResource?.Invoke(TrackPublicResource!);
+                trackPublicResource?.Invoke(__value0);
             }
-            else if (IsTrackIndexPublicResourceVariant2)
+            else if (TrackIndexPublicResourceVariant2 is { } __value1)
             {
-                trackIndexPublicResourceVariant2?.Invoke(TrackIndexPublicResourceVariant2!);
+                trackIndexPublicResourceVariant2?.Invoke(__value1);
             }
         }
 

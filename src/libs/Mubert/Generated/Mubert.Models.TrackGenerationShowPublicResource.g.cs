@@ -42,8 +42,8 @@ namespace Mubert
         /// <summary>
         ///
         /// </summary>
-        public global::Mubert.TrackGenerationPublicResource PickTrackGenerationPublicResource() => IsTrackGenerationPublicResource
-            ? TrackGenerationPublicResource!
+        public global::Mubert.TrackGenerationPublicResource PickTrackGenerationPublicResource() => TrackGenerationPublicResource is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TrackGenerationPublicResource' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Mubert
         /// <summary>
         ///
         /// </summary>
-        public global::Mubert.TrackGenerationShowPublicResourceVariant2 PickTrackGenerationShowPublicResourceVariant2() => IsTrackGenerationShowPublicResourceVariant2
-            ? TrackGenerationShowPublicResourceVariant2!
+        public global::Mubert.TrackGenerationShowPublicResourceVariant2 PickTrackGenerationShowPublicResourceVariant2() => TrackGenerationShowPublicResourceVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TrackGenerationShowPublicResourceVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsTrackGenerationPublicResource && trackGenerationPublicResource != null)
+            if (TrackGenerationPublicResource is { } __value0 && trackGenerationPublicResource != null)
             {
-                return trackGenerationPublicResource(TrackGenerationPublicResource!);
+                return trackGenerationPublicResource(__value0);
             }
-            else if (IsTrackGenerationShowPublicResourceVariant2 && trackGenerationShowPublicResourceVariant2 != null)
+            else if (TrackGenerationShowPublicResourceVariant2 is { } __value1 && trackGenerationShowPublicResourceVariant2 != null)
             {
-                return trackGenerationShowPublicResourceVariant2(TrackGenerationShowPublicResourceVariant2!);
+                return trackGenerationShowPublicResourceVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsTrackGenerationPublicResource)
+            if (TrackGenerationPublicResource is { } __value0)
             {
-                trackGenerationPublicResource?.Invoke(TrackGenerationPublicResource!);
+                trackGenerationPublicResource?.Invoke(__value0);
             }
-            else if (IsTrackGenerationShowPublicResourceVariant2)
+            else if (TrackGenerationShowPublicResourceVariant2 is { } __value1)
             {
-                trackGenerationShowPublicResourceVariant2?.Invoke(TrackGenerationShowPublicResourceVariant2!);
+                trackGenerationShowPublicResourceVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsTrackGenerationPublicResource)
+            if (TrackGenerationPublicResource is { } __value0)
             {
-                trackGenerationPublicResource?.Invoke(TrackGenerationPublicResource!);
+                trackGenerationPublicResource?.Invoke(__value0);
             }
-            else if (IsTrackGenerationShowPublicResourceVariant2)
+            else if (TrackGenerationShowPublicResourceVariant2 is { } __value1)
             {
-                trackGenerationShowPublicResourceVariant2?.Invoke(TrackGenerationShowPublicResourceVariant2!);
+                trackGenerationShowPublicResourceVariant2?.Invoke(__value1);
             }
         }
 

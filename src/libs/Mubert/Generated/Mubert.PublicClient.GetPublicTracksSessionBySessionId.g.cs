@@ -159,8 +159,8 @@ namespace Mubert
                 PrepareGetPublicTracksSessionBySessionIdRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    track: track!,
-                    sessionId: sessionId!);
+                    track: track,
+                    sessionId: sessionId);
 
                 return __httpRequest;
             }
@@ -182,7 +182,7 @@ namespace Mubert
                                 pathTemplate: "$\"/api/v3/public/tracks/session/{sessionId}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: null,
                                 clientOptions: Options,
@@ -216,7 +216,7 @@ namespace Mubert
                                 pathTemplate: "$\"/api/v3/public/tracks/session/{sessionId}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: __exception,
                                 clientOptions: Options,
@@ -257,7 +257,7 @@ namespace Mubert
                                 pathTemplate: "$\"/api/v3/public/tracks/session/{sessionId}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -305,7 +305,7 @@ namespace Mubert
                                 pathTemplate: "$\"/api/v3/public/tracks/session/{sessionId}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -327,7 +327,7 @@ namespace Mubert
                                 pathTemplate: "$\"/api/v3/public/tracks/session/{sessionId}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,

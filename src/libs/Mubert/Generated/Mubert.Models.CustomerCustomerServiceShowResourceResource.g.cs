@@ -42,8 +42,8 @@ namespace Mubert
         /// <summary>
         ///
         /// </summary>
-        public global::Mubert.CustomerServiceResource PickCustomerServiceResource() => IsCustomerServiceResource
-            ? CustomerServiceResource!
+        public global::Mubert.CustomerServiceResource PickCustomerServiceResource() => CustomerServiceResource is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'CustomerServiceResource' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Mubert
         /// <summary>
         ///
         /// </summary>
-        public global::Mubert.CustomerCustomerServiceShowResourceResourceVariant2 PickCustomerCustomerServiceShowResourceResourceVariant2() => IsCustomerCustomerServiceShowResourceResourceVariant2
-            ? CustomerCustomerServiceShowResourceResourceVariant2!
+        public global::Mubert.CustomerCustomerServiceShowResourceResourceVariant2 PickCustomerCustomerServiceShowResourceResourceVariant2() => CustomerCustomerServiceShowResourceResourceVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'CustomerCustomerServiceShowResourceResourceVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsCustomerServiceResource && customerServiceResource != null)
+            if (CustomerServiceResource is { } __value0 && customerServiceResource != null)
             {
-                return customerServiceResource(CustomerServiceResource!);
+                return customerServiceResource(__value0);
             }
-            else if (IsCustomerCustomerServiceShowResourceResourceVariant2 && customerCustomerServiceShowResourceResourceVariant2 != null)
+            else if (CustomerCustomerServiceShowResourceResourceVariant2 is { } __value1 && customerCustomerServiceShowResourceResourceVariant2 != null)
             {
-                return customerCustomerServiceShowResourceResourceVariant2(CustomerCustomerServiceShowResourceResourceVariant2!);
+                return customerCustomerServiceShowResourceResourceVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsCustomerServiceResource)
+            if (CustomerServiceResource is { } __value0)
             {
-                customerServiceResource?.Invoke(CustomerServiceResource!);
+                customerServiceResource?.Invoke(__value0);
             }
-            else if (IsCustomerCustomerServiceShowResourceResourceVariant2)
+            else if (CustomerCustomerServiceShowResourceResourceVariant2 is { } __value1)
             {
-                customerCustomerServiceShowResourceResourceVariant2?.Invoke(CustomerCustomerServiceShowResourceResourceVariant2!);
+                customerCustomerServiceShowResourceResourceVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace Mubert
                 Validate();
             }
 
-            if (IsCustomerServiceResource)
+            if (CustomerServiceResource is { } __value0)
             {
-                customerServiceResource?.Invoke(CustomerServiceResource!);
+                customerServiceResource?.Invoke(__value0);
             }
-            else if (IsCustomerCustomerServiceShowResourceResourceVariant2)
+            else if (CustomerCustomerServiceShowResourceResourceVariant2 is { } __value1)
             {
-                customerCustomerServiceShowResourceResourceVariant2?.Invoke(CustomerCustomerServiceShowResourceResourceVariant2!);
+                customerCustomerServiceShowResourceResourceVariant2?.Invoke(__value1);
             }
         }
 
